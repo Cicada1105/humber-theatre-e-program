@@ -12,9 +12,54 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+define('PROGRAMS', ['the_humans', 'program_2', 'program_3']);
 
-Route::get('/', function () {
-    return view('welcome', [
-        'message' => 'Humber Theatre Presents: The Humans'
-    ]);
-});
+Route::get('/{program}', function ($program) {
+    // Convert program name into a formatted title
+    $programTitleWords = explode("_", $program);
+    $formattedString = ucwords(join(" ",$programTitleWords));
+
+    // This will be retrieved from the database based on 'humans' which will be replaced with a wildcard
+    // Will most likely need to make a Model to define this data
+    $testData = [
+        'title' => "Humber Theatre Presents: $formattedString",
+        'img' => [
+            'src' => ''
+        ],
+        'writer' => 'Stephen Karam',
+        'about' => [
+            'The Blake family’s traditionally tame holiday visit slowly degenerates into chaos, as the family’s deepest fears rise to the surface. In an increasingly unfamiliar world, their insecurities and secrets risk making this their last Thanksgiving together.',
+            'A darkly comic play filled with both laughter and pain, The Humans will take you on a unique journey reflective of today’s uncertainty, chaos, and change. Featuring a special appearance by a peppermint pig...'
+        ],
+        'directed_by' => 'Christopher Stanton',
+        'dates' => [
+            [
+                'day' => 'December 9th',
+                'time' => '7pm',
+                'details' => 'Humans 1.0 - Performance Program ONLY – Preview'
+            ],
+            [
+                'day' => 'December 10th',
+                'time' => '7pm',
+                'details' => 'Humans 2.0 (Production) & 1.0 (Performance)'
+            ],
+            [
+                'day' => 'December 11th',
+                'time' => '7pm',
+                'details' => 'Humans 2.0 (Production) & 1.0 (Performance)'
+            ]
+        ],
+        'location' => 'Online',
+        'advisory' => ['Strong Language', 'Mature Content']
+    ];
+
+    return view('welcome', $testData);
+})->whereIn('program', PROGRAMS);
+
+Route::get('/{program}/contributors', function ($program) {
+    // Convert program name into a formatted title
+    $programTitleWords = explode("_", $program);
+    $formattedString = ucwords(join(" ",$programTitleWords));
+
+    return view('contributors', ['message' => "$formattedString Collaborators"]);
+})->whereIn('program', PROGRAMS);

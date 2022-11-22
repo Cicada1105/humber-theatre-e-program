@@ -1,3 +1,60 @@
-.text-white {
-	color:white;
+/*
+	  Table of Contents
+	=======================
+	1. Imports
+	2. Elements
+	3. Classes
+
+
+*/
+/***************/
+/*   Imports   */
+/***************/
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Source+Sans+Pro:wght@200;300;400&display=swap');
+
+/****************/
+/*   Elements   */
+/****************/
+html {
+    font-family: 'Source Sans Pro', sans-serif;
+    box-sizing: border-box;
+    font-weight: 400;
+	font-size: 16px;
+}
+*, *::before, *::after {
+  box-sizing:inherit;
+}
+body {
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Raleway', sans-serif;
+}
+
+/***************/
+/*   Classes   */
+/***************/
+.flex-wrapper {
+	display:flex;
+	align-items: center;
+}
+.flex-container {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	gap: 1rem;
+}
+.container {
+	display: block;
+	padding: 1rem;
+}
+.text-center {
+	text-align: center;
+}
+.hidden {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
 }
