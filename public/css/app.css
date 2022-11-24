@@ -4,8 +4,8 @@
 	1. Imports
 	2. Elements
 	3. Classes
-
-
+	4. Utilities
+	5. Header
 */
 /***************/
 /*   Imports   */
@@ -32,6 +32,14 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Raleway', sans-serif;
 }
 
+a { 
+	text-decoration: none;
+	color: var(--text-color);
+}
+a:hover {  }
+a:active {  }
+a:visited {  }
+
 /***************/
 /*   Classes   */
 /***************/
@@ -57,4 +65,46 @@ h1, h2, h3, h4, h5, h6 {
     left: -10000px;
     width: 1px;
     height: 1px;
+}
+
+/*****************/
+/*   Utilities   */
+/*****************/
+.m1 {
+	margin: 1rem;
+}
+.p1 {
+	padding: 1rem;
+}
+.m-auto {
+	margin: auto;
+}
+.text-center {
+	text-align: center;
+}
+/**************/
+/*   Header   */
+/**************/
+header {
+	justify-content: space-between;
+	margin:auto;
+	width:90%;
+}
+ul.nav-list {
+	justify-content: space-around;
+	list-style:none;
+	padding:0rem;
+}
+.nav-list__item > a {
+	font-size:0.95rem;
+	padding: 0.75rem 1.5rem;
+	border: 1px solid var(--text-color);
+	border-radius: 0.25rem;
+}
+.nav-list__item a:hover {
+	background-color: var(--text-color);
+	color: var(--background-color);
+}
+#page-header-logo {
+	width:300px;
 }

@@ -12,11 +12,23 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-define('PROGRAMS', ['the_humans', 'program_2', 'program_3']);
+define('PROGRAMS', ['the-humans', 'program-2', 'program-3']);
+define('ADDITIONAL_PAGES', ['humber-theatre']);
 
-Route::get('/{program}', function ($program) {
+Route::get('/', function() {
+    return view('home');
+});
+Route::get('/programs', function() {
+    return view('programs', [
+        'programs' => PROGRAMS
+    ]);
+});
+Route::get('/humber-theatre', function() {
+    return view('humber-theatre');
+});
+Route::get('/{program}', function($program) {
     // Convert program name into a formatted title
-    $programTitleWords = explode("_", $program);
+    $programTitleWords = explode("-", $program);
     $formattedString = ucwords(join(" ",$programTitleWords));
 
     // This will be retrieved from the database based on 'humans' which will be replaced with a wildcard
@@ -53,8 +65,8 @@ Route::get('/{program}', function ($program) {
         'advisory' => ['Strong Language', 'Mature Content']
     ];
 
-    return view('welcome', $testData);
-})->whereIn('program', PROGRAMS);
+    return view('about', $testData);
+})->whereIn('program', array_merge(PROGRAMS, ADDITIONAL_PAGES));
 
 Route::get('/{program}/contributors', function ($program) {
     // Convert program name into a formatted title
