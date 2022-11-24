@@ -4,7 +4,7 @@
 		<!--Meta content shared by every page-->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="" content="" />
+        
         @php ($path = Str::of(Request::path())->explode("/"))
 		<title>{{ ucwords($path[0]) }} | {{ count($path) > 1 ? ucwords($path[1]) : "Home" }}</title>
 

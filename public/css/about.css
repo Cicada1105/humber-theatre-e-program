@@ -1,0 +1,15 @@
+.program-title {
+	font-size: 2.5rem;
+}
+.program-writer {
+	font-size: 1.15rem;
+}
+[class $= "-section"] > h3 {
+	font-size: 1.35rem;
+}
+[class $= "-section"] > p {
+	font-size: 1.15rem;
+}
+.advisory-section > h4 {
+	font-size: 1.08rem;
+}
