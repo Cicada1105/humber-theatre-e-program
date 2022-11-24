@@ -1,7 +1,7 @@
 @extends('layout.page_template')
 
 @section('main-content')
-	<h1 class="text-white text-center">All of our past programs</h1>
+	<h1>All of our past programs</h1>
 
 	<div style="text-align: center">
 	@foreach ($programs as $program)

@@ -34,9 +34,11 @@ Route::get('/{program}', function($program) {
     // This will be retrieved from the database based on 'humans' which will be replaced with a wildcard
     // Will most likely need to make a Model to define this data
     $testData = [
-        'title' => "Humber Theatre Presents: $formattedString",
+        'title' => $formattedString,
         'img' => [
-            'src' => ''
+            'src' => '/imgs/TheHumans.png',
+            'alt' => 'The Humans Poster',
+            'caption' => 'Poster image by Mira Aguayo'
         ],
         'writer' => 'Stephen Karam',
         'about' => [
@@ -46,18 +48,15 @@ Route::get('/{program}', function($program) {
         'directed_by' => 'Christopher Stanton',
         'dates' => [
             [
-                'day' => 'December 9th',
-                'time' => '7pm',
+                'date_time' => "2022-12-9T19:00:00",
                 'details' => 'Humans 1.0 - Performance Program ONLY – Preview'
             ],
             [
-                'day' => 'December 10th',
-                'time' => '7pm',
+                'date_time' => "2022-12-10T19:00:00",
                 'details' => 'Humans 2.0 (Production) & 1.0 (Performance)'
             ],
             [
-                'day' => 'December 11th',
-                'time' => '7pm',
+                'date_time' => "2022-12-11T19:00:00",
                 'details' => 'Humans 2.0 (Production) & 1.0 (Performance)'
             ]
         ],
