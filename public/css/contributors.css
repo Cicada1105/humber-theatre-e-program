@@ -1,0 +1,28 @@
+hgroup.departments {
+	justify-content: space-around;
+	text-transform: uppercase;
+	border-bottom: 3px solid #261010;
+	font-size: 1.5rem;
+	width:80%;
+}
+.contributor {
+	margin-bottom: 4rem;
+	border-bottom: 3px solid #261010;
+}
+.contributor__name {
+	margin-bottom: 0rem;
+	font-size: 1.5rem;
+}
+hgroup.role {
+	justify-content: space-between;
+	font-size: 1.25rem;
+	padding: 0rem 4rem;
+}
+hgroup.role > h5 {
+	margin:0rem;
+}
+.contributor__bio {
+	margin: 2rem 4rem;
+	text-align: justify;
+	line-height: 1.875;
+}
