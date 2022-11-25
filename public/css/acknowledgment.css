@@ -1,0 +1,22 @@
+[class $= '-section'] > p {
+	text-align: justify;
+	line-height: 1.875;
+}
+dl {
+	font-size: 1.25rem;
+	width: 80%;
+	margin: auto;
+}
+.faculty-involved-member {
+	justify-content: space-between;
+	line-height: 1.875;
+}
+.faculty-list {
+	line-height: 1.875;
+	font-size: 1.25rem;
+	list-style: none;
+	column-count: 3;
+}
+section.special-thanks-section {
+	width: 70%;
+}

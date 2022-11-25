@@ -34,7 +34,18 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Raleway', sans-serif;
     text-align:center;
 }
-
+h1 {
+	font-size: 2.5rem;
+}
+h3 {
+	font-size: 1.5rem;
+}
+h4 {
+	font-size: 1.08rem;
+}
+p {
+	font-size: 1.15rem;
+}
 a { 
 	text-decoration: none;
 	color: var(--text-color);
@@ -76,6 +87,12 @@ section[class $= "-section"] {
 	width: 80%;
 	margin: auto;
 	margin-top: 4rem;
+}
+section[class $= "-section"] > h3 {
+	font-size: 1.35rem;
+}
+section[class $= "-section"] > p {
+	font-size: 1.15rem;
 }
 
 /*****************/
