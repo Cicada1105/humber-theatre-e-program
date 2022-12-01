@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Production;
+
 define('PG_TITLE', [ 'title' => 'Productions' ]);
 
 class ProductionsController extends Controller
@@ -16,7 +18,7 @@ class ProductionsController extends Controller
     public function list()
     {
         //
-        return view('productions.list', PG_TITLE);
+        return view('productions.list', [ 'title' => 'Prouction', 'productions' => Production::all() ]);
     }
 
     /**

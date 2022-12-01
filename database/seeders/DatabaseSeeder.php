@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Production;
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -20,5 +22,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        Production::truncate();
+
+        Production::factory()->count(2)->create();
     }
 }
