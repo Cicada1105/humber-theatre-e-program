@@ -1,4 +1,3 @@
-@php ($path = Str::of(Request::path())->explode("/"))
 <header class="flex-container p1">
     {{-- @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -18,17 +17,11 @@
     </a>
 	<nav>
 		<ul class="flex-container nav-list">
-			{{--This if statement needs to be reworked to prevent appending useless if checks--}}
-			@if ($path[0] !== "humber-theatre" and $path[0] !== "" and $path[0] !== "programs")
-				<li class="nav-list__item">
-					<a href="/{{$path[0]}}">About</a>
-				</li>
-				<li class="nav-list__item">
-					<a href="/{{$path[0]}}/contributors">Contributors</a>
-				</li>
-			@endif
 			<li class="nav-list__item">
-				<a href="/programs">View Programs</a>
+				<a href="/">About</a>
+			</li>
+			<li class="nav-list__item">
+				<a href="/contributors">Contributors</a>
 			</li>
 			<li class="nav-list__item">
 				<a href="/humber-theatre">Humber Theatre</a>

@@ -6,7 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
         @php ($path = Str::of(Request::path())->explode("/"))
-		<title>{{ ucwords($path[0]) }} | {{ count($path) > 1 ? ucwords($path[1]) : "Home" }}</title>
+        @if(empty($page))
+			<title>{{ $title }}</title>
+        @else
+			<title>{{ $title }} | {{ $page }}</title>
+        @endif
 
 		<!--Fonts-->
 
