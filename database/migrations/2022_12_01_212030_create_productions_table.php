@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('productions', function (Blueprint $table) {
             $table->id();
+            $table->boolean('is_active');
             // Tiny text can hold up to 255 bytes/characters
             $table->tinyText('title');
             $table->tinyText('author');
