@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Contributor;
+
 define('PG_TITLE', [ 'title' => 'Contributors' ]);
 
 class ContributorsController extends Controller
@@ -16,7 +18,7 @@ class ContributorsController extends Controller
     public function list()
     {
         //
-        return view('contributors.list', PG_TITLE);
+        return view('contributors.list', [ 'title' => 'Contributors', 'contributors' => Contributor::all() ]);
     }
 
     /**

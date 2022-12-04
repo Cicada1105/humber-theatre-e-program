@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\Faculty;
+use App\Models\Contributor;
 use App\Models\Production;
 
-class FacultyInvolvement extends Model
+class Contribution extends Model
 {
     use HasFactory;
 
@@ -18,11 +18,12 @@ class FacultyInvolvement extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'involvement'
+        'category',
+        'role'
     ];
 
-    public function faculty() {
-        return $this->belongsTo(Faculty::class);
+    public function contributor() {
+        return $this->belongsTo(Contributor::class);
     }
     public function production() {
         return $this->belongsTo(Production::class);

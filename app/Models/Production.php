@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\FacultyInvolvement;
+use App\Models\Contributions;
 
 class Production extends Model
 {
@@ -31,5 +32,8 @@ class Production extends Model
 
     public function facultyInvolvement() {
         return $this->hasMany(FacultyInvolvement::class);
+    }
+    public function contributions() {
+        return $this->hasMany(Contributions::class);
     }
 }
