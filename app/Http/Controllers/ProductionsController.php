@@ -66,27 +66,14 @@ class ProductionsController extends Controller
         //
         return view('productions.details', PG_TITLE);
     }
-    
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-        return view('productions.edit', PG_TITLE);
-    }
 
     /**
-     * Update the specified resource in storage.
+     * Update the current, active program
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateActiveProgram(Request $request)
     {
         //
         return redirect('/pm')->with('title', 'Productions');

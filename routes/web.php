@@ -195,6 +195,7 @@ Route::prefix('pm')->group(function() {
     /*******************/
     // List of all productions
     Route::get('/', [ProductionsController::class,'list']);
+    Route::post('update', [ProductionsController::class, 'updateActiveProgram']);
     // Details about the active production
     Route::get('/preview', [ProductionsController::class, 'active']);
     Route::prefix('production')->group(function() {
@@ -224,21 +225,22 @@ Route::prefix('pm')->group(function() {
     /***************/
     /*   Faculty   */
     /***************/
-    Route::prefix('humber')->group(function() {
-        // List faculty members and special thanks members
-        Route::get('/', [HumberController::class, 'index']);
-        // Route for retrieving edit page for updating faculty active in current program and special thanks for active program
-        Route::get('/update', [HumberController::class, 'edit']);
-        Route::post('/update', [HumberController::class, 'update']);
+    Route::prefix('faculty')->group(function() {
+        Route::get('/list', [FacultyController::class, 'list']);
+        Route::get('/add', [FacultyController::class, 'add']);
+        Route::post('/add', [FacultyController::class, 'create']);
+        Route::get('/update/{id}', [FacultyController::class, 'edit']);
+        Route::get('/update/{id}', [FacultyController::class, 'edit']);
+        Route::post('/update/{id}', [FacultyController::class, 'update']);
+        Route::post('/delete/{id}', [FacultyController::class, 'delete']);
+    });
 
-        Route::prefix('faculty')->group(function() {
-            Route::get('/list', [FacultyController::class, 'list']);
-            Route::get('/add', [FacultyController::class, 'add']);
-            Route::post('/add', [FacultyController::class, 'create']);
-            Route::get('/update/{id}', [FacultyController::class, 'edit']);
-            Route::get('/update/{id}', [FacultyController::class, 'edit']);
-            Route::post('/update/{id}', [FacultyController::class, 'update']);
-            Route::post('/delete/{id}', [FacultyController::class, 'delete']);
-        });
+    /**********************/
+    /*   Humber Theatre   */
+    /**********************/
+    Route::prefix('humber')->group(function() {
+        // Route for retrieving edit page for updating faculty active in current program and special thanks for active program
+        Route::get('/', [HumberController::class, 'edit']);
+        Route::post('/update', [HumberController::class, 'update']);
     });
 });
