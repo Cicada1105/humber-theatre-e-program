@@ -12,6 +12,8 @@
 			<title>{{ $title }} | {{ $page }}</title>
         @endif
 
+        <!--Scripts-->
+		<script src="https://kit.fontawesome.com/de38352bbc.js" crossorigin="anonymous"></script>
 		<!--Fonts-->
 
 		<!--Global Styles-->

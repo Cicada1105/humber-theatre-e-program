@@ -1,0 +1,26 @@
+form {
+	text-align: center;
+	width: 75vw;
+	margin:auto;
+}
+#active-program__text {
+	padding-left:2.5rem;
+	text-align: left;
+}
+.production-row {
+	position: relative;
+	text-align: center;
+	margin: 2.5rem 5rem;
+}
+.production-row__toggle {
+	position: absolute;
+	left:0rem;
+}
+.production-row__title {
+	display: inline;
+}
+.production-row-controls {
+	position: absolute;
+	display: inline;
+	right:0rem;
+}

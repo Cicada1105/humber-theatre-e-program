@@ -68,6 +68,15 @@ class ProductionsController extends Controller
     }
 
     /**
+     * Display the edit form for the requested production
+     * 
+     * @param int $id
+     */
+    public function edit($id) {
+        return view('productions.edit', PG_TITLE);
+    }
+
+    /**
      * Update the current, active program
      *
      * @param  \Illuminate\Http\Request  $request
