@@ -242,6 +242,7 @@ Route::middleware(['auth'])->group(function() {
             Route::get('/', [FacultyController::class, 'list']);
             Route::get('/add', [FacultyController::class, 'add']);
             Route::post('/add', [FacultyController::class, 'create']);
+            Route::post('/update', [FacultyController::class, 'updateAll']);
             Route::get('/update/{id}', [FacultyController::class, 'edit']);
             Route::get('/update/{id}', [FacultyController::class, 'edit']);
             Route::post('/update/{id}', [FacultyController::class, 'update']);

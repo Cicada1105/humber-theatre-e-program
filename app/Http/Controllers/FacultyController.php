@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Faculty;
 
 define('PG_TITLE', [ 'title' => 'Faculty' ]);
 
@@ -15,8 +16,8 @@ class FacultyController extends Controller
      */
     public function list()
     {
-        //
-        return view('faculty.list', PG_TITLE);
+        // Pass in id of current active program
+        return view('faculty.list', [ 'title' => 'Faculty', 'active_program_id' => 1, 'faculty' => Faculty::all() ]);
     }
 
     /**
@@ -39,7 +40,7 @@ class FacultyController extends Controller
     public function create(Request $request)
     {
         //
-        return redirect('/pm/humber')->with('title', 'Humber Theatre');
+        return redirect('/pm/faculty')->with('title', 'Faculty');
     }
 
     /**
@@ -76,7 +77,7 @@ class FacultyController extends Controller
     public function update(Request $request, $id)
     {
         // Updating a single faculty member
-        return redirect('/pm/humber')->with('title', 'Humber Theatre');;
+        return redirect('/pm/faculty')->with('title', 'Faculty');;
     }
 
     /**
@@ -87,7 +88,7 @@ class FacultyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function updateAll(Request $request) {
-        return redirect('/pm/humber')->with('title', 'Humber Theatre');
+        return redirect('/pm/faculty')->with('title', 'Faculty');
     }
 
     /**
@@ -99,6 +100,6 @@ class FacultyController extends Controller
     public function delete($id)
     {
         //
-        return redirect('/pm/humber')->with('title', 'Humber Theatre');
+        return redirect('/pm/faculty')->with('title', 'Faculty');
     }
 }
