@@ -17,8 +17,8 @@ class ContributorsController extends Controller
      */
     public function list()
     {
-        //
-        return view('contributors.list', [ 'title' => 'Contributors', 'contributors' => Contributor::all() ]);
+        // Pass in id of current active program
+        return view('contributors.list', [ 'title' => 'Contributors', 'active_program_id' => 1, 'contributors' => Contributor::all() ]);
     }
 
     /**
@@ -68,6 +68,16 @@ class ContributorsController extends Controller
         return view('contributors.edit', PG_TITLE);
     }
 
+    /**
+     * Update contributors who contributed to current, active program
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updateActiveContributors(Request $request) {
+        return redirect('/pm/contributors')->with('title', 'Contributors');
+    }
+    
     /**
      * Update the specified resource in storage.
      *

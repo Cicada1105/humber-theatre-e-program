@@ -224,6 +224,7 @@ Route::middleware(['auth'])->group(function() {
         Route::prefix('contributors')->group(function() {
             // List of contributors to current production?
             Route::get('/', [ContributorsController::class, 'list']);
+            Route::post('/update', [ContributorsController::class, 'updateActiveContributors']);
 
             Route::prefix('contributor')->group(function() {
                 Route::get('/add', [ContributorsController::class, 'add']);
