@@ -7,19 +7,19 @@ form {
 	padding-left:2.5rem;
 	text-align: left;
 }
-[class $= "-row"] {
+.production-row {
 	position: relative;
 	text-align: center;
 	margin: 2.5rem 5rem;
 }
-[class $= "-row__toggle"] {
+.production-row__toggle {
 	position: absolute;
 	left:0rem;
 }
-[class $= "-row__title"] {
+.production-row__title" {
 	display: inline;
 }
-[class $= "-row-controls"] {
+.production-row-controls {
 	position: absolute;
 	display: inline;
 	right:0rem;

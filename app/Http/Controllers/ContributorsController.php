@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Contributor;
+use App\Models\Production;
 
 define('PG_TITLE', [ 'title' => 'Contributors' ]);
 
@@ -17,8 +18,10 @@ class ContributorsController extends Controller
      */
     public function list()
     {
-        // Pass in id of current active program
-        return view('contributors.list', [ 'title' => 'Contributors', 'active_program_id' => 1, 'contributors' => Contributor::all() ]);
+        // Retrieve the active program
+        $activeProgram = Production::where('is_active', true)->first();
+
+        return view('contributors.list', [ 'title' => 'Contributors', 'active_program' => $activeProgram, 'contributors' => Contributor::all() ]);
     }
 
     /**
@@ -41,7 +44,7 @@ class ContributorsController extends Controller
     public function create(Request $request)
     {
         //
-        return redirect('/pm/contributors')->with('title', 'Contributors');
+        return redirect('/pm/contributors');
     }
 
     /**
@@ -75,7 +78,10 @@ class ContributorsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function updateActiveContributors(Request $request) {
-        return redirect('/pm/contributors')->with('title', 'Contributors');
+        // Reset/remove contributors from contributions that have contributed to current program
+        // Retrieve the id of the current active program
+        // 
+        return redirect('/pm/contributors');
     }
     
     /**
@@ -88,7 +94,7 @@ class ContributorsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        return redirect('/pm/contributors')->with('title', 'Contributors');
+        return redirect('/pm/contributors');
     }
 
     /**
@@ -100,6 +106,6 @@ class ContributorsController extends Controller
     public function delete($id)
     {
         //
-        return redirect('/pm/contributors')->with('title', 'Contributors');
+        return redirect('/pm/contributors');
     }
 }

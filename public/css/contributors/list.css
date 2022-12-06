@@ -1,0 +1,17 @@
+form {
+	text-align: center;
+	width: 75vw;
+	margin:auto;
+}
+#active-program__text {
+	padding-left:2.5rem;
+	text-align: left;
+}
+.contributor-row {
+	justify-content: space-between;
+	margin: 2.5rem 5rem;
+	gap:2rem;
+}
+.contributor-row__title {
+	flex-grow:1;
+}
