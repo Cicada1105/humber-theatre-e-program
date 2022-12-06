@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContributorsController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\HumberController;
@@ -75,7 +76,7 @@ Route::get('/', function() {
         'advisory' => ['Strong Language', 'Mature Content']
     ];
     return view('home', $testData, [ 'title' => 'Home' ]);
-});
+})->middleware('guest');
 Route::get('/contributors', function () {
     // Obtain the current program selected, if none then get the most recent program
     // Convert program name into a formatted title
@@ -115,7 +116,7 @@ Route::get('/contributors', function () {
     ];
 
     return view('contributors', $testData);
-});
+})->middleware('guest');
 Route::get('/humber-theatre', function() {
     $testData = [
         'faculty_involved' => [
@@ -183,64 +184,74 @@ Route::get('/humber-theatre', function() {
     ];
 
     return view('acknowledgment', $testData);
-});
+})->middleware('guest');
 
-/******************************/
-/*   Product Manager Routes   */
-/******************************/
-// All routes inside of the prefix will be /pm/...restOfPath
-Route::prefix('pm')->group(function() {
-    /*******************/
-    /*   Productions   */
-    /*******************/
-    // List of all productions
-    Route::get('/', [ProductionsController::class,'list']);
-    Route::post('update', [ProductionsController::class, 'updateActiveProgram']);
-    // Details about the active production
-    Route::get('/preview', [ProductionsController::class, 'active']);
-    Route::prefix('production')->group(function() {
-        Route::get('/add', [ProductionsController::class, 'add']);
-        Route::post('/add', [ProductionsController::class, 'create']);
-        Route::get('/update/{id}', [ProductionsController::class, 'edit']);
-        Route::post('/update/{id}', [ProductionsController::class, 'update']);
-        Route::post('/delete/{id}', [ProductionsController::class, 'delete']);
-    });
+/********************/
+/*   Login Routes   */
+/********************/
+Route::get('/login', [DashboardController::class, 'loginForm'])->middleware('guest')->name('login');
+Route::post('/login', [DashboardController::class, 'login'])->middleware('guest');
+Route::get('/logout', [DashboardController::class, 'logout'])->middleware('auth');
 
-    /********************/
-    /*   Contributors   */
-    /********************/
-    Route::prefix('contributors')->group(function() {
-        // List of contributors to current production?
-        Route::get('/', [ContributorsController::class, 'list']);
-
-        Route::prefix('contributor')->group(function() {
-            Route::get('/add', [ContributorsController::class, 'add']);
-            Route::post('/add', [ContributorsController::class, 'create']);
-            Route::get('/update/{id}', [ContributorsController::class, 'edit']);
-            Route::post('/update/{id}', [ContributorsController::class, 'update']);
-            Route::post('/delete/{id}', [ContributorsController::class, 'delete']);
+// All below routes must be authenticated
+Route::middleware(['auth'])->group(function() {
+    /******************************/
+    /*   Product Manager Routes   */
+    /******************************/
+    // All routes inside of the prefix will be /pm/...restOfPath
+    Route::prefix('pm')->group(function() {
+        /*******************/
+        /*   Productions   */
+        /*******************/
+        // List of all productions
+        Route::get('/', [ProductionsController::class,'list'])->middleware('auth');
+        Route::post('update', [ProductionsController::class, 'updateActiveProgram']);
+        // Details about the active production
+        Route::get('/preview', [ProductionsController::class, 'active']);
+        Route::prefix('production')->group(function() {
+            Route::get('/add', [ProductionsController::class, 'add']);
+            Route::post('/add', [ProductionsController::class, 'create']);
+            Route::get('/update/{id}', [ProductionsController::class, 'edit']);
+            Route::post('/update/{id}', [ProductionsController::class, 'update']);
+            Route::post('/delete/{id}', [ProductionsController::class, 'delete']);
         });
-    });
 
-    /***************/
-    /*   Faculty   */
-    /***************/
-    Route::prefix('faculty')->group(function() {
-        Route::get('/list', [FacultyController::class, 'list']);
-        Route::get('/add', [FacultyController::class, 'add']);
-        Route::post('/add', [FacultyController::class, 'create']);
-        Route::get('/update/{id}', [FacultyController::class, 'edit']);
-        Route::get('/update/{id}', [FacultyController::class, 'edit']);
-        Route::post('/update/{id}', [FacultyController::class, 'update']);
-        Route::post('/delete/{id}', [FacultyController::class, 'delete']);
-    });
+        /********************/
+        /*   Contributors   */
+        /********************/
+        Route::prefix('contributors')->group(function() {
+            // List of contributors to current production?
+            Route::get('/', [ContributorsController::class, 'list']);
 
-    /**********************/
-    /*   Humber Theatre   */
-    /**********************/
-    Route::prefix('humber')->group(function() {
-        // Route for retrieving edit page for updating faculty active in current program and special thanks for active program
-        Route::get('/', [HumberController::class, 'edit']);
-        Route::post('/update', [HumberController::class, 'update']);
+            Route::prefix('contributor')->group(function() {
+                Route::get('/add', [ContributorsController::class, 'add']);
+                Route::post('/add', [ContributorsController::class, 'create']);
+                Route::get('/update/{id}', [ContributorsController::class, 'edit']);
+                Route::post('/update/{id}', [ContributorsController::class, 'update']);
+                Route::post('/delete/{id}', [ContributorsController::class, 'delete']);
+            });
+        });
+
+        /***************/
+        /*   Faculty   */
+        /***************/
+        Route::prefix('faculty')->group(function() {
+            Route::get('/list', [FacultyController::class, 'list']);
+            Route::get('/add', [FacultyController::class, 'add']);
+            Route::post('/add', [FacultyController::class, 'create']);
+            Route::get('/update/{id}', [FacultyController::class, 'edit']);
+            Route::get('/update/{id}', [FacultyController::class, 'edit']);
+            Route::post('/update/{id}', [FacultyController::class, 'update']);
+            Route::post('/delete/{id}', [FacultyController::class, 'delete']);
+        });
+
+        /**********************/
+        /*   Humber Theatre   */
+        /**********************/
+        Route::prefix('humber')->group(function() {
+            // Route for retrieving edit page for updating faculty active in current program and special thanks for active program
+            Route::get('/', [HumberController::class, 'edit']);
+            Route::post('/update', [HumberController::class, 'update']);
+        });
     });
 });
