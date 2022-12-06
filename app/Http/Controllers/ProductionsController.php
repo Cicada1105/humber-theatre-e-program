@@ -52,7 +52,7 @@ class ProductionsController extends Controller
     public function create(Request $request)
     {
         //
-        return redirect('/pm')->with('title', 'Productions');
+        return redirect('/pm');
     }
 
     /**
@@ -84,8 +84,14 @@ class ProductionsController extends Controller
      */
     public function updateActiveProgram(Request $request)
     {
-        //
-        return redirect('/pm')->with('title', 'Productions');
+        // Retrieve the production that is currently active and reset it
+        Production::where('is_active', true)->update(['is_active' => false]);
+        // Store the id of the selected program
+        $id = $request->input('activeProgram');
+        // Find and update the program to be active
+        Production::where('id', $id)->update(['is_active' => true]);
+
+        return redirect('/pm');
     }
 
     /**

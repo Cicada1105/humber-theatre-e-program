@@ -16,7 +16,7 @@
 		<p id="active-program__text">Active Program</p>
 		@foreach ($productions as $production)
 			<div class="production-row">
-				<input class="production-row__toggle" type="radio" name="activeProgram" {{ $production->is_active ? "checked" : "" }} />
+				<input class="production-row__toggle" type="radio" name="activeProgram" value={{$production->id}} {{ $production->is_active ? "checked" : "" }} />
 				<h3 class="production-row__title">{{ $production->title }}</h3>
 				<div class="production-row-controls">
 					<button class="edit-btn" formaction="/pm/production/update/{{$production->id}}" formmethod="get">
