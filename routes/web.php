@@ -35,6 +35,7 @@ enum DepartmentTypes:string {
     }
 }
 
+/*********************/
 /*   Public Routes   */
 /*********************/
 Route::get('/', function() {
@@ -119,6 +120,7 @@ Route::get('/contributors', function () {
 })->middleware('guest');
 Route::get('/humber-theatre', function() {
     $testData = [
+        'title' => 'The Humans',
         'faculty_involved' => [
             'year' => 2020,
             'members' => [
@@ -236,7 +238,7 @@ Route::middleware(['auth'])->group(function() {
         /*   Faculty   */
         /***************/
         Route::prefix('faculty')->group(function() {
-            Route::get('/list', [FacultyController::class, 'list']);
+            Route::get('/', [FacultyController::class, 'list']);
             Route::get('/add', [FacultyController::class, 'add']);
             Route::post('/add', [FacultyController::class, 'create']);
             Route::get('/update/{id}', [FacultyController::class, 'edit']);
