@@ -15,6 +15,10 @@
 /****************/
 /*   Elements   */
 /****************/
+:root {
+	--background-color: black;
+	--text-color: white;
+}
 html {
     font-family: 'Source Sans Pro', sans-serif;
 	background-color: var(--background-color);
