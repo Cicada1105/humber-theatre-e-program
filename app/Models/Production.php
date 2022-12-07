@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\FacultyInvolvement;
+use App\Models\Faculty;
 use App\Models\Contributions;
 
 class Production extends Model
@@ -27,11 +27,13 @@ class Production extends Model
         'poster_img_caption',
         'blurb',
         'content_warning',
+        'land_acknowledgment',
+        'about_humber',
         'special_thanks'
     ];
 
-    public function facultyInvolvement() {
-        return $this->hasMany(FacultyInvolvement::class);
+    public function faculty() {
+        return $this->hasOne(Faculty::class);
     }
     public function contributions() {
         return $this->hasMany(Contributions::class);

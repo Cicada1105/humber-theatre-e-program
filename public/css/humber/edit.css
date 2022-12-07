@@ -1,0 +1,31 @@
+form {
+	text-align: center;
+	width: 75vw;
+	margin:4rem auto;
+}
+.miscellandeous-section > label {
+	font-family: 'Raleway', sans-serif;
+	font-weight: bold;
+	font-size: 1.5rem;
+	margin: 1.5rem auto;
+	display: block;
+}
+.miscellandeous-section > textarea {
+	border: 2px solid white;
+	background-color: unset;
+	color:white;
+	padding: 0.75rem 1rem;
+}
+.involved-faculty {
+	justify-content: space-between;
+	font-size: 1.25rem;
+	line-height: 1.875;
+	width:80%;
+	margin:auto;
+}
+.involved-faculty > label {
+/*	flex-basis: 20rem;*/
+}
+input[type="submit"] {
+	margin-top: 2rem;
+}

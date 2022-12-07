@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Faculty;
+use App\Models\FacultyInvolvement;
+use App\Models\Production;
+
 define('PG_TITLE', [ 'title' => 'Humber Theatre' ]);
 
 class HumberController extends Controller
@@ -17,7 +21,7 @@ class HumberController extends Controller
     {
         // Retrieve list of faculty
         // Retrieve special thanks for current program
-        return view('humber.index', PG_TITLE);
+        return view('humber.index', [ 'title' => 'Humber Theatre' ]);
     }
 
     /**
@@ -27,8 +31,11 @@ class HumberController extends Controller
      */
     public function edit()
     {
+        // Retrieve the id of the active program
+        $activeProgram = Production::where('is_active', true)->first();
+
         // Retrieve all faculty for PM to choose from and special thanks from active program
-        return view('humber.edit', PG_TITLE);
+        return view('humber.edit', [ 'title' => 'Humber Theatre', 'active_program' => $activeProgram, 'faculty' => Faculty::all() ]);
     }
 
     /**

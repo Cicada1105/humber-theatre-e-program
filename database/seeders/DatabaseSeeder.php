@@ -30,13 +30,13 @@ class DatabaseSeeder extends Seeder
 
         Faculty::truncate();
         Production::truncate();
-        FacultyInvolvement::truncate();
+        //FacultyInvolvement::truncate();
         Contributor::truncate();
         Contribution::truncate();
 
         Faculty::factory()->count(10)->create();
         Production::factory()->count(2)->create();
-        FacultyInvolvement::factory()->count(5)->create();
+        //FacultyInvolvement::factory()->count(5)->create();
         Contributor::factory()->count(10)->create();
         Contribution::factory()->count(5)->create();
     }
