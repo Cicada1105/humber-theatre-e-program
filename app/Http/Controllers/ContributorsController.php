@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
 
 use App\Models\Contributor;
+use App\Models\Contribution;
 use App\Models\Production;
 
 define('PG_TITLE', [ 'title' => 'Contributors' ]);
@@ -70,7 +73,7 @@ class ContributorsController extends Controller
         //
         return view('contributors.edit', PG_TITLE);
     }
-
+   
     /**
      * Update contributors who contributed to current, active program
      * 
@@ -78,9 +81,27 @@ class ContributorsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function updateActiveContributors(Request $request) {
-        // Reset/remove contributors from contributions that have contributed to current program
         // Retrieve the id of the current active program
-        // 
+        $activeProgram = Production::where('is_active', true)->first();
+        // Reset/remove contributors from contributions that have contributed to current program
+        $oldContributions = Contribution::where('production_id', $activeProgram->id)->delete();
+        // Retrieve the new contributors from the request
+        $submittedContributors = $request->all();
+
+        $newContributors = [];
+        foreach($submittedContributors['contributors'] as $contrId=>$info) {
+            //Check if the submitted contributor is to be added to the active list
+            if (isset($info['is_active'])) {
+                $c = new Contribution();
+                $c->production_id = $activeProgram->id;
+                $c->contributor_id = $contrId;
+                $c->category = $info['category'];
+                $c->role = $info['role'];
+                $newContributors[$contrId] = $c;
+                $c->save();
+            }
+        }
+
         return redirect('/pm/contributors');
     }
     

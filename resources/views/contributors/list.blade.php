@@ -20,13 +20,13 @@
 				$isContributor = $contribution !== null;
 			@endphp
 			<section class="flex-wrapper contributor-row">
-				<input class="contributor-row__toggle" type="checkbox" name="activeContributors" value={{ $contributor->id }} {{ $isContributor ? "checked" : "" }} />
+				<input class="contributor-row__toggle" type="checkbox" name="contributors[{{$contributor->id}}][is_active]" {{ $isContributor ? "checked" : "" }} />
 				<h3 class="contributor-row__title">{{ $contributor->first_name }} {{ $contributor->last_name }}</h3>
 				<div>
 					<label for="">Role:</label>
-					<input id="{{$contributor->first_name}}-{{$contributor->last_name}}-role" type="text" name="role" />
+					<input id="{{$contributor->first_name}}-{{$contributor->last_name}}-role" type="text" name="contributors[{{$contributor->id}}][role]" value={{ $isContributor ? $contribution->role : ""}} />
 				</div>
-				<select name="category">
+				<select value="" name="contributors[{{$contributor->id}}][category]">
 					@php($categoryName = $isContributor ? $contribution->category : "");
 					<option disabled selected>--Category--</option>
 					<option value="performance" {{$isContributor && $categoryName=="performance" ? "selected" : ""}}>Performance</option>
