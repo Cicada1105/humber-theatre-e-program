@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Models\Faculty;
+use App\Models\Production;
 
 define('PG_TITLE', [ 'title' => 'Faculty' ]);
 
@@ -16,8 +18,11 @@ class FacultyController extends Controller
      */
     public function list()
     {
+        // Retrieve the active program
+        $activeProgram = Production::where('is_active', 1)->get();
+
         // Pass in id of current active program
-        return view('faculty.list', [ 'title' => 'Faculty', 'active_program_id' => 1, 'faculty' => Faculty::all() ]);
+        return view('faculty.list', [ 'title' => 'Faculty', 'active_program_id' => 1, 'faculty' => Faculty::all(), 'active_program' => $activeProgram ]);
     }
 
     /**
