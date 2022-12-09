@@ -85,8 +85,41 @@ class ContributorsController extends Controller
      */
     public function edit($id)
     {
-        //
-        return view('contributors.edit', PG_TITLE);
+        // Retrieve the contributor associated with the requested id
+        $contributor = Contributor::find($id);
+
+        return view('contributors.edit', [ 'title' => 'Contributors', 'contributor' => $contributor ]);
+    }
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        // Retrieve the submitted contributor data
+        $submission = $request->all();
+        // Retrieve the contributor associated with the requested id
+        $contributor = Contributor::find($id);
+        // Update the respective contributor attributes
+        $contributor->first_name = $submission['firstName'];
+        $contributor->last_name = $submission['lastName'];
+        $contributor->bio = $submission['bio'];
+
+        // Remove the old image 
+        Storage::delete($contributor->photo);
+        // Store the file in the contributors_images directory under the public folder
+        $path = $request->file('photo')->store('contributors_images','public');
+
+        // Update the database stored path of the image
+        $contributor->photo = $path;
+        // Save all changes applied to the contributor
+        $contributor->save();
+
+        return redirect('/pm/contributors');
     }
    
     /**
@@ -115,19 +148,6 @@ class ContributorsController extends Controller
             }
         }
 
-        return redirect('/pm/contributors');
-    }
-    
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
         return redirect('/pm/contributors');
     }
 
