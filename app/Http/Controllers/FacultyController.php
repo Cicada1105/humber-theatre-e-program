@@ -44,7 +44,16 @@ class FacultyController extends Controller
      */
     public function create(Request $request)
     {
-        //
+        // Retrieve the sumitted request data
+        $submission = $request->all();
+        // Create a new Faculty
+        $newFacultyMember = new Faculty();
+        // Store submitted values into the newly created faculty attributes
+        $newFacultyMember->first_name = $submission['firstName'];
+        $newFacultyMember->last_name = $submission['lastName'];
+        // Save newly created Faculy 
+        $newFacultyMember->save();
+        
         return redirect('/pm/faculty');
     }
 

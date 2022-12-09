@@ -57,6 +57,11 @@ a {
 a:hover {  }
 a:active {  }
 a:visited {  }
+form {
+	text-align: center;
+	width: 75vw;
+	margin:4rem auto;
+}
 
 /***************/
 /*   Classes   */

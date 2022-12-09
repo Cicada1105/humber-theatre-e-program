@@ -23,7 +23,7 @@
 				<input class="contributor-row__toggle" type="checkbox" name="contributors[{{$contributor->id}}][is_active]" {{ $isContributor ? "checked" : "" }} />
 				<h3 class="contributor-row__title">{{ $contributor->first_name }} {{ $contributor->last_name }}</h3>
 				<div>
-					<label for="">Role:</label>
+					<label for="{{$contributor->first_name}}-{{$contributor->last_name}}-role">Role:</label>
 					<input id="{{$contributor->first_name}}-{{$contributor->last_name}}-role" type="text" name="contributors[{{$contributor->id}}][role]" value="{{ $isContributor ? $contribution->role : ""}}" />
 				</div>
 				<select value="" name="contributors[{{$contributor->id}}][category]">
