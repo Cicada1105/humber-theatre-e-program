@@ -46,7 +46,15 @@ class HumberController extends Controller
      */
     public function update(Request $request)
     {
-        // 
-        return redirect('pm/humber')->with('title', 'Humber Theatre');
+        // Retrieve the submitted request info
+        $submission = $request->all();
+        // Retrieve the current active program and update the corresponding data
+        Production::where('is_active', 1)->update([
+            'land_acknowledgment' => $submission['landAcknowledgment'],
+            'about_humber' => $submission['aboutHumber'],
+            'special_thanks' => $submission['specialThanks']
+        ]);
+
+        return redirect('/pm/humber');
     }
 }
