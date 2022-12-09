@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Contributor;
 use App\Models\Contribution;
@@ -46,7 +45,23 @@ class ContributorsController extends Controller
      */
     public function create(Request $request)
     {
-        //
+        // Retrieve the submitted request data
+        $submission = $request->all();
+        // Create a new contributor
+        $newContributor = new Contributor();
+        // Store the submitted values in the newly created contributor's attributes
+        $newContributor->first_name = $submission['firstName'];
+        $newContributor->last_name = $submission['lastName'];
+        $newContributor->bio = $submission['bio'];
+
+        // Remove the instance of the photo if it exists
+        Storage::delete($request->photo);
+        // Store the file in the contributors_images directory under the public folder
+        $path = $request->file('photo')->store('contributors_images','public');
+
+        $newContributor->photo = $path;
+        $newContributor->save();
+
         return redirect('/pm/contributors');
     }
 

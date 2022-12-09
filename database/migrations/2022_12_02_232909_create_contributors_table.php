@@ -18,7 +18,7 @@ return new class extends Migration
             $table->tinyText('first_name');
             $table->tinyText('last_name');
             $table->text('bio');
-            $table->binary('photo');
+            $table->string('photo');
             $table->timestamps();
         });
     }
