@@ -5,8 +5,25 @@
 @endsection
 
 @section('main-content')
+	<script type="text/javascript">
+		function confirmation(e) {
+			// Retrieve the button that submitted the event
+			let btn = e.submitter;
+
+			// Check if the btn submitted is the delete button (will have the faculty's name apart of its dataset)
+			if (btn.dataset['name']) {
+				// Confirm that the user wants to remove the selected faculty member
+				let confirmedDelete = confirm(`Are you sure you want to remove ${btn.dataset['name']} and all of the contributions?`);
+
+				// If the user cancels, do nothing/do not submit the form
+				if (!confirmedDelete){
+					e.preventDefault();
+				}
+			}
+		}
+	</script>
 	<h1>Contributors of {{ $active_program->title }}</h1>
-	<form action='/pm/contributors/update' method="post">
+	<form action='/pm/contributors/update' method="post" onsubmit="confirmation(event)">
 		{{ csrf_field() }}
 		<div class="flex-wrapper add-btn-cont">
 			<button class="add-btn" formaction="/pm/contributors/contributor/add" formmethod="get">
@@ -37,7 +54,7 @@
 					<button class="edit-btn" formaction="/pm/contributors/contributor/update/{{$contributor->id}}" formmethod="get">
 						<fa class="fa-solid fa-pen-to-square" />
 					</button>
-					<button type="submit" class="delete-btn" formmethod="post" formaction="/pm/contributors/contributor/delete/{{$contributor->id}}">
+					<button type="submit" class="delete-btn" formmethod="post" formaction="/pm/contributors/contributor/delete/{{$contributor->id}}" data-name="{{ $contributor->first_name }} {{ $contributor->last_name }}">
 						<fa class="fa-solid fa-trash-can" />
 					</button>
 				</div>

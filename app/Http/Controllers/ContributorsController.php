@@ -139,7 +139,13 @@ class ContributorsController extends Controller
      */
     public function delete($id)
     {
-        //
+        // Remove all contributions associated with the specified contributor id
+        Contribution::where('contributor_id', $id)->delete();
+        // Find the contributor to be delete
+        $contributorToBeDeleted = Contributor::find($id);
+        // Remove the contributor
+        $contributorToBeDeleted->delete();
+        
         return redirect('/pm/contributors');
     }
 }
