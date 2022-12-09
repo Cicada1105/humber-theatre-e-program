@@ -16,16 +16,3 @@ form {
 	color:white;
 	padding: 0.75rem 1rem;
 }
-.involved-faculty {
-	justify-content: space-between;
-	font-size: 1.25rem;
-	line-height: 1.875;
-	width:80%;
-	margin:auto;
-}
-.involved-faculty > label {
-/*	flex-basis: 20rem;*/
-}
-input[type="submit"] {
-	margin-top: 2rem;
-}

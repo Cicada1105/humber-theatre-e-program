@@ -85,11 +85,11 @@ class ProductionsController extends Controller
     public function updateActiveProgram(Request $request)
     {
         // Retrieve the production that is currently active and reset it
-        Production::where('is_active', true)->update(['is_active' => false]);
+        Production::where('is_active', 1)->update(['is_active' => 0]);
         // Store the id of the selected program
         $id = $request->input('activeProgram');
         // Find and update the program to be active
-        Production::where('id', $id)->update(['is_active' => true]);
+        Production::where('id', $id)->update(['is_active' => 1]);
 
         return redirect('/pm');
     }

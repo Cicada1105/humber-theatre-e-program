@@ -5,7 +5,8 @@
 @endsection
 
 @section('main-content')
-	<h1>Faculty of {{ $active_program[0]["title"] }}</h1>
+	<h1>Humber Theatre Faculty</h1>
+	<a id="active-faculty__link" href="/pm/faculty/update">View Active Faculty</a>
 	<form action='/pm/faculty/update' method="post">
 		{{ csrf_field() }}
 		<div class="flex-wrapper add-btn-cont">
@@ -13,15 +14,8 @@
 				<fa class="fa-solid fa-plus" />
 			</button>
 		</div>
-		<p id="active-program__text">Active Faculty</p>
-		@php
-			$facultyArr = $active_program[0]->toArray();
-			// Remove id and is_active to prevent search from finding id as found value
-			$involvedFacultyArr = array_slice($facultyArr,2);
-		@endphp
 		@foreach ($faculty as $member)
-			<div class="member-row">
-				<input class="member-row__toggle" type="checkbox" name="activemembers" {{ array_search($member->id, $involvedFacultyArr) ? 'checked' : ''}} />
+			<div class="flex-wrapper member-row">
 				<h3 class="member-row__title">{{ $member->first_name }} {{ $member->last_name }}</h3>
 				<div class="member-row-controls">
 					<button class="edit-btn" formaction="/pm/faculty/update/{{$member->id}}" formmethod="get">

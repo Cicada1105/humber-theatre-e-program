@@ -22,7 +22,7 @@ class FacultyController extends Controller
         $activeProgram = Production::where('is_active', 1)->get();
 
         // Pass in id of current active program
-        return view('faculty.list', [ 'title' => 'Faculty', 'active_program_id' => 1, 'faculty' => Faculty::all(), 'active_program' => $activeProgram ]);
+        return view('faculty.list', [ 'title' => 'Faculty', 'faculty' => Faculty::all(), 'active_program' => $activeProgram ]);
     }
 
     /**
@@ -45,7 +45,7 @@ class FacultyController extends Controller
     public function create(Request $request)
     {
         //
-        return redirect('/pm/faculty')->with('title', 'Faculty');
+        return redirect('/pm/faculty');
     }
 
     /**
@@ -82,9 +82,20 @@ class FacultyController extends Controller
     public function update(Request $request, $id)
     {
         // Updating a single faculty member
-        return redirect('/pm/faculty')->with('title', 'Faculty');;
+        return redirect('/pm/faculty');
     }
 
+    /**
+     * Show the form for changing the faculty roles of the current program
+     */
+    public function editActiveFaculty() {
+        // Obtain the current active program
+        $activeProgram = Production::where('is_active', 1)->first();
+        // Retrieve all faculty
+        $faculty = Faculty::all();
+
+        return view('faculty.edit-active', [ 'title' => 'Faculty', 'active_program' => $activeProgram, 'faculty' => $faculty ]);
+    }
     /**
      * Update all faculty members active "status" in being in current production
      * 
@@ -92,8 +103,28 @@ class FacultyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateAll(Request $request) {
-        return redirect('/pm/faculty')->with('title', 'Faculty');
+    public function updateActiveFaculty(Request $request) {
+        // Retrieve the submitted the request info
+        $submission = $request->all();
+        // Update the current active production with the newly submitted faculty positions
+        Production::where('is_active', 1)->update([
+            'senior_dean' => $submission['seniorDean'],
+            'associate_dean' => $submission['associateDean'],
+            'head_of_carpentry' => $submission['headOfCarpentry'],
+            'theatre_director' => $submission['theatreDirector'],
+            'head_of_properties' => $submission['headOfProperties'],
+            'voice_professor' => $submission['voiceProfessor'],
+            'academic_program_manager' => $submission['academicProgramManager'],
+            'head_of_lighting' => $submission['headOfLighting'],
+            'head_of_wardrobe' => $submission['headOfWardrobe'],
+            'head_of_movement' => $submission['headOfMovement'],
+            'head_of_sound' => $submission['headOfSound'],
+            'head_of_paint' => $submission['headOfPaint'],
+            'technical_director' => $submission['technicalDirector'],
+            'pso' => $submission['pso']
+        ]);
+
+        return redirect('/pm/faculty/update');
     }
 
     /**
@@ -105,6 +136,6 @@ class FacultyController extends Controller
     public function delete($id)
     {
         //
-        return redirect('/pm/faculty')->with('title', 'Faculty');
+        return redirect('/pm/faculty');
     }
 }

@@ -1,0 +1,15 @@
+form {
+	text-align: center;
+	width: 75vw;
+	margin:4rem auto;
+}
+.involved-faculty {
+	justify-content: space-between;
+	font-size: 1.25rem;
+	line-height: 1.875;
+	width:80%;
+	margin:auto;
+}
+input[type="submit"] {
+	margin-top: 2rem;
+}

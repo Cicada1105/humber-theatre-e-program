@@ -3,9 +3,9 @@ form {
 	width: 75vw;
 	margin:auto;
 }
-#active-program__text {
-	padding-left:2.5rem;
-	text-align: left;
+#active-faculty__link {
+	text-align: center;
+	display: block;
 }
 .member-row {
 	position: relative;

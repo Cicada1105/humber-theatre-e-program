@@ -32,10 +32,10 @@ class HumberController extends Controller
     public function edit()
     {
         // Retrieve the id of the active program
-        $activeProgram = Production::where('is_active', true)->first();
+        $activeProgram = Production::where('is_active', 1)->first();
 
         // Retrieve all faculty for PM to choose from and special thanks from active program
-        return view('humber.edit', [ 'title' => 'Humber Theatre', 'active_program' => $activeProgram, 'faculty' => Faculty::all() ]);
+        return view('humber.edit', [ 'title' => 'Humber Theatre', 'active_program' => $activeProgram ]);
     }
 
     /**

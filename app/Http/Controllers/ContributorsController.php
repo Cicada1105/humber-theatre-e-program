@@ -22,7 +22,7 @@ class ContributorsController extends Controller
     public function list()
     {
         // Retrieve the active program
-        $activeProgram = Production::where('is_active', true)->first();
+        $activeProgram = Production::where('is_active', 1)->first();
 
         return view('contributors.list', [ 'title' => 'Contributors', 'active_program' => $activeProgram, 'contributors' => Contributor::all() ]);
     }
@@ -82,13 +82,12 @@ class ContributorsController extends Controller
      */
     public function updateActiveContributors(Request $request) {
         // Retrieve the id of the current active program
-        $activeProgram = Production::where('is_active', true)->first();
+        $activeProgram = Production::where('is_active', 1)->first();
         // Reset/remove contributors from contributions that have contributed to current program
         $oldContributions = Contribution::where('production_id', $activeProgram->id)->delete();
         // Retrieve the new contributors from the request
         $submittedContributors = $request->all();
 
-        $newContributors = [];
         foreach($submittedContributors['contributors'] as $contrId=>$info) {
             //Check if the submitted contributor is to be added to the active list
             if (isset($info['is_active'])) {
@@ -97,7 +96,6 @@ class ContributorsController extends Controller
                 $c->contributor_id = $contrId;
                 $c->category = $info['category'];
                 $c->role = $info['role'];
-                $newContributors[$contrId] = $c;
                 $c->save();
             }
         }

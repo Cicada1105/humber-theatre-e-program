@@ -206,7 +206,7 @@ Route::middleware(['auth'])->group(function() {
         /*   Productions   */
         /*******************/
         // List of all productions
-        Route::get('/', [ProductionsController::class,'list'])->middleware('auth');
+        Route::get('/', [ProductionsController::class,'list']);
         Route::post('update', [ProductionsController::class, 'updateActiveProgram']);
         // Details about the active production
         Route::get('/preview', [ProductionsController::class, 'active']);
@@ -242,8 +242,8 @@ Route::middleware(['auth'])->group(function() {
             Route::get('/', [FacultyController::class, 'list']);
             Route::get('/add', [FacultyController::class, 'add']);
             Route::post('/add', [FacultyController::class, 'create']);
-            Route::post('/update', [FacultyController::class, 'updateAll']);
-            Route::get('/update/{id}', [FacultyController::class, 'edit']);
+            Route::get('/update', [FacultyController::class, 'editActiveFaculty']);
+            Route::post('/update', [FacultyController::class, 'updateActiveFaculty']);
             Route::get('/update/{id}', [FacultyController::class, 'edit']);
             Route::post('/update/{id}', [FacultyController::class, 'update']);
             Route::post('/delete/{id}', [FacultyController::class, 'delete']);
