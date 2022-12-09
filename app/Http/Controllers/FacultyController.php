@@ -144,7 +144,11 @@ class FacultyController extends Controller
      */
     public function delete($id)
     {
-        //
+        // Find the faculty to be deleted
+        $facultyToBeDeleted = Faculty::find($id);
+        // Remove the faculty based on the passed in id
+        $facultyToBeDeleted->delete();
+
         return redirect('/pm/faculty');
     }
 }
