@@ -77,8 +77,10 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-        //
-        return view('faculty.edit', PG_TITLE);
+        // Find the faculty member associated with the requested id
+        $faculty = Faculty::find($id);
+
+        return view('faculty.edit', [ 'title' => 'Faculty', 'faculty' => $faculty ]);
     }
 
     /**
@@ -90,7 +92,16 @@ class FacultyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Updating a single faculty member
+        // Retrieve the user submitted data
+        $submission = $request->all();
+        // Find the specified faculty member assocatiated with this request
+        $facultyToBeUpdated = Faculty::find($id);
+        // Update respective fields of the faculty member
+        $facultyToBeUpdated->first_name = $submission["firstName"];
+        $facultyToBeUpdated->last_name = $submission["lastName"];
+        // Save the changes applied to the faculty member
+        $facultyToBeUpdated->save();
+
         return redirect('/pm/faculty');
     }
 
