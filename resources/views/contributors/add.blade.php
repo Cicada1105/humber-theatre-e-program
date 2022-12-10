@@ -5,24 +5,38 @@
 @endsection
 
 @section('main-content')
+	<script type="text/javascript">
+		function handleFileChange(e) {
+			console.log(e);
+			const img = document.getElementById("contributor-photo-preview");
+			const input = document.getElementById('contributor-photo');
+			// Retrieve the file associated with the newly added image
+			const imageFile = input.files[0];
+			const imageObj = URL.createObjectURL(imageFile);
+			console.log(imageObj);
+
+			img.src = imageObj;
+		}
+	</script>
 	<h1>Add Contributor</h1>
+	<img id="contributor-photo-preview" src="/imgs/default_img.png" alt="" width="200" />
 	<form action="/pm/contributors/contributor/add" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
-		<div class="flex-wrapper contributor-row">
+		<div class="flex-wrapper contributor-info">
 			<label for="contributor-first-name">First Name:</label>
 			<input id="contributor-first-name" type="text" name="firstName" placeholder="Enter..." />
 		</div>
-		<div class="flex-wrapper contributor-row">
+		<div class="flex-wrapper contributor-info">
 			<label for="contributor-last-name">Last Name:</label>
 			<input id="contributor-last-name" type="text" name="lastName" placeholder="Enter..." />
 		</div>
-		<div class="flex-wrapper contributor-row">
+		<div class="flex-wrapper contributor-info">
 			<label for="contributor-bio">Bio:</label>
 			<textarea id="contributor-bio" name="bio" cols="" rows="bio"></textarea>
 		</div>
-		<div class="flex-wrapper contributor-row">
-			<label for="contributor-last-name">Profile Image:</label>
-			<input id="contributor-last-name" type="file" accept="image/*" name="photo" />
+		<div class="flex-wrapper contributor-info">
+			<label for="contributor-photo">Profile Image:</label>
+			<input id="contributor-photo" type="file" accept="image/*" name="photo" oninput="handleFileChange(event)" />
 		</div>
 		<input class="btn" type="submit" />
 	</form>

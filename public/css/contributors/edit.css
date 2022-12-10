@@ -1,16 +1,16 @@
-.contributor-photo {
+#contributor-photo-preview {
 	display: block;
-	margin:auto;
+	margin: auto;
 }
-.contributor-row {
+.contributor-info {
 	justify-content: space-between;
 	width:60%;
 	margin:2.5rem auto;
 }
-.contributor-row > label {
+.contributor-info > label {
 	font-size:1.5rem;
 }
-.contributor-row > input, .contributor-row > textarea {
+.contributor-info > input, .contributor-info > textarea {
 	font-size:1.15rem;
 	padding: 0.25rem 0.5rem;
 }
