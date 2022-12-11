@@ -55,14 +55,18 @@ class ContributorsController extends Controller
         $newContributor->bio = $submission['bio'];
 
         // Remove the instance of the photo if it exists
-        Storage::delete($request->photo);
+        Storage::delete($request->file('photo')->hashName());
         // Store the file in the contributors_images directory under the public folder
         $path = $request->file('photo')->store('contributors_images','public');
 
         $newContributor->photo = $path;
         $newContributor->save();
 
-        return redirect('/pm/contributors');
+        //return redirect('/pm/contributors');
+        // Retrieve the active program
+        $activeProgram = Production::where('is_active', 1)->first();
+
+        return view('contributors.list', [ 'title' => 'Contributors', 'active_program' => $activeProgram, 'contributors' => Contributor::all() ]);
     }
 
     /**
@@ -109,8 +113,9 @@ class ContributorsController extends Controller
         $contributor->last_name = $submission['lastName'];
         $contributor->bio = $submission['bio'];
 
-        // Remove the old image 
-        Storage::delete($contributor->photo);
+        // Remove old image
+        unlink(storage_path('app/public/'.$contributor->photo));
+
         // Store the file in the contributors_images directory under the public folder
         $path = $request->file('photo')->store('contributors_images','public');
 
@@ -163,6 +168,9 @@ class ContributorsController extends Controller
         Contribution::where('contributor_id', $id)->delete();
         // Find the contributor to be delete
         $contributorToBeDeleted = Contributor::find($id);
+        // Remove image on server file system associated with the contributor
+        unlink(storage_path('app/public/'.$contributorToBeDeleted->photo));
+        
         // Remove the contributor
         $contributorToBeDeleted->delete();
         
