@@ -13,7 +13,6 @@
 			// Retrieve the file associated with the newly added image
 			const imageFile = input.files[0];
 			const imageObj = URL.createObjectURL(imageFile);
-			console.log(imageObj);
 
 			img.src = imageObj;
 		}
