@@ -32,6 +32,24 @@ class ProductionsController extends Controller
         //
         return view('productions.details', PG_TITLE);
     }
+
+    /**
+     * Display the current active production
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function publish()
+    {
+        // Set any (Should be one) production set as published to false
+        Production::where('is_published', 1)->update(['is_published' => 0]);
+        // Set the active program is_published attribute to true
+        $productionToBePublished = Production::where('is_active', 1)->first();
+        $productionToBePublished->is_published = 1;
+
+        $productionToBePublished->save();
+
+        return redirect('/pm');
+    }
     
     /**
      * Show the form for adding a new resource.
@@ -77,6 +95,7 @@ class ProductionsController extends Controller
         $newProduction->directors = $submission['directors'];
         $newProduction->choreographers = $submission['choreographers'];
         $newProduction->dates = $submission['dates'];
+        $newProduction->location = $submission['location'];
         $newProduction->content_warning = $submission['contentWarning'];
 
         // Set additional fields to empty (added on other pages)

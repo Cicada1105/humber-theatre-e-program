@@ -24,6 +24,8 @@ class Production extends Model
         'authors',
         'directors',
         'choreographers',
+        'dates',
+        'location',
         'poster_img_src',
         'poster_img_caption',
         'directors',

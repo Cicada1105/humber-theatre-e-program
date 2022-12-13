@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('directors');
             $table->text('choreographers');
             $table->mediumText('dates');
+            $table->tinyText('location');
             // Binary is equivalent to Blob
             $table->binary('poster_img_src');
             $table->tinyText('poster_img_caption');

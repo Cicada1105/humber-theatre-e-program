@@ -15,6 +15,9 @@
 					<a href="/pm/faculty">Faculty</a>
 				</li>
 				<li class="nav-list__item">
+					<a href="/pm/preview">Preview</a>
+				</li>
+				<li class="nav-list__item">
 					<a href="/logout">Logout</a>
 				</li>
 			</ul>

@@ -8,6 +8,8 @@ use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\HumberController;
 use App\Http\Controllers\ProductionsController;
 
+use App\Models\Production;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,7 +41,9 @@ enum DepartmentTypes:string {
 /*   Public Routes   */
 /*********************/
 Route::get('/', function() {
-    // Obtain the current program selected, if none then get the most recent program
+    // Obtain the program labeled as published
+    $publishedProgram = Production::where('is_published',1)->first();
+
     // Convert program name into a formatted title
     // $programTitleWords = explode("-", $program);
     // $formattedString = ucwords(join(" ",$programTitleWords));
@@ -76,7 +80,7 @@ Route::get('/', function() {
         'location' => 'Online',
         'advisory' => ['Strong Language', 'Mature Content']
     ];
-    return view('home', $testData, [ 'title' => 'Home' ]);
+    return view('home', $publishedProgram );
 })->middleware('guest');
 Route::get('/contributors', function () {
     // Obtain the current program selected, if none then get the most recent program
@@ -210,6 +214,7 @@ Route::middleware(['auth'])->group(function() {
         Route::post('update', [ProductionsController::class, 'updateActiveProgram']);
         // Details about the active production
         Route::get('/preview', [ProductionsController::class, 'active']);
+        Route::post('/preview', [ProductionsController::class, 'publish']);
         Route::prefix('production')->group(function() {
             Route::get('/add', [ProductionsController::class, 'add']);
             Route::post('/add', [ProductionsController::class, 'create']);

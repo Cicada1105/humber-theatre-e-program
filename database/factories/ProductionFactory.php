@@ -28,6 +28,7 @@ class ProductionFactory extends Factory
             'dates' => $this->faker->sentence(5),
             'poster_img_src' => $this->faker->imageUrl(640, 480),
             'poster_img_caption' => $this->faker->sentence(),
+            'location' => $this->faker->word(2),
             'blurb' => $this->faker->paragraph(),
             'land_acknowledgment' => $this->faker->paragraph(),
             'about_humber' => $this->faker->paragraph(),
