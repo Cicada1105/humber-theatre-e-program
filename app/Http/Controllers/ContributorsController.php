@@ -55,18 +55,15 @@ class ContributorsController extends Controller
         $newContributor->bio = $submission['bio'];
 
         // Remove the instance of the photo if it exists
-        Storage::delete($request->file('photo')->hashName());
+        unlink(storage_path('app/public/'.$submission->photo));
+        
         // Store the file in the contributors_images directory under the public folder
         $path = $request->file('photo')->store('contributors_images','public');
 
         $newContributor->photo = $path;
         $newContributor->save();
 
-        //return redirect('/pm/contributors');
-        // Retrieve the active program
-        $activeProgram = Production::where('is_active', 1)->first();
-
-        return view('contributors.list', [ 'title' => 'Contributors', 'active_program' => $activeProgram, 'contributors' => Contributor::all() ]);
+        return redirect('/pm/contributors');
     }
 
     /**

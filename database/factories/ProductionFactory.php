@@ -19,11 +19,13 @@ class ProductionFactory extends Factory
     public function definition()
     {
         return [
+            'is_active' => $this->faker->boolean(),
+            'is_published' => $this->faker->boolean(),
             'title' => $this->faker->sentence(),
             'authors' => $this->faker->name(),
             'directors' => $this->faker->name(),
             'choreographers' => $this->faker->name(),
-            'is_active' => $this->faker->boolean(),
+            'dates' => $this->faker->sentence(5),
             'poster_img_src' => $this->faker->imageUrl(640, 480),
             'poster_img_caption' => $this->faker->sentence(),
             'blurb' => $this->faker->paragraph(),

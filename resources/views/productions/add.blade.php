@@ -19,7 +19,7 @@
 	</script>
 	<h1>Add Production</h1>
 	<img id="production-photo-preview" src="/imgs/default_img.png" alt="" width="200" />
-	<form action="/pm/production/add" method="post">
+	<form action="/pm/production/add" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
 		<div class="flex-wrapper production-info">
 			<label for="production-poster__photo">Production Poster:</label>
@@ -47,15 +47,19 @@
 		</div>
 		<div class="flex-wrapper production-info">
 			<label for="production-choreographers">Choreographers:</label>
-			<input id="production-choreographers" type="text" name="" />
+			<input id="production-choreographers" type="text" name="choreographers" />
 		</div>
 		<div class="flex-wrapper production-info">
 			<label for="production-dates">Dates:</label>
-			<input id="production-dates" type="text" name="" />
+			<input id="production-dates" type="text" name="dates" />
 		</div>
 		<div class="flex-wrapper production-info">
 			<label for="production-location">Location:</label>
-			<input id="production-location" type="text" name="" />
+			<input id="production-location" type="text" name="location" />
+		</div>
+		<div class="flex-wrapper production-info">
+			<label for="production-content-warning">Content Warning:</label>
+			<textarea id="production-content-warning" name="contentWarning"></textarea>
 		</div>
 		<input class="btn" type="submit" value="Add" />
 	</form>

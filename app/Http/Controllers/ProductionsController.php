@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 use App\Models\Production;
 
@@ -51,7 +52,41 @@ class ProductionsController extends Controller
      */
     public function create(Request $request)
     {
-        //
+        // Retrieve the submitted data
+        $submission = $request->all();
+        // Creat a new instance of a production model
+        $newProduction = new Production();
+
+        // Store the respective data in the production attributes
+        $newProduction->is_active = false;
+        $newProduction->is_published = false;
+        
+        //Remove the instance of the photo if it exists
+        if (File::exists($submission['posterPhoto']->hashName())) {
+          unlink(storage_path('app/public/production_images/'.$submission['posterPhoto']->hashName()));
+        }
+        // Store the image file in the contributors_images directory under the public folder
+        $path = $request->file('posterPhoto')->store('production_images','public');
+        // Store path in the database
+        $newProduction->poster_img_src = $path;
+        $newProduction->poster_img_caption = $submission['posterCaption'];
+
+        $newProduction->title = $submission['title'];
+        $newProduction->authors = $submission['authors'];
+        $newProduction->blurb = $submission['blurb'];
+        $newProduction->directors = $submission['directors'];
+        $newProduction->choreographers = $submission['choreographers'];
+        $newProduction->dates = $submission['dates'];
+        $newProduction->content_warning = $submission['contentWarning'];
+
+        // Set additional fields to empty (added on other pages)
+        $newProduction->land_acknowledgment = "";
+        $newProduction->about_humber = "";
+        $newProduction->special_thanks = "";
+
+        // Save instance of production to database
+        $newProduction->save();
+
         return redirect('/pm');
     }
 

@@ -19,12 +19,15 @@ class Production extends Model
      */
     protected $fillable = [
         'is_active',
+        'is_published',
         'title',
         'authors',
-        'poster_img_src',
         'directors',
         'choreographers',
+        'poster_img_src',
         'poster_img_caption',
+        'directors',
+        'choreographers',
         'blurb',
         'content_warning',
         'land_acknowledgment',
