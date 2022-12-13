@@ -1,0 +1,63 @@
+h3 {
+	font-size:2rem !important;
+}
+h4 {
+	font-size: 1.5rem !important;
+}
+h5 {
+	font-size: 1.08rem !important;
+}
+form {
+	margin: 0rem auto;
+	text-align: right;
+}
+.program-writer {
+	font-size: 1.15rem;
+}
+hgroup.departments {
+	justify-content: space-around;
+	text-transform: uppercase;
+	border-bottom: 3px solid #261010;
+	width:80%;
+}
+.contributor {
+	margin-bottom: 4rem;
+	border-bottom: 3px solid #261010;
+}
+.contributor__name {
+	margin-bottom: 0rem;
+}
+hgroup.role {
+	justify-content: space-between;
+	padding: 0rem 4rem;
+}
+hgroup.role > h5 {
+	margin:0rem;
+}
+.contributor__bio {
+	margin: 2rem 4rem;
+	text-align: justify;
+	line-height: 1.875;
+}
+.acknowledgment-section > p, .about-humber-section > p, .special-thanks-section > p {
+	text-align: justify;
+	line-height: 1.875;
+}
+dl {
+	font-size: 1.25rem;
+	width: 80%;
+	margin: auto;
+}
+.faculty-involved-member {
+	justify-content: space-between;
+	line-height: 1.875;
+}
+.faculty-list {
+	line-height: 1.875;
+	font-size: 1.25rem;
+	list-style: none;
+	column-count: 3;
+}
+section.special-thanks-section {
+	width: 70%;
+}

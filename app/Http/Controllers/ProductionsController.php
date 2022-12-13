@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
 use App\Models\Production;
+use App\Models\Contribution;
+use App\Models\Faculty;
 
 define('PG_TITLE', [ 'title' => 'Productions' ]);
 
@@ -29,8 +31,21 @@ class ProductionsController extends Controller
      */
     public function active()
     {
-        //
-        return view('productions.details', PG_TITLE);
+        // Retrieve the active program
+        $activeProgram = Production::where('is_active', 1)->first();
+        // Retrieve all Contributions to the current active program
+        $contributions = Contribution::where('production_id', $activeProgram->id)->get();
+        // Retrieve all faculty members
+        $faculty = Faculty::all();
+
+        $previewData = [
+            'title' => 'Productions',
+            'active_program' => $activeProgram,
+            'contributions' => $contributions,
+            'faculty' => $faculty
+        ];
+
+        return view('productions.details', $previewData);
     }
 
     /**
