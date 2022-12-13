@@ -29,7 +29,6 @@ class Production extends Model
         'poster_img_src',
         'poster_img_caption',
         'directors',
-        'choreographers',
         'blurb',
         'content_warning',
         'land_acknowledgment',

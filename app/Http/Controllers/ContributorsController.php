@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 use App\Models\Contributor;
 use App\Models\Contribution;
@@ -55,7 +56,9 @@ class ContributorsController extends Controller
         $newContributor->bio = $submission['bio'];
 
         // Remove the instance of the photo if it exists
-        unlink(storage_path('app/public/'.$submission->photo));
+        if (File::exists($submission['photo']->hashName())) {
+            unlink(storage_path('app/public/contributors_images/'.$submission['photo']->hashName()));
+        }
         
         // Store the file in the contributors_images directory under the public folder
         $path = $request->file('photo')->store('contributors_images','public');

@@ -1,0 +1,34 @@
+#production-photo-preview {
+	display: block;
+	margin: auto;
+}
+.production-info {
+	justify-content: space-between;
+	position: relative;
+	margin:2.5rem auto;
+	width:60%;
+}
+.production-info > label {
+	font-size:1.5rem;
+}
+.production-info > input, .production-info > textarea {
+	font-size:1.15rem;
+	padding: 0.25rem 0.5rem;
+}
+input[type="submit"] {
+	margin-top:4rem;
+}
+input[type="file"] {
+	width:10rem;
+}
+input[type="file"]::file-selector-button {
+	display:block;
+}
+label[ for = "production-dates"]::after {
+	content: "[Month Day - Hour am/pm : production details; Month...]";
+	position: absolute;
+	display: block;
+	right:0rem;
+	font-size:1.05rem;
+	margin-top:0.45rem;
+}

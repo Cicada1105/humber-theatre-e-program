@@ -78,11 +78,7 @@ class ProductionsController extends Controller
         // Store the respective data in the production attributes
         $newProduction->is_active = false;
         $newProduction->is_published = false;
-        
-        //Remove the instance of the photo if it exists
-        if (File::exists($submission['posterPhoto']->hashName())) {
-          unlink(storage_path('app/public/production_images/'.$submission['posterPhoto']->hashName()));
-        }
+
         // Store the image file in the contributors_images directory under the public folder
         $path = $request->file('posterPhoto')->store('production_images','public');
         // Store path in the database
@@ -110,24 +106,59 @@ class ProductionsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-        return view('productions.details', PG_TITLE);
-    }
-
-    /**
      * Display the edit form for the requested production
      * 
      * @param int $id
      */
     public function edit($id) {
-        return view('productions.edit', PG_TITLE);
+        // Retrieve the production requested based on its id
+        $productionToBeEditted = Production::find($id);
+
+        return view('productions.edit', [ 'production' => $productionToBeEditted, 'title' => 'Productions' ]);
+    }
+
+    /**
+     * Update the requested production based on the passed in id
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        // Retrieve the production to be updated
+        $productionToBeUpdated = Production::find($id);
+        // Retrieve the user submitted data
+        $submission = $request->all();
+        // Update the retrieved production's attributes accordingly
+        // Check if an image was uploaded
+        if ($request->hasFile('posterPhoto')) {
+            // Check if image is associate with program
+            if ($productionToBeUpdated->poster_img_src){
+                // Delete the old image on the server
+                unlink(storage_path('app/public/'.$productionToBeUpdated->poster_img_src));   
+            }
+            // Store the newly updated image inside of the production_images directory under the public storage folder
+            $path = $request->file('posterPhoto')->store('production_images','public');
+            // Store the path to the database along with the image caption
+            $productionToBeUpdated->poster_img_src = $path;
+        }
+
+        $productionToBeUpdated->poster_img_caption = $submission['posterCaption'];
+
+        $productionToBeUpdated->title = $submission['title'];
+        $productionToBeUpdated->authors = $submission['authors'];
+        $productionToBeUpdated->directors = $submission['directors'];
+        $productionToBeUpdated->choreographers = $submission['choreographers'];
+        $productionToBeUpdated->dates = $submission['dates'];
+        $productionToBeUpdated->location = $submission['location'];
+        $productionToBeUpdated->directors = $submission['directors'];
+        $productionToBeUpdated->blurb = $submission['blurb'];
+        $productionToBeUpdated->content_warning = $submission['contentWarning'];
+
+        // Save changes to the updated production
+        $productionToBeUpdated->save();
+
+        return redirect('/pm');
     }
 
     /**
