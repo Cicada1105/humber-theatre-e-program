@@ -18,6 +18,8 @@ class Contribution extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'production_id',
+        'contributor_id',
         'category',
         'role'
     ];

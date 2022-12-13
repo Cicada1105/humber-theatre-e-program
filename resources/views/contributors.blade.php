@@ -12,12 +12,14 @@
 		@endforeach
 	</hgroup>
 	<section class="contributors-section">
-		@foreach($contributors as $contributor)
+		@php($categoryColor = [ 'performance' => '#0C87CE', 'guest_artist' => '#EA7994', 'production' => '#3FA276' ])
+		@foreach($contributions as $contribution)
+			@php($contributor = $contribution->contributor)
 			<article class="contributor">
-				<h3 class="contributor__name">{{ $contributor['name'] }}</h3>
+				<h3 class="contributor__name">{{ $contributor['first_name'] }} {{ $contributor['last_name'] }}</h3>
 				<hgroup class="role flex-container">
-					<h4 style="color: {{ $contributor['department']->color() }}">{{ ucwords($contributor['department']->value) }}</h4>
-					<h4>{{ $contributor['role'] }}</h4>
+					<h4 style="color: {{ $categoryColor[$contribution['category']] }}">{{ ucwords(str_replace('_',' ',$contribution['category']))  }}</h4>
+					<h4>{{ $contribution['role'] }}</h4>
 				</hgroup>
 				<p class="contributor__bio">{{ $contributor['bio'] }}</p>
 			</article>
