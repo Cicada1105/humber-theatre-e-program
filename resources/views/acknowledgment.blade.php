@@ -7,37 +7,82 @@
 	<h1>Humber Theatre Acknowledgement</h1>
 	<section class="acknowledgment-section">
 		<h2>Acknowledging The Land</h2>
-		<p>Humber College is located within the traditional and treaty lands of the Mississaugas of the Credit. Known as Adoobiigok, the “Place of the Black Alders” in Michi Saagiig language, the region is uniquely situated along Humber River watershed, which historically provided an integral connection for Anishinaabe, Haudenosaunee, and Wendat peoples between the Ontario Lakeshore and the Lake Simcoe/Georgian Bay regions. Now home to people of numerous nations, Adoobiigok continues to provide a vital source of interconnection for all.</p>
+		<p style="text-align:center">{{$current_program->land_acknowledgment}}</p>
 	</section>
 	<section class="about-humber-section">
 		<h2>About Humber Theatre</h2>
-		<p>Humber Theatre is the collaborative partnership between the Theatre Performance and Theatre Production programs. We are dedicated to training creative artists, from diverse backgrounds, with a strong foundation in essential discipline-specific skills. We believe in inter-cultural and multidisciplinary theatre that speaks in the present to a brave vision of the future.Each year, Humber Theatre presents a number of original productions which demand the full creative engagement of performance and production students under the guidance of internationally-recognized artists. By working together with artists who can guide and inspire, Humber Theatre’s graduates are prepared for multifaceted and successful careers in the arts community. The show you are seeing tonight is the product of this wonderful creative engagement.</p>
+		<p style="text-align:center">{{$current_program->about_humber}}</p>
 	</section>
 	<section class="faculty-involved-section">
-		<h2>Faculty {{ $faculty_involved['year'] }}</h2>
+		<h2>Faculty {{ date('Y') }}</h2>
 		<dl>
-			@foreach ($faculty_involved['members'] as $member)
-				<div class="faculty-involved-member flex-container">
-					<dt>{{ $member['name'] }}</dt>
-					<dd>{{ $member['role'] }}</dd>
-				</div>
-			@endforeach
+			<div class="faculty-involved-member flex-container">
+				<dt>{{ $current_program->seniorDean->first_name }} {{ $current_program->seniorDean->last_name }}</dt>
+				<dd>Senior Dean, Faculty of Media and Creative Arts</dd>
+			</div>
+			<div class="faculty-involved-member flex-container">
+				<dt>{{ $current_program->associateDean->first_name }} {{ $current_program->associateDean->last_name }}</dt>
+				<dd>Associate Dean, Faculty of Media and Creative Arts</dd>
+			</div>
+			<div class="faculty-involved-member flex-container">
+				<dt>{{ $current_program->headOfCarpentry->first_name }} {{ $current_program->headOfCarpentry->last_name }}</dt>
+				<dd>Faculty Department Head of Carpentry</dd>
+			</div>
+			<div class="faculty-involved-member flex-container">
+				<dt>{{ $current_program->theatreDirector->first_name }} {{ $current_program->theatreDirector->last_name }}</dt>
+				<dd>Director Theatre Production</dd>
+			</div>
+			<div class="faculty-involved-member flex-container">
+				<dt>{{ $current_program->headOfProperties->first_name }} {{ $current_program->headOfProperties->last_name }}</dt>
+				<dd>Faculty Department Head of Properties</dd>
+			</div>
+			<div class="faculty-involved-member flex-container">
+				<dt>{{ $current_program->voiceProfessor->first_name }} {{ $current_program->voiceProfessor->last_name }}</dt>
+				<dd>Voice Professor, Vocal Research</dd>
+			</div>
+			<div class="faculty-involved-member flex-container">
+				<dt>{{ $current_program->academicProgramManager->first_name }} {{ $current_program->academicProgramManager->last_name }}</dt>
+				<dd>Academic Program Manager</dd>
+			</div>
+			<div class="faculty-involved-member flex-container">
+				<dt>{{ $current_program->headOfLighting->first_name }} {{ $current_program->headOfLighting->last_name }}</dt>
+				<dd>Faculty Department Head of Lighting</dd>
+			</div>
+			<div class="faculty-involved-member flex-container">
+				<dt>{{ $current_program->headOfWardrobe->first_name }} {{ $current_program->headOfWardrobe->last_name }}</dt>
+				<dd>Faculty Department Head of Wardrobe</dd>
+			</div>
+			<div class="faculty-involved-member flex-container">
+				<dt>{{ $current_program->headOfMovement->first_name }} {{ $current_program->headOfMovement->last_name }}</dt>
+				<dd>Head of Movement, Movement Director</dd>
+			</div>
+			<div class="faculty-involved-member flex-container">
+				<dt>{{ $current_program->headOfSound->first_name }} {{ $current_program->headOfSound->last_name }}</dt>
+				<dd>Faculty Department Head of Sound</dd>
+			</div>
+			<div class="faculty-involved-member flex-container">
+				<dt>{{ $current_program->headOfPaint->first_name }} {{ $current_program->headOfPaint->last_name }}</dt>
+				<dd>Faculty Department Head of Paint</dd>
+			</div>
+			<div class="faculty-involved-member flex-container">
+				<dt>{{ $current_program->technicalDirector->first_name }} {{ $current_program->technicalDirector->last_name }}</dt>
+				<dd>Technical Director</dd>
+			</div>
+			<div class="faculty-involved-member flex-container">
+				<dt>{{ $current_program->Pso->first_name }} {{ $current_program->Pso->last_name }}</dt>
+				<dd>PSO</dd>
+			</div>
 		</dl>
 	</section>
 	<section class="faculty-section">
 		<ul class='faculty-list'>
 		@foreach ($faculty as $member)
-			<li class="text-center">{{ $member }}</li>
+			<li class="text-center">{{ $member->first_name }} {{ $member->last_name }}</li>
 		@endforeach
 		</ul>
 	</section>
 	<section class="special-thanks-section">
 		<h3>Special Thanks</h3>
-		<p>Constanza Davila, Robert Metcalfe, Megan Naylor, Ryan Young, Natalie St-Pierre, Heather Hill, Robert “Bob” McCollum, Angela Carpenter, Shayna Burns, Henrique Santsper, Fides Krucker, Sharon B. Moore. A big thank you to the Students in the Humber College Broadcast Television/ Videography Program who filmed the in house broadcast you are about to watch.</p>
-		<p>This digital program was created by students from the Web Development Post Graduate program:</p>
-		<p>Jemi Soul, Mihoko Schick, Sandra Kupfer, Mahsa Karimi Fard, Josh Colvin.</p>
-	</section>
-	<section class="developers-section">
-
+		<p>{{$current_program->special_thanks}}</p>
 	</section>
 @endsection

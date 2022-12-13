@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductionsController;
 
 use App\Models\Production;
 use App\Models\Contribution;
+use App\Models\Faculty;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,70 +64,14 @@ Route::get('/contributors', function () {
     return view('contributors', $contributorsData);
 })->middleware('guest');
 Route::get('/humber-theatre', function() {
+    // Retrieve the current published program
+    $activeProgram = Production::where('is_published', 1)->first();
+    // Retrieve all faculty members
+    $faculty = Faculty::all();
     $testData = [
-        'title' => 'The Humans',
-        'faculty_involved' => [
-            'year' => 2020,
-            'members' => [
-                [
-                    'name' => 'Guillermo Acosta',
-                    'role' => 'Dean, Faculty of Media and Creative Arts'
-                ],
-                [
-                    'name' => 'Sylvia Sweeney',
-                    'role' => 'Associate Dean, Faculty of Media and Creative Arts'
-                ],
-                [
-                    'name' => 'Tom Baranski',
-                    'role' => 'Faculty Department Head of Carpentry'
-                ],
-                [
-                    'name' => 'Tanya Greve',
-                    'role' => 'Director Theatre Production'
-                ],
-                [
-                    'name' => 'Nina Hartt',
-                    'role' => 'Faculty Department Head of Properties'
-                ],
-                [
-                    'name' => 'Fides Krucker',
-                    'role' => 'Voice Professor, Vocal Research'
-                ],
-                [
-                    'name' => 'Richard Lee',
-                    'role' => 'Academic Program Manager'
-                ],
-                [
-                    'name' => 'Laird Macdonald',
-                    'role' => 'Faculty Department Head of Lighting'
-                ],
-                [
-                    'name' => 'Barbara Martin',
-                    'role' => 'Faculty Department Head of Wardrobe'
-                ],
-                [
-                    'name' => 'Sharon B. Moore',
-                    'role' => 'Head of Movement, Movement Director'
-                ],
-                [
-                    'name' => 'Emily Porter',
-                    'role' => 'Faculty Department Head of Sound'
-                ],
-                [
-                    'name' => 'David Rayfield',
-                    'role' => 'Faculty Department Head of Paint'
-                ],
-                [
-                    'name' => 'John Reid',
-                    'role' => 'Technical Director'
-                ],
-                [
-                    'name' => 'Joe Bowden',
-                    'role' => 'PSO'
-                ],
-            ]
-        ],
-        'faculty' => ['Derek Aasland', 'Liza Balkan', 'Rick Banville', 'John Beale', 'Tyrone Benskin', 'Cameron Davis', 'Paul De Jong', 'Chris Earle', 'Colin Edwards', 'Nina Hartt', 'Jonathan Higgins', 'Heather Hill', 'Ann Hodges', 'Pam Johnson', 'Rob Kempson', 'Mike Kirby', 'Fides Krucker', 'Keira Loughran', 'Laird Macdonald', 'Barbara Martin', 'Bob McCollum', 'John Millard', 'Andrew Moodie', 'Sharon B. Moore', 'Remington North', 'Emily Porter', 'David Rayfield', 'John Reid', 'Shawna Reiter', 'Michelle Smith', 'Christopher Stanton', 'Terry Tweed', 'Kara Wooten', 'Ryan Young']
+        'title' => $activeProgram->title,
+        'current_program' => $activeProgram,
+        'faculty' => $faculty
     ];
 
     return view('acknowledgment', $testData);
