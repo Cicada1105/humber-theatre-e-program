@@ -86,6 +86,7 @@
     <section class="faculty-involved-section">
         <h4>Faculty {{ date('Y') }}</h4>
         <dl>
+            @if ($active_program->faculty) 
             <div class="faculty-involved-member flex-container">
                 <dt>{{ $active_program->seniorDean->first_name }} {{ $active_program->seniorDean->last_name }}</dt>
                 <dd>Senior Dean, Faculty of Media and Creative Arts</dd>
@@ -142,6 +143,7 @@
                 <dt>{{ $active_program->Pso->first_name }} {{ $active_program->Pso->last_name }}</dt>
                 <dd>PSO</dd>
             </div>
+            @endif
         </dl>
     </section>
     <section class="faculty-section">

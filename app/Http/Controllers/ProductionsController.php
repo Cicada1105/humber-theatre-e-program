@@ -104,7 +104,12 @@ class ProductionsController extends Controller
         $newProduction->authors = $submission['authors'];
         $newProduction->blurb = $submission['blurb'];
         $newProduction->directors = $submission['directors'];
-        $newProduction->choreographers = $submission['choreographers'];
+        if (!$submission["choreographers"]) {
+            $newProduction->choreographers = "";
+        }
+        else {
+            $newProduction->choreographers = $submission['choreographers'];   
+        }
         $newProduction->dates = $submission['dates'];
         $newProduction->location = $submission['location'];
         $newProduction->content_warning = $submission['contentWarning'];
