@@ -89,7 +89,11 @@ class UserController extends Controller
      */
     public function delete($id)
     {
-        //
+        // Find the user associated with the id
+        $userToBeRemoved = User::find($id);
+        // Delete the user
+        $userToBeRemoved->delete();
+        
         return redirect('/pm/users');
     }
 }

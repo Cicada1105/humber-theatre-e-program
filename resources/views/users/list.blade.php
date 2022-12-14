@@ -5,8 +5,25 @@
 @endsection
 
 @section('main-content')
+	<script type="text/javascript">
+		function confirmation(e) {
+			// Retrieve the button that submitted the event
+			let btn = e.submitter;
+
+			// Check if the btn submitted is the delete button (will have the faculty's name apart of its dataset)
+			if (btn.dataset['name']) {
+				// Confirm that the user wants to remove the selected faculty member
+				let confirmedDelete = confirm(`Are you sure you want to remove the user ${btn.dataset['name']}?`);
+
+				// If the user cancels, do nothing/do not submit the form
+				if (!confirmedDelete){
+					e.preventDefault();
+				}
+			}
+		}
+	</script>
 	<h1>List Users</h1>
-	<form>
+	<form onsubmit="confirmation(event)">
 		{{ csrf_field() }}
 		<div class="flex-wrapper add-btn-cont">
 			<button class="add-btn" formaction="/pm/users/add" formmethod="get">
@@ -21,7 +38,7 @@
 					<button class="edit-btn" formaction="/pm/users/{{$user->id}}" formmethod="get">
 						<fa class="fa-solid fa-pen-to-square" />
 					</button>
-					<button type="submit" class="delete-btn" formmethod="post" formaction="/pm/users/{{$user->id}}" data-name="{{ $user->name }}">
+					<button type="submit" class="delete-btn" formmethod="post" formaction="/pm/users/delete/{{$user->id}}" data-name="{{ $user->name }}">
 						<fa class="fa-solid fa-trash-can" />
 					</button>
 				</div>
