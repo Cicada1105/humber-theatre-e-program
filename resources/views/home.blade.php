@@ -19,10 +19,12 @@
         <h3 class="text-upper">Directed By</h3>
         <p class="text-center">{{ $directors }}</p>
     </section>
-    <section class="choreographer-section">
-        <h3 class="text-upper">Choreographed By</h3>
-        <p class="text-center">{{ $choreographers }}</p>
-    </section>
+    @if ($choreographers)
+        <section class="choreographer-section">
+            <h3 class="text-upper">Choreographed By</h3>
+            <p class="text-center">{{ $choreographers }}</p>
+        </section>
+    @endif
     <section class="dates-section">
         <h3 class="text-upper">Dates and Times</h3>
         @php($dateAndTimes = explode(';', $dates))

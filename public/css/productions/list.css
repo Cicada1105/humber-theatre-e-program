@@ -11,8 +11,14 @@
 	position: absolute;
 	left:0rem;
 }
-.production-row__title" {
+.production-row__title {
 	display: inline;
+}
+.published {
+	transform: translate(-50%);
+	position: absolute;
+	top:100%;
+	left:50%;
 }
 .production-row-controls {
 	position: absolute;

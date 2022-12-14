@@ -24,10 +24,12 @@
         <h4 class="text-upper">Directed By</h4>
         <p class="text-center">{{ $active_program->directors }}</p>
     </section>
-    <section class="choreographer-section">
-        <h4 class="text-upper">Choreographed By</h4>
-        <p class="text-center">{{ $active_program->choreographers }}</p>
-    </section>
+    @if ($active_program->choreographers)
+        <section class="choreographer-section">
+            <h4 class="text-upper">Choreographed By</h4>
+            <p class="text-center">{{ $active_program->choreographers }}</p>
+        </section>
+    @endif
     <section class="dates-section">
         <h4 class="text-upper">Dates and Times</h4>
         @php($dateAndTimes = explode(';', $active_program->dates))

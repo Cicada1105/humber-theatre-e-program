@@ -10,6 +10,7 @@
 		{{ csrf_field() }}
 		<div class="flex-wrapper involved-faculty">
 			<select id="senior-dean" name="seniorDean">
+				<option selected disabled>--Select--</option>
 				@foreach($faculty as $member)
 					{{Str::of("<option value=${member['id']} " . ($active_program['senior_dean'] == $member['id'] ? "selected" : "") . ">${member['first_name']} ${member['last_name']}</option>")->toHtmlString()}}
 				@endforeach
@@ -18,6 +19,7 @@
 		</div>
 		<div class="flex-wrapper involved-faculty">
 			<select id="associate-dean" name="associateDean">
+				<option selected disabled>--Select--</option>
 				@foreach($faculty as $member)
 					{{Str::of("<option value=${member['id']} " . ($active_program['associate_dean'] == $member['id'] ? "selected" : "") . ">${member['first_name']} ${member['last_name']}</option>")->toHtmlString()}}
 				@endforeach
@@ -26,6 +28,7 @@
 		</div>
 		<div class="flex-wrapper involved-faculty">
 			<select id="head-of-carpentry" name="headOfCarpentry">
+				<option selected disabled>--Select--</option>
 				@foreach($faculty as $member)
 					{{Str::of("<option value=${member['id']} " . ($active_program['head_of_carpentry'] == $member['id'] ? "selected" : "") . ">${member['first_name']} ${member['last_name']}</option>")->toHtmlString()}}
 				@endforeach
@@ -34,6 +37,7 @@
 		</div>
 		<div class="flex-wrapper involved-faculty">
 			<select id="theatre-director" name="theatreDirector">
+				<option selected disabled>--Select--</option>
 				@foreach($faculty as $member)
 					{{Str::of("<option value=${member['id']} " . ($active_program['theatre_director'] == $member['id'] ? "selected" : "") . ">${member['first_name']} ${member['last_name']}</option>")->toHtmlString()}}
 				@endforeach
@@ -42,6 +46,7 @@
 		</div>
 		<div class="flex-wrapper involved-faculty">
 			<select id="head-of-properties" name="headOfProperties">
+				<option selected disabled>--Select--</option>
 				@foreach($faculty as $member)
 					{{Str::of("<option value=${member['id']} " . ($active_program['head_of_properties'] == $member['id'] ? "selected" : "") . ">${member['first_name']} ${member['last_name']}</option>")->toHtmlString()}}
 				@endforeach
@@ -50,6 +55,7 @@
 		</div>
 		<div class="flex-wrapper involved-faculty">
 			<select id="voice-professor" name="voiceProfessor">
+				<option selected disabled>--Select--</option>
 				@foreach($faculty as $member)
 					{{Str::of("<option value=${member['id']} " . ($active_program['voice_professor'] == $member['id'] ? "selected" : "") . ">${member['first_name']} ${member['last_name']}</option>")->toHtmlString()}}
 				@endforeach
@@ -58,6 +64,7 @@
 		</div>
 		<div class="flex-wrapper involved-faculty">
 			<select id="academic-program-manager" name="academicProgramManager">
+				<option selected disabled>--Select--</option>
 				@foreach($faculty as $member)
 					{{Str::of("<option value=${member['id']} " . ($active_program['academic_program_manager'] == $member['id'] ? "selected" : "") . ">${member['first_name']} ${member['last_name']}</option>")->toHtmlString()}}
 				@endforeach
@@ -66,6 +73,7 @@
 		</div>
 		<div class="flex-wrapper involved-faculty">
 			<select id="head-of-lighting" name="headOfLighting">
+				<option selected disabled>--Select--</option>
 				@foreach($faculty as $member)
 					{{Str::of("<option value=${member['id']} " . ($active_program['head_of_lighting'] == $member['id'] ? "selected" : "") . ">${member['first_name']} ${member['last_name']}</option>")->toHtmlString()}}
 				@endforeach
@@ -74,6 +82,7 @@
 		</div>
 		<div class="flex-wrapper involved-faculty">
 			<select id="head-of-wardrobe" name="headOfWardrobe">
+				<option selected disabled>--Select--</option>
 				@foreach($faculty as $member)
 					{{Str::of("<option value=${member['id']} " . ($active_program['head_of_wardrobe'] == $member['id'] ? "selected" : "") . ">${member['first_name']} ${member['last_name']}</option>")->toHtmlString()}}
 				@endforeach
@@ -82,6 +91,7 @@
 		</div>
 		<div class="flex-wrapper involved-faculty">
 			<select id="head-of-movement" name="headOfMovement">
+				<option selected disabled>--Select--</option>
 				@foreach($faculty as $member)
 					{{Str::of("<option value=${member['id']} " . ($active_program['head_of_movement'] == $member['id'] ? "selected" : "") . ">${member['first_name']} ${member['last_name']}</option>")->toHtmlString()}}
 				@endforeach
@@ -90,6 +100,7 @@
 		</div>
 		<div class="flex-wrapper involved-faculty">
 			<select id="head-of-sound" name="headOfSound">
+				<option selected disabled>--Select--</option>
 				@foreach($faculty as $member)
 					{{Str::of("<option value=${member['id']} " . ($active_program['head_of_sound'] == $member['id'] ? "selected" : "") . ">${member['first_name']} ${member['last_name']}</option>")->toHtmlString()}}
 				@endforeach
@@ -98,6 +109,7 @@
 		</div class="flex-wrapper involved-faculty">
 		<div class="flex-wrapper involved-faculty">
 			<select id="head-of-paint" name="headOfPaint">
+				<option selected disabled>--Select--</option>
 				@foreach($faculty as $member)
 					{{Str::of("<option value=${member['id']} " . ($active_program['head_of_paint'] == $member['id'] ? "selected" : "") . ">${member['first_name']} ${member['last_name']}</option>")->toHtmlString()}}
 				@endforeach
@@ -106,6 +118,7 @@
 		</div>
 		<div class="flex-wrapper involved-faculty">
 			<select id="technical-director" name="technicalDirector">
+				<option selected disabled>--Select--</option>
 				@foreach($faculty as $member)
 					{{Str::of("<option value=${member['id']} " . ($active_program['technical_director'] == $member['id'] ? "selected" : "") . ">${member['first_name']} ${member['last_name']}</option>")->toHtmlString()}}
 				@endforeach
@@ -114,6 +127,7 @@
 		</div>
 		<div class="flex-wrapper involved-faculty">
 			<select id="pso" name="pso">
+				<option selected disabled>--Select--</option>
 				@foreach($faculty as $member)
 					{{Str::of("<option value=${member['id']} " . ($active_program['pso'] == $member['id'] ? "selected" : "") . ">${member['first_name']} ${member['last_name']}</option>")->toHtmlString()}}
 				@endforeach

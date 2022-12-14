@@ -18,6 +18,7 @@
 			<div class="production-row">
 				<input class="production-row__toggle" type="radio" name="activeProgram" value={{$production->id}} {{ $production->is_active ? "checked" : "" }} />
 				<h3 class="production-row__title">{{ $production->title }}</h3>
+				<span class="published">{{ $production->is_published ? "(Published)" : ""}}</span>
 				<div class="production-row-controls">
 					<button class="edit-btn" formaction="/pm/production/update/{{$production->id}}" formmethod="get">
 						<fa class="fa-solid fa-pen-to-square" />

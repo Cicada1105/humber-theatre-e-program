@@ -6,7 +6,6 @@
 
 @section('main-content')
 	<h3>Humber Theatre</h3>
-	<a id="active-faculty__link" href="/pm/faculty/update">Active Faculty</a>
 	<form action="/pm/humber/update" method="post">
 		{{ csrf_field() }}
 		<div class='miscellandeous-section'>

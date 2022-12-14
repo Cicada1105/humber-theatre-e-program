@@ -56,14 +56,18 @@ class ContributorsController extends Controller
         $newContributor->bio = $submission['bio'];
 
         // Remove the instance of the photo if it exists
-        if (File::exists($submission['photo']->hashName())) {
-            unlink(storage_path('app/public/contributors_images/'.$submission['photo']->hashName()));
+        if (isset($submission['photo'])) {
+            if (File::exists($submission['photo']->hashName())) {
+                unlink(storage_path('app/public/contributors_images/'.$submission['photo']->hashName()));
+            }
+            // Store the file in the contributors_images directory under the public folder
+            $path = $request->file('photo')->store('contributors_images','public');
+            $newContributor->photo = $path;
         }
-        
-        // Store the file in the contributors_images directory under the public folder
-        $path = $request->file('photo')->store('contributors_images','public');
+        else {
+            $newContributor->photo = "";
+        }
 
-        $newContributor->photo = $path;
         $newContributor->save();
 
         return redirect('/pm/contributors');

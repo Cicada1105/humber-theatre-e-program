@@ -5,6 +5,7 @@
 @endsection
 
 @section('main-content')
+	<h1>Login</h1>
 	<form action="/login" method="post">
 		@csrf
 		<div class="flex-wrapper login-row">
