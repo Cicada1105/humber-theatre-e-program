@@ -17,6 +17,11 @@
 				<li class="nav-list__item">
 					<a href="/pm/preview">Preview</a>
 				</li>
+				@if (Auth::user()->name === "admin")
+					<li class="nav-list__item">
+						<a href="/pm/users">Users</a>
+					</li>
+				@endif
 				<li class="nav-list__item">
 					<a href="/logout">Logout</a>
 				</li>
