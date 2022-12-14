@@ -35,7 +35,7 @@
 				<h3>{{$user->name}}</h3>
 				<p>{{$user->email}}</p>
 				<div class="user-controls">
-					<button class="edit-btn" formaction="/pm/users/{{$user->id}}" formmethod="get">
+					<button class="edit-btn" formaction="/pm/users/update/{{$user->id}}" formmethod="get">
 						<fa class="fa-solid fa-pen-to-square" />
 					</button>
 					<button type="submit" class="delete-btn" formmethod="post" formaction="/pm/users/delete/{{$user->id}}" data-name="{{ $user->name }}">

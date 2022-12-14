@@ -161,7 +161,7 @@ Route::middleware(['auth'])->group(function() {
                 Route::get('/add', [UserController::class, 'add']);
                 Route::post('/add', [UserController::class, 'create']);
                 Route::get('/update/{id}', [UserController::class, 'edit']);
-                Route::get('/update/{id}', [UserController::class, 'update']);
+                Route::post('/update/{id}', [UserController::class, 'update']);
                 Route::post('/delete/{id}', [UserController::class, 'delete']);
             });
         });

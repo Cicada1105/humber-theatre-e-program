@@ -64,8 +64,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
-        return view('users.edit', [ 'title' => 'Users' ]);
+        // Retrieve the requested user
+        $user = User::find($id);
+
+        return view('users.edit', [ 'title' => 'Users', 'user' => $user ]);
     }
 
     /**
@@ -77,7 +79,22 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Retrieve the user submitted data
+        $submission = $request->all();
+        // Find the requested user to be updated
+        $userToBeUpdated = User::find($id);
+        // Update the respective fields
+        $userToBeUpdated->name = $submission['name'];
+        $userToBeUpdated->email = $submission['email'];
+        // Check if a password was sent
+        if ($submission['password']) {
+            // Hash the submitted password
+            $userToBeUpdated->password = Hash::make($submission['password']);
+        }
+
+        // Save the changes to the database
+        $userToBeUpdated->save();
+        
         return redirect('/pm/users');
     }
 
