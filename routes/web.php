@@ -7,6 +7,7 @@ use App\Http\Controllers\ContributorsController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\HumberController;
 use App\Http\Controllers\ProductionsController;
+use App\Http\Controllers\UserController;
 
 use App\Models\Production;
 use App\Models\Contribution;
@@ -149,3 +150,18 @@ Route::middleware(['auth'])->group(function() {
         });
     });
 });
+
+        /*************/
+        /*   Users   */
+        /************/
+        // This section is only available to those that are considered admins
+        Route::middleware(['auth','admin'])->group(function() {
+            Route::prefix('pm/users')->group(function() {
+                Route::get('/', [UserController::class, 'list']);
+                Route::get('/add', [UserController::class, 'add']);
+                Route::post('/add', [UserController::class, 'create']);
+                Route::get('/update/{id}', [UserController::class, 'edit']);
+                Route::get('/update/{id}', [UserController::class, 'update']);
+                Route::get('/delete/{id}', [UserController::class, 'delete']);
+            });
+        });
