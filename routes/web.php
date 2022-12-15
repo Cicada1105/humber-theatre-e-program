@@ -23,8 +23,6 @@ use App\Models\Faculty;
 | contains the "web" middleware group. Now create something great!
 |
 */
-define('PROGRAMS', ['the-humans', 'program-2', 'program-3']);
-define('ADDITIONAL_PAGES', ['humber-theatre']);
 
 enum DepartmentTypes:string {
     case Performance = "performance";
