@@ -4,7 +4,6 @@
 	<link rel="stylesheet" href="/css/acknowledgment.css" />
 @endsection
 @section('main-content')
-	<h1>Humber Theatre Acknowledgement</h1>
 	<section class="acknowledgment-section">
 		<h2>Acknowledging The Land</h2>
 		<p style="text-align:center">{{$current_program->land_acknowledgment}}</p>

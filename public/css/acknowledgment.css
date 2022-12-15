@@ -1,3 +1,6 @@
+html {
+	font-size:24px;
+}
 [class $= '-section'] > p {
 	text-align: justify;
 	line-height: 1.875;
@@ -17,6 +20,9 @@ dl {
 	list-style: none;
 	column-count: 3;
 }
-section.special-thanks-section {
+.special-thanks-section {
 	width: 70%;
+}
+.special-thanks-section > p {
+	text-align: center;
 }

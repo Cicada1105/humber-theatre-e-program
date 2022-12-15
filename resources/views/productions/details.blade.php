@@ -16,8 +16,7 @@
     </figure>
     <h3 class="program-title text-upper">{{ $active_program->title }}</h3>
     <h4 class="program-writer">By: {{ $active_program->authors }}</h4>
-    <section class="synopsis-section">
-        <h4 class='text-upper'>Synopsis</h4>
+    <section class="text-center synopsis-section">
         <p>{{ $active_program->blurb }}</p>
     </section>
     <section class="director-section">

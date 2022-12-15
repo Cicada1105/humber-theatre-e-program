@@ -118,13 +118,17 @@ class ContributorsController extends Controller
         $contributor->bio = $submission['bio'];
 
         // Remove old image
-        unlink(storage_path('app/public/'.$contributor->photo));
+        if ($contributor->photo) {
+            if (File::exists($submission['photo']->hashName())) {
+                unlink(storage_path('app/public/'.$contributor->photo));
+            }
+            // Store the file in the contributors_images directory under the public folder
+            $path = $request->file('photo')->store('contributors_images','public');
 
-        // Store the file in the contributors_images directory under the public folder
-        $path = $request->file('photo')->store('contributors_images','public');
+            // Update the database stored path of the image
+            $contributor->photo = $path;
+        }
 
-        // Update the database stored path of the image
-        $contributor->photo = $path;
         // Save all changes applied to the contributor
         $contributor->save();
 
@@ -172,8 +176,13 @@ class ContributorsController extends Controller
         Contribution::where('contributor_id', $id)->delete();
         // Find the contributor to be delete
         $contributorToBeDeleted = Contributor::find($id);
-        // Remove image on server file system associated with the contributor
-        unlink(storage_path('app/public/'.$contributorToBeDeleted->photo));
+
+        if ($contributorToBeDeleted->photo) {
+            if (File::exists($submission['photo']->hashName())) {
+                // Remove image on server file system associated with the contributor
+                unlink(storage_path('app/public/'.$contributorToBeDeleted->photo));
+            }
+        }
         
         // Remove the contributor
         $contributorToBeDeleted->delete();

@@ -1,3 +1,6 @@
 .program-writer {
 	font-size: 1.15rem;
 }
+.cast-section, .creative-team-section {
+	width: 60% !important;
+}

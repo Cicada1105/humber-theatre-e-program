@@ -25,7 +25,7 @@ html {
 	color: var(--text-color);
     box-sizing: border-box;
     font-weight: 400;
-	font-size: 16px;
+	font-size: 20px;
 }
 *, *::before, *::after {
   box-sizing:inherit;
@@ -177,17 +177,18 @@ header {
 	justify-content: space-between;
 	margin:auto;
 	width:90%;
+	font-size:16px;
 }
 ul.nav-list {
 	justify-content: space-around;
 	list-style:none;
-	padding:0rem;
+	padding:0em;
 }
 .nav-list__item > a {
-	font-size:0.95rem;
-	padding: 0.75rem 1.5rem;
+	font-size:0.95em;
+	padding: 0.75em 1.5em;
 	border: 1px solid var(--text-color);
-	border-radius: 0.25rem;
+	border-radius: 0.25em;
 }
 .nav-list__item a:hover {
 	background-color: var(--text-color);

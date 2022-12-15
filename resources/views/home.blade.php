@@ -11,8 +11,7 @@
     </figure>
     <h1 class="program-title text-upper">{{ $title }}</h1>
     <h3 class="program-writer">By: {{ $authors }}</h3>
-    <section class="synopsis-section">
-        <h3 class='text-upper'>Synopsis</h3>
+    <section class="text-center synopsis-section">
         <p>{{ $blurb }}</p>
     </section>
     <section class="director-section">
@@ -41,6 +40,10 @@
     <section class="location-section">
         <h3 class="text-upper">Location</h3>
         <p class="text-center">{{ $location }}</p>
+    </section>
+    <section class="text-center digital-accredidation-section">
+        <h3 class="text-upper">Digital Program Creation by:</h3>
+        <p>Josh Colvin - joshicolvin@gmail.com</p>
     </section>
     @if ($content_warning)
         <section class="advisory-section">
