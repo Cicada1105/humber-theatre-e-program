@@ -53,7 +53,9 @@ Route::get('/contributors', function () {
     // Obtain the current published program
     $activeProgram = Production::where('is_published', 1)->first();
     // Retrieve all Contributions to the current published program
-    $contributions = Contribution::where('production_id', $activeProgram->id)->get();
+    $contributions = Contribution::where('production_id', $activeProgram->id)->get()->sortBy(function($contribution) {
+        return $contribution->contributor->last_name;
+    });
 
     $contributorsData = [
         'title' => $activeProgram->title,

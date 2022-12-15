@@ -25,7 +25,7 @@ html {
 	color: var(--text-color);
     box-sizing: border-box;
     font-weight: 400;
-	font-size: 20px;
+	font-size: 18px;
 }
 *, *::before, *::after {
   box-sizing:inherit;

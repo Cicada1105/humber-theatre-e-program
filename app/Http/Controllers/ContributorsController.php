@@ -24,7 +24,7 @@ class ContributorsController extends Controller
         // Retrieve the active program
         $activeProgram = Production::where('is_active', 1)->first();
 
-        return view('contributors.list', [ 'title' => 'Contributors', 'active_program' => $activeProgram, 'contributors' => Contributor::all() ]);
+        return view('contributors.list', [ 'title' => 'Contributors', 'active_program' => $activeProgram, 'contributors' => Contributor::all()->sortBy('last_name') ]);
     }
 
     /**
@@ -117,16 +117,25 @@ class ContributorsController extends Controller
         $contributor->last_name = $submission['lastName'];
         $contributor->bio = $submission['bio'];
 
-        // Remove old image
-        if ($contributor->photo) {
+        // Chec if a photo was submitted
+        if (isset($submission['photo'])) {
+            // Check if an old photo path exists in the database
+            if ($contributor->photo) {
+                unlink(storage_path('app/public/'.$contributor->photo));
+            }
+            // Check if am existing photo has the same hashname and remove accordingly
             if (File::exists($submission['photo']->hashName())) {
                 unlink(storage_path('app/public/'.$contributor->photo));
             }
+
             // Store the file in the contributors_images directory under the public folder
             $path = $request->file('photo')->store('contributors_images','public');
 
             // Update the database stored path of the image
             $contributor->photo = $path;
+        }
+        else { // User has not submitted a photo
+            // Check if photo ex
         }
 
         // Save all changes applied to the contributor
