@@ -187,7 +187,7 @@ class ContributorsController extends Controller
         $contributorToBeDeleted = Contributor::find($id);
 
         if ($contributorToBeDeleted->photo) {
-            if (File::exists($submission['photo']->hashName())) {
+            if (File::exists($contributorToBeDeleted['photo'])) {
                 // Remove image on server file system associated with the contributor
                 unlink(storage_path('app/public/'.$contributorToBeDeleted->photo));
             }

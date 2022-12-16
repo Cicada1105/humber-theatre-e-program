@@ -21,7 +21,7 @@
 					<h4 style="color: {{ $categoryColor[$contribution['category']] }}">{{ ucwords(str_replace('_',' ',$contribution['category']))  }}</h4>
 					<h4>{{ $contribution['role'] }}</h4>
 				</hgroup>
-				<p class="contributor__bio">{{ $contributor['bio'] }}</p>
+				<p class="contributor__bio"><img class="contributor__headshot" src="{{asset('storage/' . $contributor->photo)}}" alt="{{$contributor->first_name}} {{$contributor->last_name}} headshot" />{{ $contributor['bio'] }}</p>
 			</article>
 		@endforeach
 	</section>
