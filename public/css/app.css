@@ -6,6 +6,7 @@
 	3. Classes
 	4. Utilities
 	5. Header
+	6. Media Queries
 */
 /***************/
 /*   Imports   */
@@ -176,27 +177,60 @@ section[class $= "-section"] > p {
 /**************/
 /*   Header   */
 /**************/
-header {
-	justify-content: space-between;
+header.page-header {
+	justify-content: center;
+	flex-flow: column;
 	margin:auto;
 	width:90%;
 	font-size:16px;
 }
 ul.nav-list {
 	justify-content: space-around;
+	flex-flow: column;
 	list-style:none;
 	padding:0em;
+	gap: 0rem;
 }
 .nav-list__item > a {
 	font-size:0.95em;
 	padding: 0.75em 1.5em;
-	border: 1px solid var(--text-color);
-	border-radius: 0.25em;
+	border-top: 1px solid var(--text-color);
+	text-align: center;
+	width: 100vw;
+	display: block;
 }
 .nav-list__item a:hover {
 	background-color: var(--text-color);
 	color: var(--background-color);
 }
-#page-header-logo {
+#page-header__logo {
 	width:300px;
+}
+
+/*********************/
+/*   Media Queries   */
+/*********************/
+@media only screen and (min-width: 660px) {
+	header.page-header {
+		gap: 1rem;
+	}
+	ul.nav-list {
+		flex-flow: row;
+		gap: 2rem;
+	}
+	.nav-list__item > a {
+		border: 1px solid var(--text-color);
+		border-radius: 0.25em;
+		display: inline;
+	}
+}
+@media only screen and (min-width: 960px) {
+	header.page-header {
+		justify-content: space-between;
+		flex-flow: row;
+		gap: 1rem;
+	}
+	ul.nav-list {
+		gap: 1rem;
+	}
 }

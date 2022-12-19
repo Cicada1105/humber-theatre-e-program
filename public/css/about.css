@@ -1,6 +1,21 @@
+figure.program-poster {
+	margin: unset;
+}
+figure.program-poster > img {
+	width: 90vw;
+}
 .program-writer {
 	font-size: 1.15rem;
 }
 .cast-section, .creative-team-section {
 	width: 60% !important;
+}
+
+@media only screen and (min-width: 660px) { 
+	figure.program-poster {
+		margin: auto;
+	}
+	figure.program-poster > img {
+		width: min-content;
+	}
 }

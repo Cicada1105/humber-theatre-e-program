@@ -1,3 +1,6 @@
+section.contributors-section {
+	width: 100vw;
+}
 hgroup.departments {
 	justify-content: space-around;
 	text-transform: uppercase;
@@ -19,20 +22,30 @@ hgroup.role {
 hgroup.role > h4 {
 	margin:0rem;
 }
+.contributor-bio {
+	flex-flow: column;
+}
 .bio__text {
 	margin: 2rem 4rem;
 	line-height: 1.875;
 	text-align:justify;
 }
 .bio__img {
-	display: block;
 	margin: 1rem auto;;
 	width:300px;
 }
 @media only screen and (min-width: 790px) {
+	section.contributors-section {
+		width: 80vw;
+	}
+	.contributor-bio {
+		flex-flow: row;
+	}
 	.bio__img {
-		display: inline;
 		margin-right:1.5rem;
 		width:200px;
 	}	
+}
+@media only screen and (min-width: 960px) {
+
 }
