@@ -1,7 +1,7 @@
 @extends('layout.page_template', [ 'page' => 'List' ])
 
 @section('styles')
-	<link rel="stylesheet" href="/css/users/list.css" />
+	<link rel="stylesheet" href="{{ url("/css/users/list.css") }}" />
 @endsection
 
 @section('main-content')

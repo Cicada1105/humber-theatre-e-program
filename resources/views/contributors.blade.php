@@ -1,7 +1,7 @@
 @extends('layout.page_template')
 
 @section('styles')
-	<link rel="stylesheet" href="/css/contributors.css" />
+	<link rel="stylesheet" href="{{ url("/css/contributors.css") }}" />
 @endsection
 
 @section('main-content')
@@ -21,7 +21,10 @@
 					<h4 style="color: {{ $categoryColor[$contribution['category']] }}">{{ ucwords(str_replace('_',' ',$contribution['category']))  }}</h4>
 					<h4>{{ $contribution['role'] }}</h4>
 				</hgroup>
-				<p class="contributor__bio"><img class="contributor__headshot" src="{{asset('storage/' . $contributor->photo)}}" alt="{{$contributor->first_name}} {{$contributor->last_name}} headshot" />{{ $contributor['bio'] }}</p>
+				<section class="flex-wrapper contributor-bio">
+					<img class="bio__img" src="{{asset('storage/' . $contributor->photo)}}" alt="{{$contributor->first_name}} {{$contributor->last_name}} headshot" />
+					<p class="bio__text">{{ $contributor['bio'] }}</p>
+				</section>
 			</article>
 		@endforeach
 	</section>

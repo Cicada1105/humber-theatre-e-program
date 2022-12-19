@@ -1,7 +1,7 @@
 @extends('layout.page_template', [ 'page' => 'Login' ])
 
 @section('styles')
-	<link rel="stylesheet" href="/css/login.css" />
+	<link rel="stylesheet" href="{{ url("/css/login.css") }}" />
 @endsection
 
 @section('main-content')

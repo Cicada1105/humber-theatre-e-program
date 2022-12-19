@@ -1,7 +1,7 @@
 @extends('layout.page_template', [ 'page' => 'Edit' ])
 
 @section('styles')
-	<link rel="stylesheet" href="/css/productions/add.css" />
+	<link rel="stylesheet" href="{{ url("/css/productions/add.css") }}" />
 @endsection
 
 @section('main-content')

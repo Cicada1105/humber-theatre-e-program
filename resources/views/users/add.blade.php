@@ -1,7 +1,7 @@
 @extends('layout.page_template', [ 'page' => 'Add', 'title' => 'Users' ])
 
 @section('styles')
-	<link rel='stylesheet' href='/css/users/add.css' />
+	<link rel='stylesheet' href='{{ url("/css/users/add.css") }}' />
 @endsection
 
 @section('main-content')

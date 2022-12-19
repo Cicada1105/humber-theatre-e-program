@@ -1,7 +1,7 @@
 @extends('layout.page_template')
 
 @section('styles')
-	<link rel="stylesheet" href="/css/acknowledgment.css" />
+	<link rel="stylesheet" href="{{ url("/css/acknowledgment.css") }}" />
 @endsection
 @section('main-content')
 	<section class="acknowledgment-section">
