@@ -1,7 +1,7 @@
 @extends('layout.page_template', [ 'page' => 'Details' ])
 
 @section('styles')
-	<link rel="stylesheet" href="{{ url("/css/faculty/edit-active.css") }}" />
+	<link rel="stylesheet" href="{{ url("/css/faculty/edit-active.css") }}">
 @endsection
 
 @section('main-content')
@@ -134,6 +134,6 @@
 			</select>
 			<label for="pso">PSO</label>
 		</div>
-		<input class="btn" type="submit" value="Update" />
+		<input class="btn" type="submit" value="Update">
 	</form>
 @endsection

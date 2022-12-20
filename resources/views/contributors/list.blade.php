@@ -1,7 +1,7 @@
 @extends('layout.page_template', [ 'page' => 'List' ])
 
 @section('styles')
-	<link rel="stylesheet" href="{{ url("/css/contributors/list.css") }}" />
+	<link rel="stylesheet" href="{{ url("/css/contributors/list.css") }}">
 @endsection
 
 @section('main-content')
@@ -26,8 +26,8 @@
 	<form action='/pm/contributors/update' method="post" onsubmit="confirmation(event)">
 		{{ csrf_field() }}
 		<div class="flex-wrapper add-btn-cont">
-			<button class="add-btn" formaction="/pm/contributors/contributor/add" formmethod="get">
-				<fa class="fa-solid fa-plus" />
+			<button aria-label="Add Contributor" class="add-btn" formaction="/pm/contributors/contributor/add" formmethod="get">
+				<fa class="fa-solid fa-plus">
 			</button>
 		</div>
 		<p id="active-program__text">Active Contributors</p>
@@ -37,29 +37,29 @@
 				$isContributor = $contribution !== null;
 			@endphp
 			<section class="flex-wrapper contributor-row">
-				<input class="contributor-row__toggle" type="checkbox" name="contributors[{{$contributor->id}}][is_active]" {{ $isContributor ? "checked" : "" }} />
+				<input aria-label="{{$contributor->first_name}} {{$contributor->last_name}} is active contributor toggle" class="contributor-row__toggle" type="checkbox" name="contributors[{{$contributor->id}}][is_active]" {{ $isContributor ? "checked" : "" }}>
 				<h3 class="contributor-row__title">{{ $contributor->first_name }} {{ $contributor->last_name }}</h3>
 				<div>
 					<label for="{{$contributor->first_name}}-{{$contributor->last_name}}-role">Role:</label>
-					<input id="{{$contributor->first_name}}-{{$contributor->last_name}}-role" type="text" name="contributors[{{$contributor->id}}][role]" value="{{ $isContributor ? $contribution->role : ""}}" />
+					<input id="{{$contributor->first_name}}-{{$contributor->last_name}}-role" type="text" name="contributors[{{$contributor->id}}][role]" value="{{ $isContributor ? $contribution->role : ""}}">
 				</div>
 				<select value="" name="contributors[{{$contributor->id}}][category]">
 					@php($categoryName = $isContributor ? $contribution->category : "");
-					<option disabled selected>--Category--</option>
+					<option aria-hidden="true" disabled selected>--Category--</option>
 					<option value="performance" {{$isContributor && $categoryName=="performance" ? "selected" : ""}}>Performance</option>
 					<option value="guest_artist" {{$isContributor && $categoryName=="guest_artist" ? "selected" : ""}}>Guest Artist</option>
 					<option value="production" {{$isContributor && $categoryName=="production" ? "selected" : ""}}>Production</option>
 				</select>
 				<div class="contributor-row-controls">
-					<button class="edit-btn" formaction="/pm/contributors/contributor/update/{{$contributor->id}}" formmethod="get">
-						<fa class="fa-solid fa-pen-to-square" />
+					<button aria-label="Edit {{ $contributor->first_name }} {{ $contributor->last_name }} contributor" class="edit-btn" formaction="/pm/contributors/contributor/update/{{$contributor->id}}" formmethod="get">
+						<fa class="fa-solid fa-pen-to-square">
 					</button>
-					<button type="submit" class="delete-btn" formmethod="post" formaction="/pm/contributors/contributor/delete/{{$contributor->id}}" data-name="{{ $contributor->first_name }} {{ $contributor->last_name }}">
-						<fa class="fa-solid fa-trash-can" />
+					<button aria-label="Delete {{ $contributor->first_name }} {{ $contributor->last_name }} contributor" type="submit" class="delete-btn" formmethod="post" formaction="/pm/contributors/contributor/delete/{{$contributor->id}}" data-name="{{ $contributor->first_name }} {{ $contributor->last_name }}">
+						<fa class="fa-solid fa-trash-can">
 					</button>
 				</div>
 			</section>
 		@endforeach
-		<input class="btn" type="submit" />
+		<input class="btn" type="submit" value="Submit">
 	</form>
 @endsection

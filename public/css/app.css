@@ -143,8 +143,6 @@ form {
 .hidden {
     position: absolute;
     left: -10000px;
-    width: 1px;
-    height: 1px;
 }
 .text-upper {
 	text-transform: uppercase;
@@ -180,9 +178,14 @@ section[class $= "-section"] > p {
 header.page-header {
 	justify-content: center;
 	flex-flow: column;
+	positioN:relative;
 	margin:auto;
 	width:90%;
 	font-size:16px;
+}
+a#skip-content__link:focus {
+	left: 0px;
+	top: 100%;
 }
 ul.nav-list {
 	justify-content: space-around;

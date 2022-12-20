@@ -2,8 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 	<head>
 		<!--Meta content shared by every page-->
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         
         @if(empty($page))
 			<title>{{ $title }}</title>
@@ -28,7 +28,7 @@
         <link href="{{ url('css/light.css') }}" rel="stylesheet" media="(prefers-color-scheme:light)" />
         <link href="{{ url('css/dark.css') }}" rel="stylesheet" media="(prefers-color-scheme:dark" />--}}
 
-        <link href="{{ url('css/app.css') }}" rel="stylesheet" />
+        <link href="{{ url('css/app.css') }}" rel="stylesheet">
 
 		<!--Local Styles-->
 		@yield('styles')
@@ -36,7 +36,7 @@
 	<body class="antialiased">
 		@include('layout.header')
 
-		<main>
+		<main id="maincontent">
 			@yield('main-content')
 		</main>
 

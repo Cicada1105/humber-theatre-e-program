@@ -1,8 +1,9 @@
 <header class="page-header flex-container p1">
+	<a id="skip-content__link" class="btn hidden" href="#maincontent">Skip to main content</a>
 	@if (Auth::check())
-	    <a href="/pm">
-	    	<img id="page-header__logo" src="{{ url("/imgs/Faculty_of_Media_and_Creative_Arts_All-white.png") }}" alt="Humber College Faculty of Media and Creative Arts Logo" />
-	    </a>
+	    <h2>
+	    	<img id="page-header__logo" src="{{ url("/imgs/Faculty_of_Media_and_Creative_Arts_All-white.png") }}" alt="Humber College Faculty of Media and Creative Arts Logo">
+	    </h2>
 		<nav>
 			<ul class="flex-container nav-list">
 				<li class="nav-list__item">
@@ -28,9 +29,9 @@
 			</ul>
 		</nav>
 	@else
-	    <a href="/">
-	    	<img id="page-header__logo" src="{{ url("/imgs/Faculty_of_Media_and_Creative_Arts_All-white.png") }}" alt="Humber College Faculty of Media and Creative Arts Logo" />
-	    </a>
+		<h2>
+	   		<img id="page-header__logo" src="{{ url("/imgs/Faculty_of_Media_and_Creative_Arts_All-white.png") }}" alt="Humber College Faculty of Media and Creative Arts Logo">
+	   	</h2>
 		<nav>
 			<ul class="flex-container nav-list">
 				<li class="nav-list__item">

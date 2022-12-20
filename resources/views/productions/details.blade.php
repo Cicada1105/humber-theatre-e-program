@@ -1,17 +1,17 @@
 @extends('layout.page_template', [ 'page' => 'Details' ])
 
 @section('styles')
-	<link rel='stylesheet' href='{{ url("/css/productions/preview.css") }}' />
+	<link rel='stylesheet' href='{{ url("/css/productions/preview.css") }}'>
 @endsection
 
 @section('main-content')
 	<h1>{{$active_program->title}} Preview</h1>
 	<form action="/pm/preview" method="post">
 		{{ csrf_field() }}
-		<input id="publish-btn" class="btn" type="submit" value="Publish" />
+		<input id="publish-btn" class="btn" type="submit" value="Publish">
 	</form>
 	<figure class="program-poster text-center">
-        <img src="{{ asset('storage/'.$active_program->poster_img_src) }}" alt="{{ $active_program->title }} poster" />
+        <img src="{{ asset('storage/'.$active_program->poster_img_src) }}" alt="{{ $active_program->title }} poster">
         <figcaption>{{ $active_program->poster_img_caption }}</figcaption>
     </figure>
     <h3 class="program-title text-upper">{{ $active_program->title }}</h3>

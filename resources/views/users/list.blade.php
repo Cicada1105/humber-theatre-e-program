@@ -1,7 +1,7 @@
 @extends('layout.page_template', [ 'page' => 'List' ])
 
 @section('styles')
-	<link rel="stylesheet" href="{{ url("/css/users/list.css") }}" />
+	<link rel="stylesheet" href="{{ url("/css/users/list.css") }}">
 @endsection
 
 @section('main-content')
@@ -26,8 +26,8 @@
 	<form onsubmit="confirmation(event)">
 		{{ csrf_field() }}
 		<div class="flex-wrapper add-btn-cont">
-			<button class="add-btn" formaction="/pm/users/add" formmethod="get">
-				<fa class="fa-solid fa-plus" />
+			<button aria-label="Add New User" class="add-btn" formaction="/pm/users/add" formmethod="get">
+				<fa class="fa-solid fa-plus">
 			</button>
 		</div>
 		@foreach($users as $user)
@@ -35,11 +35,11 @@
 				<h3>{{$user->name}}</h3>
 				<p>{{$user->email}}</p>
 				<div class="user-controls">
-					<button class="edit-btn" formaction="/pm/users/update/{{$user->id}}" formmethod="get">
-						<fa class="fa-solid fa-pen-to-square" />
+					<button aria-label="Edit {{ $user->name }} user" class="edit-btn" formaction="/pm/users/update/{{$user->id}}" formmethod="get">
+						<fa class="fa-solid fa-pen-to-square">
 					</button>
-					<button type="submit" class="delete-btn" formmethod="post" formaction="/pm/users/delete/{{$user->id}}" data-name="{{ $user->name }}">
-						<fa class="fa-solid fa-trash-can" />
+					<button aria-label="Delete {{ $user->name }} user" type="submit" class="delete-btn" formmethod="post" formaction="/pm/users/delete/{{$user->id}}" data-name="{{ $user->name }}">
+						<fa class="fa-solid fa-trash-can">
 					</button>
 				</div>
 			</div>

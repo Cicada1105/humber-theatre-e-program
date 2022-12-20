@@ -1,7 +1,7 @@
 @extends('layout.page_template', [ 'page' => 'Edit' ])
 
 @section('styles')
-	<link rel="stylesheet" href="{{ url("/css/humber/edit.css") }}" />
+	<link rel="stylesheet" href="{{ url("/css/humber/edit.css") }}">
 @endsection
 
 @section('main-content')
@@ -20,6 +20,6 @@
 			<label for="special-thanks">Special Thanks</label>
 			<textarea id="special-thanks" name="specialThanks" cols="75" rows="4">{{ $active_program->special_thanks }}</textarea>
 		</div>
-		<input class="btn" type="Submit" value="Update" />
+		<input class="btn" type="Submit" value="Update">
 	</form>
 @endsection

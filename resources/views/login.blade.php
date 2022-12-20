@@ -1,7 +1,7 @@
 @extends('layout.page_template', [ 'page' => 'Login' ])
 
 @section('styles')
-	<link rel="stylesheet" href="{{ url("/css/login.css") }}" />
+	<link rel="stylesheet" href="{{ url("/css/login.css") }}">
 @endsection
 
 @section('main-content')
@@ -10,12 +10,12 @@
 		@csrf
 		<div class="flex-wrapper login-row">
 			<label for="user_name">Username:</label>
-			<input id="user_name" type="text" name='name' />
+			<input id="user_name" type="text" name='name'>
 		</div>
 		<div class="flex-wrapper login-row">
 			<label for="user_password">Password:</label>
-			<input id="user_password" type="password" name="password" />
+			<input id="user_password" type="password" name="password">
 		</div>
-		<input class="btn" type="submit" />
+		<input class="btn" type="submit" value="Submit">
 	</form>
 @endsection
