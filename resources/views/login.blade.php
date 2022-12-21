@@ -6,7 +6,7 @@
 
 @section('main-content')
 	<h1>Login</h1>
-	<form action="/login" method="post">
+	<form action="{{ url('/login') }}" method="post">
 		@csrf
 		<div class="flex-wrapper login-row">
 			<label for="user_name">Username:</label>
@@ -16,6 +16,9 @@
 			<label for="user_password">Password:</label>
 			<input id="user_password" type="password" name="password">
 		</div>
+		@if ($errors->any())
+			<p>{{$errors->first()}}</p>
+		@endif
 		<input class="btn" type="submit" value="Submit">
 	</form>
 @endsection

@@ -53,7 +53,7 @@ class ProductionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function publish()
+    public function publish(Request $request)
     {
         // Set any (Should be one) production set as published to false
         Production::where('is_published', 1)->update(['is_published' => 0]);
@@ -63,7 +63,7 @@ class ProductionsController extends Controller
 
         $productionToBePublished->save();
 
-        return redirect('/pm');
+        return redirect($request->root() . '/pm');
     }
     
     /**
@@ -122,7 +122,7 @@ class ProductionsController extends Controller
         // Save instance of production to database
         $newProduction->save();
 
-        return redirect('/pm');
+        return redirect($request->root() . '/pm');
     }
 
     /**
@@ -185,7 +185,7 @@ class ProductionsController extends Controller
         // Save changes to the updated production
         $productionToBeUpdated->save();
 
-        return redirect('/pm');
+        return redirect($request->root() . '/pm');
     }
 
     /**
@@ -203,7 +203,7 @@ class ProductionsController extends Controller
         // Find and update the program to be active
         Production::where('id', $id)->update(['is_active' => 1]);
 
-        return redirect('/pm');
+        return redirect($request->root() . '/pm');
     }
 
     /**
@@ -212,9 +212,9 @@ class ProductionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
         //
-        return redirect('/pm')->with('title', 'Productions');
+        return redirect($request->root() . '/pm')->with('title', 'Productions');
     }
 }

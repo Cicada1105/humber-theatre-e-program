@@ -23,14 +23,14 @@ class DashboardController extends Controller
             // Reset the user's session
             $request->session()->regenerate();
 
-            return redirect('/pm');
+            return redirect($request->root() . '/pm');
         }
 
         return back()->withErrors([ 'err' => 'Invalid Credentials' ]);
     }
-    public function logout() {
+    public function logout(Request $request) {
         // Clear user's access by logging them out
         Auth::logout();
-        return redirect('/');
+        return redirect($request->root() . '/');
     }
 }

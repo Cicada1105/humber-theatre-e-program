@@ -55,6 +55,6 @@ class HumberController extends Controller
             'special_thanks' => $submission['specialThanks']
         ]);
 
-        return redirect('/pm/humber');
+        return redirect($request->root() . '/pm/humber');
     }
 }

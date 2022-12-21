@@ -7,7 +7,7 @@
 @section('main-content')
     <figure class="program-poster text-center">
         <img aria-labeledBy="poster__caption" src="{{ asset('storage/'.$poster_img_src) }}" alt="{{ $title }} poster">
-        <figcaption aria-labeledBy="poster__caption">{{ $poster_img_caption }}</figcaption>
+        <figcaption>{{ $poster_img_caption }}</figcaption>
     </figure>
     <h1 class="program-title text-upper">{{ $title }}</h1>
     <h2 class="program-writer">By: {{ $authors }}</h2>

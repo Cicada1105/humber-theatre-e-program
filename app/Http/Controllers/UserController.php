@@ -53,7 +53,7 @@ class UserController extends Controller
         // Save the newly created user
         $newUser->save();
 
-        return redirect('/pm/users');
+        return redirect($request->root() . '/pm/users');
     }
 
     /**
@@ -95,7 +95,7 @@ class UserController extends Controller
         // Save the changes to the database
         $userToBeUpdated->save();
         
-        return redirect('/pm/users');
+        return redirect($request->root() . '/pm/users');
     }
 
     /**
@@ -104,13 +104,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
         // Find the user associated with the id
         $userToBeRemoved = User::find($id);
         // Delete the user
         $userToBeRemoved->delete();
         
-        return redirect('/pm/users');
+        return redirect($request->root() . '/pm/users');
     }
 }

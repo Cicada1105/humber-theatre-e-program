@@ -54,7 +54,7 @@ class FacultyController extends Controller
         // Save newly created Faculy 
         $newFacultyMember->save();
         
-        return redirect('/pm/faculty');
+        return redirect($request->root() . '/pm/faculty');
     }
 
     /**
@@ -102,7 +102,7 @@ class FacultyController extends Controller
         // Save the changes applied to the faculty member
         $facultyToBeUpdated->save();
 
-        return redirect('/pm/faculty');
+        return redirect($request->root() . '/pm/faculty');
     }
 
     /**
@@ -144,7 +144,7 @@ class FacultyController extends Controller
             'pso' => $submission['pso']
         ]);
 
-        return redirect('/pm/faculty/update');
+        return redirect($request->root() . '/pm/faculty/update');
     }
 
     /**
@@ -153,13 +153,13 @@ class FacultyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
         // Find the faculty to be deleted
         $facultyToBeDeleted = Faculty::find($id);
         // Remove the faculty based on the passed in id
         $facultyToBeDeleted->delete();
 
-        return redirect('/pm/faculty');
+        return redirect($request->root() . '/pm/faculty');
     }
 }

@@ -70,7 +70,7 @@ class ContributorsController extends Controller
 
         $newContributor->save();
 
-        return redirect('/pm/contributors');
+        return redirect($request->root() . '/pm/contributors');
     }
 
     /**
@@ -141,7 +141,7 @@ class ContributorsController extends Controller
         // Save all changes applied to the contributor
         $contributor->save();
 
-        return redirect('/pm/contributors');
+        return redirect($request->root() . '/pm/contributors');
     }
    
     /**
@@ -170,7 +170,7 @@ class ContributorsController extends Controller
             }
         }
 
-        return redirect('/pm/contributors');
+        return redirect($request->root() . '/pm/contributors');
     }
 
     /**
@@ -179,7 +179,7 @@ class ContributorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
         // Remove all contributions associated with the specified contributor id
         Contribution::where('contributor_id', $id)->delete();
@@ -196,6 +196,6 @@ class ContributorsController extends Controller
         // Remove the contributor
         $contributorToBeDeleted->delete();
         
-        return redirect('/pm/contributors');
+        return redirect($request->root() . '/pm/contributors');
     }
 }

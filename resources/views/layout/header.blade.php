@@ -7,24 +7,24 @@
 		<nav>
 			<ul class="flex-container nav-list">
 				<li class="nav-list__item">
-					<a href="/pm/contributors">Contributors</a>
+					<a href="{{ url('/pm/contributors') }}">Contributors</a>
 				</li>
 				<li class="nav-list__item">
-					<a href="/pm/humber">Humber Theatre</a>
+					<a href="{{ url('/pm/humber') }}">Humber Theatre</a>
 				</li>
 				<li class="nav-list__item">
-					<a href="/pm/faculty">Faculty</a>
+					<a href="{{ url('/pm/faculty') }}">Faculty</a>
 				</li>
 				<li class="nav-list__item">
-					<a href="/pm/preview">Preview</a>
+					<a href="{{ url('/pm/preview') }}">Preview</a>
 				</li>
 				@if (Auth::user()->name === "admin")
 					<li class="nav-list__item">
-						<a href="/pm/users">Users</a>
+						<a href="{{ url('/pm/users') }}">Users</a>
 					</li>
 				@endif
 				<li class="nav-list__item">
-					<a href="/logout">Logout</a>
+					<a href="{{ url('/logout') }}">Logout</a>
 				</li>
 			</ul>
 		</nav>
@@ -35,16 +35,16 @@
 		<nav>
 			<ul class="flex-container nav-list">
 				<li class="nav-list__item">
-					<a href="/">About</a>
+					<a href="{{ url('/') }}">About</a>
 				</li>
 				<li class="nav-list__item">
-					<a href="/contributors">Contributors</a>
+					<a href="{{ url('/contributors') }}">Contributors</a>
 				</li>
 				<li class="nav-list__item">
-					<a href="/humber-theatre">Humber Theatre</a>
+					<a href="{{ url('/humber-theatre') }}">Humber Theatre</a>
 				</li>
 				<li class="nav-list__item">
-					<a href="/login">Login</a>
+					<a href="{{ url('/login') }}">Login</a>
 				</li>
 			</ul>
 		</nav>
