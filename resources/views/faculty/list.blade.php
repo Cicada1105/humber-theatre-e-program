@@ -24,6 +24,9 @@
 	</script>
 	<h1>Humber Theatre Faculty</h1>
 	<a id="active-faculty__link" href="/pm/faculty/update">View Active Faculty</a>
+	@if ($errors->any())
+		<p class="error">{{$errors->first()}}</p>
+	@endif
 	<form action='/pm/faculty/update' method="post" onsubmit="confirmation(event)">
 		{{ csrf_field() }}
 		<div class="flex-wrapper add-btn-cont">

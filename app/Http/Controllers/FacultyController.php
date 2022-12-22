@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Faculty;
+use App\Models\FacultyInvolvement;
 use App\Models\Production;
 
 define('PG_TITLE', [ 'title' => 'Faculty' ]);
@@ -155,10 +156,20 @@ class FacultyController extends Controller
      */
     public function delete(Request $request, $id)
     {
+        // Check if the faculty is currently involved with any program
+        $facultyInvolvement = FacultyInvolvement::where('faculty_id', $id)->get();
+
+        if (count($facultyInvolvement)) { // Faculty is currently involved in a program
+            // Retrieve the faculty member info for a personalized error
+            $facultyMember = $facultyInvolvement[0]->faculty;
+            // Return back to the faculty list page with an error message
+            $errMsg = "{$facultyMember->first_name} {$facultyMember->last_name} cannot be deleted. {$facultyMember->first_name} {$facultyMember->last_name} is currently involved in one or more programs";
+            return back()->withErrors([ 'err' => $errMsg ]);
+        }
         // Find the faculty to be deleted
-        $facultyToBeDeleted = Faculty::find($id);
+        //$facultyToBeDeleted = Faculty::find($id);
         // Remove the faculty based on the passed in id
-        $facultyToBeDeleted->delete();
+        //$facultyToBeDeleted->delete();
 
         return redirect($request->root() . '/pm/faculty');
     }

@@ -23,6 +23,9 @@
 		}
 	</script>
 	<h1>Contributors of {{ $active_program->title }}</h1>
+	@if ($errors->any())
+		<p class="error">{{$errors->first()}}</p>
+	@endif
 	<form action='/pm/contributors/update' method="post" onsubmit="confirmation(event)">
 		{{ csrf_field() }}
 		<div class="flex-wrapper add-btn-cont">

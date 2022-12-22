@@ -181,8 +181,19 @@ class ContributorsController extends Controller
      */
     public function delete(Request $request, $id)
     {
-        // Remove all contributions associated with the specified contributor id
-        Contribution::where('contributor_id', $id)->delete();
+        // Check if the contributor has any contributions
+        $contributions = Contribution::where('contributor_id', $id)->get();
+
+        if (count($contributions)) { // User currently has contributions
+            // Retrieve the contributor info for a personalized error
+            $contributor = $contributions[0]->contributor;
+            // Return back to the faculty list page with an error message
+            $errMsg = "{$contributor->first_name} {$contributor->last_name} cannot be deleted. {$contributor->first_name} {$contributor->last_name} has currently contributed to one or more programs";
+
+            return back()->withErrors([ 'err' => $errmsg ]);
+        }
+        // Safe to remove the contributor
+
         // Find the contributor to be delete
         $contributorToBeDeleted = Contributor::find($id);
 

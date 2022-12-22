@@ -24,7 +24,7 @@
 	</script>
 	<h1>List Faculty Role</h1>
 	@if ($errors->any())
-		{{$errors->first()}}
+		<p class="error">{{$errors->first()}}</p>
 	@endif
 	<form onsubmit="confirmation(event)">
 		{{ csrf_field() }}
