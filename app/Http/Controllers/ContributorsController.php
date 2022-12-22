@@ -160,6 +160,14 @@ class ContributorsController extends Controller
         foreach($submittedContributors['contributors'] as $contrId=>$info) {
             //Check if the submitted contributor is to be added to the active list
             if (isset($info['is_active'])) {
+                // If role or category is missing, return with an error
+                if (!isset($info['role'])) {
+                    return back()->withErrors([ 'err' => 'Role is required for active contributors' ]);
+                }
+                if (!isset($info['category'])) {
+                    return back()->withErrors([ 'err' => 'Category is required for active contributors' ]);
+                }
+                // Both category and role have been set
                 $c = new Contribution();
                 $c->production_id = $activeProgram->id;
                 $c->contributor_id = $contrId;

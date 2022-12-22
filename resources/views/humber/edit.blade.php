@@ -10,15 +10,15 @@
 		{{ csrf_field() }}
 		<div class='miscellandeous-section'>
 			<label for="land-acknowledgment">Land Acknowledgment</label>
-			<textarea id="land-acknowledgment" name="landAcknowledgment" cols="75" rows="4">{{ $active_program->land_acknowledgment }}</textarea>
+			<textarea id="land-acknowledgment" name="landAcknowledgment" cols="75" rows="4" required>{{ $active_program->land_acknowledgment }}</textarea>
 		</div>
 		<div class='miscellandeous-section'>
 			<label for="about-humber">About Humber</label>
-			<textarea id="about-humber" name="aboutHumber" cols="75" rows="4">{{ $active_program->about_humber }}</textarea>
+			<textarea id="about-humber" name="aboutHumber" cols="75" rows="4" required>{{ $active_program->about_humber }}</textarea>
 		</div>
 		<div class='miscellandeous-section'>
 			<label for="special-thanks">Special Thanks</label>
-			<textarea id="special-thanks" name="specialThanks" cols="75" rows="4">{{ $active_program->special_thanks }}</textarea>
+			<textarea id="special-thanks" name="specialThanks" cols="75" rows="4" required>{{ $active_program->special_thanks }}</textarea>
 		</div>
 		<input class="btn" type="Submit" value="Update">
 	</form>
