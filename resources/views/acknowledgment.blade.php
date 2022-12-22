@@ -15,62 +15,17 @@
 	<section class="faculty-involved-section">
 		<h2>Faculty {{ date('Y') }}</h2>
 		<dl>
-			<div class="faculty-involved-member flex-container">
-				<dt aria-describedBy="senior-dean">{{ $current_program->seniorDean->first_name ?? "" }} {{ $current_program->seniorDean->last_name ?? "" }}</dt>
-				<dd id="senior-dean">Senior Dean, Faculty of Media and Creative Arts</dd>
-			</div>
-			<div class="faculty-involved-member flex-container">
-				<dt aria-descirbedBy="associate-dean">{{ $current_program->associateDean->first_name ?? ""}} {{ $current_program->associateDean->last_name ?? "" }}</dt>
-				<dd id="associate-dean">Associate Dean, Faculty of Media and Creative Arts</dd>
-			</div>
-			<div class="faculty-involved-member flex-container">
-				<dt aria-descirbedBy="head-of-carpentry">{{ $current_program->headOfCarpentry->first_name ?? ""}} {{ $current_program->headOfCarpentry->last_name ?? "" }}</dt>
-				<dd id="head-of-carpentry">Faculty Department Head of Carpentry</dd>
-			</div>
-			<div class="faculty-involved-member flex-container">
-				<dt aria-descirbedBy="theatre-director">{{ $current_program->theatreDirector->first_name ?? ""}} {{ $current_program->theatreDirector->last_name ?? "" }}</dt>
-				<dd id="theatre-director">Director Theatre Production</dd>
-			</div>
-			<div class="faculty-involved-member flex-container">
-				<dt aria-descirbedBy="head-of-properties">{{ $current_program->headOfProperties->first_name ?? ""}} {{ $current_program->headOfProperties->last_name ?? "" }}</dt>
-				<dd id="head-of-properties">Faculty Department Head of Properties</dd>
-			</div>
-			<div class="faculty-involved-member flex-container">
-				<dt aria-descirbedBy="voice-professor">{{ $current_program->voiceProfessor->first_name ?? ""}} {{ $current_program->voiceProfessor->last_name ?? "" }}</dt>
-				<dd id="voice-professor">Voice Professor, Vocal Research</dd>
-			</div>
-			<div class="faculty-involved-member flex-container">
-				<dt aria-descirbedBy="academic-program-manager">{{ $current_program->academicProgramManager->first_name ?? ""}} {{ $current_program->academicProgramManager->last_name ?? "" }}</dt>
-				<dd id="academic-program-manager">Academic Program Manager</dd>
-			</div>
-			<div class="faculty-involved-member flex-container">
-				<dt aria-descirbedBy="head-of-lighting">{{ $current_program->headOfLighting->first_name ?? ""}} {{ $current_program->headOfLighting->last_name ?? "" }}</dt>
-				<dd id="head-of-lighting">Faculty Department Head of Lighting</dd>
-			</div>
-			<div class="faculty-involved-member flex-container">
-				<dt aria-descirbedBy="head-of-wardrobe">{{ $current_program->headOfWardrobe->first_name ?? ""}} {{ $current_program->headOfWardrobe->last_name ?? "" }}</dt>
-				<dd id="head-of-wardrobe">Faculty Department Head of Wardrobe</dd>
-			</div>
-			<div class="faculty-involved-member flex-container">
-				<dt aria-descirbedBy="head-of-movement">{{ $current_program->headOfMovement->first_name ?? ""}} {{ $current_program->headOfMovement->last_name ?? "" }}</dt>
-				<dd id="head-of-movement">Head of Movement, Movement Director</dd>
-			</div>
-			<div class="faculty-involved-member flex-container">
-				<dt aria-descirbedBy="head-of-sound">{{ $current_program->headOfSound->first_name ?? ""}} {{ $current_program->headOfSound->last_name ?? "" }}</dt>
-				<dd id="head-of-sound">Faculty Department Head of Sound</dd>
-			</div>
-			<div class="faculty-involved-member flex-container">
-				<dt aria-descirbedBy="head-of-paint">{{ $current_program->headOfPaint->first_name ?? ""}} {{ $current_program->headOfPaint->last_name ?? "" }}</dt>
-				<dd id="head-of-paint">Faculty Department Head of Paint</dd>
-			</div>
-			<div class="faculty-involved-member flex-container">
-				<dt aria-descirbedBy="technical-director">{{ $current_program->technicalDirector->first_name ?? ""}} {{ $current_program->technicalDirector->last_name ?? "" }}</dt>
-				<dd id="technical-director">Technical Director</dd>
-			</div>
-			<div class="faculty-involved-member flex-container">
-				<dt aria-descirbedBy="pso">{{ $current_program->Pso->first_name ?? ""}} {{ $current_program->Pso->last_name ?? "" }}</dt>
-				<dd id="pso">PSO</dd>
-			</div>
+			@foreach($faculty_involvement as $involvement)
+				@php($faculty = $involvement->faculty)
+				@php($facultyRole = $involvement->facultyRole->role)
+				@php($roleId = str_replace(" ", "-", strtolower($facultyRole)))
+				<div class="faculty-involved-member flex-container">
+					<dt aria-describedBy="{{$roleId}}">
+						{{ $faculty->first_name }} {{ $faculty->last_name }}
+					</dt>
+					<dd id="{{$roleId}}">{{ $facultyRole }}</dd>
+				</div>
+			@endforeach
 		</dl>
 	</section>
 	<section class="faculty-section">

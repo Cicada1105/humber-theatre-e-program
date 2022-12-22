@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('faculty_involvements', function (Blueprint $table) {
+        Schema::create('faculty_roles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('faculty_id');
-            $table->foreignId('production_id');
-            $table->foreignId('faculty_role_id');
+            $table->tinyText('role');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faculty_involvements');
+        Schema::dropIfExists('faculty_roles');
     }
 };

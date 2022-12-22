@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Faculty;
 use App\Models\Production;
+use App\Models\FacultyRole;
 use App\Models\FacultyInvolvement;
 
 use App\Models\Contributor;
@@ -30,13 +31,15 @@ class DatabaseSeeder extends Seeder
 
         Faculty::truncate();
         Production::truncate();
-        //FacultyInvolvement::truncate();
+        FacultyRole::truncate();
+        FacultyInvolvement::truncate();
         Contributor::truncate();
         Contribution::truncate();
 
         Faculty::factory()->count(10)->create();
         Production::factory()->count(2)->create();
-        //FacultyInvolvement::factory()->count(5)->create();
+        FacultyRole::factory()->count(7)->create();
+        FacultyInvolvement::factory()->count(5)->create();
         Contributor::factory()->count(10)->create();
         Contribution::factory()->count(5)->create();
     }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Faculty;
 use App\Models\Production;
+use App\Models\FacultyRole;
 
 class FacultyInvolvement extends Model
 {
@@ -18,7 +19,7 @@ class FacultyInvolvement extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'involvement'
+        'role_id'
     ];
 
     public function faculty() {
@@ -26,5 +27,9 @@ class FacultyInvolvement extends Model
     }
     public function production() {
         return $this->belongsTo(Production::class);
+    }
+
+    public function facultyRole() {
+        return $this->hasOne(facultyRole::class);
     }
 }

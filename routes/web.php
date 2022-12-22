@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Models\Production;
 use App\Models\Contribution;
 use App\Models\Faculty;
+use App\Models\FacultyInvolvement;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,10 +70,14 @@ Route::get('/humber-theatre', function() {
     $activeProgram = Production::where('is_published', 1)->first();
     // Retrieve all faculty members
     $faculty = Faculty::all();
+    // Retrieve faculty who was involved in the production or department
+    $facultyInvolvement = FacultyInvolvement::where('production_id', $activeProgram->id)->get();
+
     $testData = [
         'title' => $activeProgram->title,
         'current_program' => $activeProgram,
-        'faculty' => $faculty
+        'faculty' => $faculty,
+        'faculty_involvement' => $facultyInvolvement
     ];
 
     return view('acknowledgment', $testData);

@@ -34,20 +34,6 @@ return new class extends Migration
             $table->mediumText('about_humber')->nullable();
             $table->mediumText('special_thanks')->nullable();
             // The following are the foreign keys of the faculty that contribute to a given production
-            $table->foreignId('senior_dean')->nullable();
-            $table->foreignId('associate_dean')->nullable();
-            $table->foreignId('head_of_carpentry')->nullable();
-            $table->foreignId('theatre_director')->nullable();
-            $table->foreignId('head_of_properties')->nullable();
-            $table->foreignId('voice_professor')->nullable();
-            $table->foreignId('academic_program_manager')->nullable();
-            $table->foreignId('head_of_lighting')->nullable();
-            $table->foreignId('head_of_wardrobe')->nullable();
-            $table->foreignId('head_of_movement')->nullable();
-            $table->foreignId('head_of_sound')->nullable();
-            $table->foreignId('head_of_paint')->nullable();
-            $table->foreignId('technical_director')->nullable();
-            $table->foreignId('pso')->nullable();
             $table->timestamps();
         });
     }
