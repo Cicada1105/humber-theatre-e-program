@@ -19,7 +19,9 @@ class FacultyInvolvement extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'role_id'
+        'faculty_id',
+        'production_id',
+        'faculty_role_id'
     ];
 
     public function faculty() {
@@ -30,6 +32,6 @@ class FacultyInvolvement extends Model
     }
 
     public function facultyRole() {
-        return $this->hasOne(facultyRole::class);
+        return $this->belongsTo(FacultyRole::class);
     }
 }

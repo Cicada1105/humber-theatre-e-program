@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\FacultyInvolvement;
+
 class FacultyRole extends Model
 {
     use HasFactory;
@@ -17,4 +19,8 @@ class FacultyRole extends Model
     protected $fillable = [
         'role'
     ];
+
+    public function facultyInvolvement() {
+        return $this->hasMany(FacultyInvolvement::class);
+    }
 }

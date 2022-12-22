@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('faculty_id');
             $table->foreignId('production_id');
-            $table->foreignId('faculty_role_id');
+            $table->foreignId('faculty_role_id')->nullable();
             $table->timestamps();
         });
     }

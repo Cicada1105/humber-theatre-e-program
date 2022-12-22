@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Faculty;
 use App\Models\FacultyInvolvement;
+use App\Models\FacultyRole;
 use App\Models\Production;
 
 define('PG_TITLE', [ 'title' => 'Faculty' ]);
@@ -20,10 +21,14 @@ class FacultyController extends Controller
     public function list()
     {
         // Retrieve the active program
-        $activeProgram = Production::where('is_active', 1)->get();
+        $activeProgram = Production::where('is_active', 1)->first();
+        // Retrieve all faculty
+        $faculty = Faculty::all();
+        // Retrieve faculty roles
+        $facultyRoles = FacultyRole::all();
 
         // Pass in id of current active program
-        return view('faculty.list', [ 'title' => 'Faculty', 'faculty' => Faculty::all(), 'active_program' => $activeProgram ]);
+        return view('faculty.list', [ 'title' => 'Faculty', 'faculty' => $faculty, 'faculty_roles' => $facultyRoles, 'active_program' => $activeProgram ]);
     }
 
     /**
@@ -107,17 +112,6 @@ class FacultyController extends Controller
     }
 
     /**
-     * Show the form for changing the faculty roles of the current program
-     */
-    public function editActiveFaculty() {
-        // Obtain the current active program
-        $activeProgram = Production::where('is_active', 1)->first();
-        // Retrieve all faculty
-        $faculty = Faculty::all();
-
-        return view('faculty.edit-active', [ 'title' => 'Faculty', 'active_program' => $activeProgram, 'faculty' => $faculty ]);
-    }
-    /**
      * Update all faculty members active "status" in being in current production
      * 
      * @param  \Illuminate\Http\Request  $request
@@ -125,27 +119,33 @@ class FacultyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function updateActiveFaculty(Request $request) {
-        // Retrieve the submitted the request info
-        $submission = $request->all();
-        // Update the current active production with the newly submitted faculty positions
-        Production::where('is_active', 1)->update([
-            'senior_dean' => $submission['seniorDean'],
-            'associate_dean' => $submission['associateDean'],
-            'head_of_carpentry' => $submission['headOfCarpentry'],
-            'theatre_director' => $submission['theatreDirector'],
-            'head_of_properties' => $submission['headOfProperties'],
-            'voice_professor' => $submission['voiceProfessor'],
-            'academic_program_manager' => $submission['academicProgramManager'],
-            'head_of_lighting' => $submission['headOfLighting'],
-            'head_of_wardrobe' => $submission['headOfWardrobe'],
-            'head_of_movement' => $submission['headOfMovement'],
-            'head_of_sound' => $submission['headOfSound'],
-            'head_of_paint' => $submission['headOfPaint'],
-            'technical_director' => $submission['technicalDirector'],
-            'pso' => $submission['pso']
-        ]);
+        // ‰etrieve the active program
+        $activeProgram = Production::where('is_active', 1)->first();
+        // Reset/remove faculty involvement in the current active program
+        FacultyInvolvement::where('production_id', $activeProgram->id)->delete();
+        // Retrieve the faculty from the requet
+        $submittedFaculty = $request->all();
+        
+        // Check if any faculty where submitted
+        if (isset($submittedFaculty['faculty'])) {
+            // Loop through submitted faculty, save the selected active faculty to the involvement table
+            foreach($submittedFaculty['faculty'] as $facultyId=>$info) {
+                // Only include faculty that have been set to active
+                if (isset($info['is_active'])) {
+                    // Create a new faculty involvement model instance
+                    $involvement = new FacultyInvolvement();
+                    // Assign respective attributes
+                    $involvement->production_id = $activeProgram->id;
+                    $involvement->faculty_id = $facultyId;
+                    $involvement->faculty_role_id = $info['role'] ?? null;
 
-        return redirect($request->root() . '/pm/faculty/update');
+                    // Save newly created faculty involvement
+                    $involvement->save();
+                }
+            }
+        }
+
+        return redirect($request->root() . '/pm/faculty');
     }
 
     /**
@@ -167,9 +167,9 @@ class FacultyController extends Controller
             return back()->withErrors([ 'err' => $errMsg ]);
         }
         // Find the faculty to be deleted
-        //$facultyToBeDeleted = Faculty::find($id);
+        $facultyToBeDeleted = Faculty::find($id);
         // Remove the faculty based on the passed in id
-        //$facultyToBeDeleted->delete();
+        $facultyToBeDeleted->delete();
 
         return redirect($request->root() . '/pm/faculty');
     }

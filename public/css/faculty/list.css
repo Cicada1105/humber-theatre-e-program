@@ -2,20 +2,15 @@
 	text-align: center;
 	display: block;
 }
-.member-row {
-	position: relative;
-	text-align: center;
-	margin: 2.5rem 5rem;
+#active-faculty__text {
+	padding-left:2.5rem;
+	text-align: left;
 }
-.member-row__toggle {
-	position: absolute;
-	left:0rem;
+.member-row {
+	justify-content: space-between;
+	margin: 2.5rem 5rem;
+	gap:2rem;
 }
 .member-row__title {
-	display: inline;
-}
-.member-row-controls {
-	position: absolute;
-	display: inline;
-	right:0rem;
+	flex-grow: 1;
 }

@@ -69,15 +69,12 @@ Route::get('/contributors', function () {
 Route::get('/humber-theatre', function() {
     // Retrieve the current published program
     $activeProgram = Production::where('is_published', 1)->first();
-    // Retrieve all faculty members
-    $faculty = Faculty::all();
     // Retrieve faculty who was involved in the production or department
     $facultyInvolvement = FacultyInvolvement::where('production_id', $activeProgram->id)->get();
 
     $testData = [
         'title' => $activeProgram->title,
         'current_program' => $activeProgram,
-        'faculty' => $faculty,
         'faculty_involvement' => $facultyInvolvement
     ];
 

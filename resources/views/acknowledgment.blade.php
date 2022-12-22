@@ -16,21 +16,24 @@
 		<h2>Faculty {{ date('Y') }}</h2>
 		<dl>
 			@foreach($faculty_involvement as $involvement)
-				@php($faculty = $involvement->faculty)
-				@php($facultyRole = $involvement->facultyRole->role)
-				@php($roleId = str_replace(" ", "-", strtolower($facultyRole)))
-				<div class="faculty-involved-member flex-container">
-					<dt aria-describedBy="{{$roleId}}">
-						{{ $faculty->first_name }} {{ $faculty->last_name }}
-					</dt>
-					<dd id="{{$roleId}}">{{ $facultyRole }}</dd>
-				</div>
+				@if (!is_null($involvement['faculty_role_id']))
+					@php($faculty = $involvement->faculty)
+					@php($facultyRole = $involvement->facultyRole->role)
+					@php($roleId = str_replace(" ", "-", strtolower($facultyRole)))
+					<div class="faculty-involved-member flex-container">
+						<dt aria-describedBy="{{$roleId}}">
+							{{ $faculty->first_name }} {{ $faculty->last_name }}
+						</dt>
+						<dd id="{{$roleId}}">{{ $facultyRole }}</dd>
+					</div>
+				@endif
 			@endforeach
 		</dl>
 	</section>
 	<section class="faculty-section">
 		<ul class='faculty-list'>
-		@foreach ($faculty as $member)
+		@foreach ($faculty_involvement as $involvement)
+			@php($member = $involvement->faculty)
 			<li class="text-center">{{ $member->first_name ?? ""}} {{ $member->last_name ?? "" }}</li>
 		@endforeach
 		</ul>

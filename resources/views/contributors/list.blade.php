@@ -33,7 +33,7 @@
 				<fa class="fa-solid fa-plus">
 			</button>
 		</div>
-		<p id="active-program__text">Active Contributors</p>
+		<p id="active-contributors__text">Active Contributors</p>
 		@foreach ($contributors as $contributor)
 			@php
 				$contribution = $contributor->contributions->firstWhere("production_id", $active_program->id);
