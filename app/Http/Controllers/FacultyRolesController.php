@@ -40,7 +40,16 @@ class FacultyRolesController extends Controller
      */
     public function create(Request $request)
     {
-        //
+        // Retrieve the submitted request data
+        $submission = $request->all();
+        // Create a new faculty role
+        $newFacultyRole = new FacultyRole();
+        // Store the submitted valeus into the newly crated FacultyRole attributes
+        $newFacultyRole->role = $submission['roleName'];
+        // Save the newly created faculty role
+        $newFacultyRole->save();
+
+        // Redirect back to the list page
         return redirect($request->root() . '/pm/faculty-roles');
     }
 
