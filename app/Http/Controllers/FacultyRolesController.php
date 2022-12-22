@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\FacultyRole;
+use App\Models\FacultyInvolvement;
 
 class FacultyRolesController extends Controller
 {
@@ -97,7 +98,21 @@ class FacultyRolesController extends Controller
      */
     public function delete(Request $request, $id)
     {
-        //
+        // Check if any current involved faculty are assigned to this role
+        $facultyWithRole = FacultyInvolvement::where('faculty_role_id', $id)->get();
+
+        if (count($facultyWithRole)) {
+            // There exists faculty who are currently assigned this role -> do not delete
+            return back()->withErrors([ 'err' => 'Role cannot be deleted. Role is currently assigned to a faculty member.']);
+        }
+        // Safe to remove faculty role
+        
+        // Retrieve the faculty role to be deleted based on the passed in id
+        $facultyRoleToBeDeleted = FacultyRole::find($id);
+        // Delete the faculty role
+        $facultyRoleToBeDeleted->delete();
+
+        // Redirect back to the list of faculty roles
         return redirect($request->root() . '/pm/faculty-roles');
     }
 }

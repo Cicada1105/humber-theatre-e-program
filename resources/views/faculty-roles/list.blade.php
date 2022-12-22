@@ -23,6 +23,9 @@
 		}
 	</script>
 	<h1>List Faculty Role</h1>
+	@if ($errors->any())
+		{{$errors->first()}}
+	@endif
 	<form onsubmit="confirmation(event)">
 		{{ csrf_field() }}
 		<div class="flex-wrapper add-btn-cont">
