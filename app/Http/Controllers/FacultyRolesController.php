@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\FacultyRole;
+
 class FacultyRolesController extends Controller
 {
     /**
@@ -13,8 +15,10 @@ class FacultyRolesController extends Controller
      */
     public function list()
     {
-        //
-        return view('faculty-roles.list', [ 'title' => 'Faculty Roles' ]);
+        // Retrieve all faculty roles
+        $facultyRoles = FacultyRole::all();
+
+        return view('faculty-roles.list', [ 'title' => 'Faculty Roles', 'faculty_roles' => $facultyRoles ]);
     }
 
     /**
@@ -71,7 +75,7 @@ class FacultyRolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
         //
         return redirect($request->root() . '/pm/faculty-roles');

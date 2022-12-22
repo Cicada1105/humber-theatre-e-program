@@ -1,0 +1,17 @@
+.role-row {
+	position: relative;
+	text-align: center;
+	margin: 2.5rem 5rem;
+}
+.role-row__toggle {
+	position: absolute;
+	left:0rem;
+}
+.role-row__title {
+	display: inline;
+}
+.role-row-controls {
+	position: absolute;
+	display: inline;
+	right:0rem;
+}
