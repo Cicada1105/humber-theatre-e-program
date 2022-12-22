@@ -61,8 +61,10 @@ class FacultyRolesController extends Controller
      */
     public function edit($id)
     {
-        //
-        return view('faculty-roles.edit', [ 'title' => 'Faculty Roles' ]);
+        // Retrieve the faculty role associated with the requested id
+        $facultyRole = FacultyRole::find($id);
+
+        return view('faculty-roles.edit', [ 'title' => 'Faculty Roles', 'faculty_role' => $facultyRole ]);
     }
 
     /**
@@ -74,7 +76,16 @@ class FacultyRolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Retrieve the submitted request data
+        $submission = $request->all();
+        // Retrieve the FacultyRole to be updated based on the passed in id
+        $facultyRoleToBeUpdated = FacultyRole::find($id);
+        // Update respective fields of the faculty role
+        $facultyRoleToBeUpdated->role = $submission['roleName'];
+        // Save the changes applied to the faculty role
+        $facultyRoleToBeUpdated->save();
+
+        // Redirect back to the list of faculty roles
         return redirect($request->root() . '/pm/faculty-roles');
     }
 

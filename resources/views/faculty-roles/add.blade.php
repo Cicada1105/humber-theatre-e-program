@@ -12,6 +12,6 @@
 			<label for="role-name">Role Name:</label>
 			<input id="role-name" type="text" name="roleName" required>
 		</div>
-		<input class="btn" type="submit" value="Submit">
+		<input class="btn" type="submit" value="Add">
 	</form>
 @endsection

@@ -16,6 +16,6 @@
 			<label for="faculty-last-name">Last Name:</label>
 			<input id="faculty-last-name" type="text" name="lastName" required>
 		</div>
-		<input class="btn" type="submit" value="Submit">
+		<input class="btn" type="submit" value="Add">
 	</form>
 @endsection

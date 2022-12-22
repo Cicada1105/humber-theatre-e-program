@@ -37,6 +37,6 @@
 			<label for="contributor-photo">Profile Image:</label>
 			<input id="contributor-photo" type="file" accept="image/*" name="photo" oninput="handleFileChange(event)">
 		</div>
-		<input class="btn" type="submit" value="Submit">
+		<input class="btn" type="submit" value="Add">
 	</form>
 @endsection
