@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContributorsController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\FacultyRolesController;
 use App\Http\Controllers\HumberController;
 use App\Http\Controllers\ProductionsController;
 use App\Http\Controllers\UserController;
@@ -143,6 +144,18 @@ Route::middleware(['auth'])->group(function() {
             Route::get('/update/{id}', [FacultyController::class, 'edit']);
             Route::post('/update/{id}', [FacultyController::class, 'update']);
             Route::post('/delete/{id}', [FacultyController::class, 'delete']);
+        });
+
+        /*********************/
+        /*   Faculty Roles   */
+        /*********************/
+        Route::prefix('faculty-roles')->group(function() {
+            Route::get('/', [FacultyRolesController::class, 'list']);
+            Route::get('/add', [FacultyRolesController::class, 'add']);
+            Route::post('/add', [FacultyRolesController::class, 'create']);
+            Route::get('/update/{id}', [FacultyRolesController::class, 'edit']);
+            Route::post('/update/{id}', [FacultyRolesController::class, 'update']);
+            Route::post('/delete/{id}', [FacultyRolesController::class, 'delete']);
         });
 
         /**********************/

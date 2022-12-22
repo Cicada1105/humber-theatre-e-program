@@ -16,6 +16,9 @@
 					<a href="{{ url('/pm/faculty') }}">Faculty</a>
 				</li>
 				<li class="nav-list__item">
+					<a href="{{ url('/pm/faculty-roles') }}">Faculty Roles</a>
+				</li>
+				<li class="nav-list__item">
 					<a href="{{ url('/pm/preview') }}">Preview</a>
 				</li>
 				@if (Auth::user()->name === "admin")
