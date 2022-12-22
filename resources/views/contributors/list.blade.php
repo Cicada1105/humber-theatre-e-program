@@ -23,6 +23,13 @@
 		}
 	</script>
 	<h1>Contributors of {{ $active_program->title }}</h1>
+	@if (isset($photo))
+		@if($photo)
+			Exists
+		@else
+			Doesn't exists
+		@endif
+	@endif
 	@if ($errors->any())
 		<p class="error">{{$errors->first()}}</p>
 	@endif

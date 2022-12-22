@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
 
 use App\Models\Contributor;
 use App\Models\Contribution;
@@ -57,9 +56,6 @@ class ContributorsController extends Controller
 
         // Remove the instance of the photo if it exists
         if (isset($submission['photo'])) {
-            if (File::exists($submission['photo']->hashName())) {
-                unlink(storage_path('app/public/contributors_images/'.$submission['photo']->hashName()));
-            }
             // Store the file in the contributors_images directory under the public folder
             $path = $request->file('photo')->store('contributors_images','public');
             $newContributor->photo = $path;
@@ -119,13 +115,13 @@ class ContributorsController extends Controller
 
         // Chec if a photo was submitted
         if (isset($submission['photo'])) {
-            // Check if an old photo path exists in the database
+            // Check if contributor has an existing photo in the database
             if ($contributor->photo) {
-                unlink(storage_path('app/public/'.$contributor->photo));
-            }
-            // Check if am existing photo has the same hashname and remove accordingly
-            if (File::exists($submission['photo']->hashName())) {
-                unlink(storage_path('app/public/'.$contributor->photo));
+                // Check if file exists in server storage
+                if (Storage::disk('public')->exists($contributor->photo)) {
+                    // Remove file
+                    unlink(storage_path('app/public/'.$contributor->photo));
+                }
             }
 
             // Store the file in the contributors_images directory under the public folder
@@ -142,6 +138,9 @@ class ContributorsController extends Controller
         $contributor->save();
 
         return redirect($request->root() . '/pm/contributors');
+        // $activeProgram = Production::where('is_active', 1)->first();
+
+        // return view('contributors.list', [ 'title' => 'Contributors', 'active_program' => $activeProgram, 'contributors' => Contributor::all()->sortBy('last_name') ]);
     }
    
     /**
@@ -198,7 +197,7 @@ class ContributorsController extends Controller
         $contributorToBeDeleted = Contributor::find($id);
 
         if ($contributorToBeDeleted->photo) {
-            if (File::exists($contributorToBeDeleted['photo'])) {
+            if(Storage::disk('public')->exists($contributorToBeDeleted->photo)) {
                 // Remove image on server file system associated with the contributor
                 unlink(storage_path('app/public/'.$contributorToBeDeleted->photo));
             }

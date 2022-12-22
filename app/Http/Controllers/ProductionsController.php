@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Production;
 use App\Models\Contribution;
@@ -154,8 +154,11 @@ class ProductionsController extends Controller
         if ($request->hasFile('posterPhoto')) {
             // Check if image is associate with program
             if ($productionToBeUpdated->poster_img_src){
-                // Delete the old image on the server
-                unlink(storage_path('app/public/'.$productionToBeUpdated->poster_img_src));   
+                // Check if file does exists on the server public storage
+                if (Storage::disk('public')->exists($productionToBeUpdated->photo)) {
+                    // Delete the old image on the server
+                    unlink(storage_path('app/public/'.$productionToBeUpdated->poster_img_src));      
+                }
             }
             // Store the newly updated image inside of the production_images directory under the public storage folder
             $path = $request->file('posterPhoto')->store('production_images','public');
