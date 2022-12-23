@@ -191,6 +191,9 @@ a#skip-content__link:focus {
 	left: 0px;
 	top: 100%;
 }
+#page-header__logo {
+	width:300px;
+}
 ul.nav-list {
 	justify-content: space-around;
 	flex-flow: column;
@@ -198,26 +201,32 @@ ul.nav-list {
 	padding:0em;
 	gap: 0rem;
 }
-.nav-list__item > a {
-	font-size:0.95em;
-	padding: 0.75em 1.5em;
+.nav-list__item {
 	border-top: 1px solid var(--text-color);
+	padding: 0.75em 1.5em;
+	position: relative;
 	text-align: center;
+	font-size:0.95em;
 	width: 100vw;
+}
+ul.nav-sub-list {
+	display: none;
+	list-style: none;
+	padding: 0rem;
+	margin-top: 0.75rem;
+}
+li.nav-sub-list__item {
+	padding: 0.75rem;
+	border-top: 1px solid var(--text-color);
+}
+.nav-list__item:hover > ul.nav-sub-list {
 	display: block;
-}
-.nav-list__item a:hover {
-	background-color: var(--text-color);
-	color: var(--background-color);
-}
-#page-header__logo {
-	width:300px;
 }
 
 /*********************/
 /*   Media Queries   */
 /*********************/
-@media only screen and (min-width: 660px) {
+@media only screen and (min-width: 850px) {
 	header.page-header {
 		gap: 1rem;
 	}
@@ -225,13 +234,40 @@ ul.nav-list {
 		flex-flow: row;
 		gap: 2rem;
 	}
-	.nav-list__item > a {
+	.nav-list__item {
 		border: 1px solid var(--text-color);
 		border-radius: 0.25em;
-		display: inline;
+		width:max-content;
+	}
+	.nav-list__item:hover {
+		background-color: var(--text-color);
+		border-bottom-left-radius: 0rem;
+		border-bottom-right-radius: 0rem;
+		cursor:pointer;
+	}
+	.nav-list__item:hover > a {
+		color: var(--background-color);
+	}
+	ul.nav-sub-list {
+		margin-top: calc(0.75rem - 1px);
+		border-radius: 0.25rem;
+		position: absolute;
+		/* Add 2px to width to account for 1px border on either side of the parent container (li.nav-list__item) */
+		width: calc(100% + 2px);
+		left: -1px;
+	}
+	li.nav-sub-list__item {
+		border: 1px solid var(--text-color);
+		border-radius: 0%;
+	}
+	li.nav-sub-list__item:hover {
+		background-color: var(--text-color);
+	}
+	li.nav-sub-list__item:hover > a {
+		color: var(--background-color);
 	}
 }
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 1120px) {
 	header.page-header {
 		justify-content: space-between;
 		flex-flow: row;

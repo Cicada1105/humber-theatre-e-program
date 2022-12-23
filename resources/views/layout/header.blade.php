@@ -7,27 +7,40 @@
 		<nav>
 			<ul class="flex-container nav-list">
 				<li class="nav-list__item">
-					<a href="{{ url('/pm/contributors') }}">Contributors</a>
+					<a class="nav-list__link" href="#">Productions</a>
+					<ul class="nav-sub-list">
+						<li class="nav-sub-list__item">
+							<a href="{{ url('/pm') }}">All</a>
+						</li>
+						<li class="nav-sub-list__item">
+							<a href="{{ url('/pm/preview') }}">Preview</a>
+						</li>
+					</ul>
 				</li>
 				<li class="nav-list__item">
-					<a href="{{ url('/pm/humber') }}">Humber Theatre</a>
+					<a class="nav-list__link" href="{{ url('/pm/contributors') }}">Contributors</a>
 				</li>
 				<li class="nav-list__item">
-					<a href="{{ url('/pm/faculty') }}">Faculty</a>
-				</li>
-				<li class="nav-list__item">
-					<a href="{{ url('/pm/faculty-roles') }}">Faculty Roles</a>
-				</li>
-				<li class="nav-list__item">
-					<a href="{{ url('/pm/preview') }}">Preview</a>
+					<a class="nav-list__link" href="#">Humber Theatre</a>
+					<ul class="nav-sub-list">
+						<li class="nav-sub-list__item">
+							<a href="{{ url('/pm/humber') }}">Acknowledgment</a>
+						</li>
+						<li class="nav-sub-list__item">
+							<a href="{{ url('/pm/faculty') }}">Faculty</a>
+						</li>
+						<li class="nav-sub-list__item">
+							<a href="{{ url('/pm/faculty-roles') }}">Faculty Roles</a>
+						</li>
+					</ul>
 				</li>
 				@if (Auth::user()->name === "admin")
 					<li class="nav-list__item">
-						<a href="{{ url('/pm/users') }}">Users</a>
+						<a class="nav-list__link" href="{{ url('/pm/users') }}">Users</a>
 					</li>
 				@endif
 				<li class="nav-list__item">
-					<a href="{{ url('/logout') }}">Logout</a>
+					<a class="nav-list__link" href="{{ url('/logout') }}">Logout</a>
 				</li>
 			</ul>
 		</nav>
@@ -38,16 +51,16 @@
 		<nav>
 			<ul class="flex-container nav-list">
 				<li class="nav-list__item">
-					<a href="{{ url('/') }}">About</a>
+					<a class="nav-list__link" href="{{ url('/') }}">About</a>
 				</li>
 				<li class="nav-list__item">
-					<a href="{{ url('/contributors') }}">Contributors</a>
+					<a class="nav-list__link" href="{{ url('/contributors') }}">Contributors</a>
 				</li>
 				<li class="nav-list__item">
-					<a href="{{ url('/humber-theatre') }}">Humber Theatre</a>
+					<a class="nav-list__link" href="{{ url('/humber-theatre') }}">Humber Theatre</a>
 				</li>
 				<li class="nav-list__item">
-					<a href="{{ url('/login') }}">Login</a>
+					<a class="nav-list__link" href="{{ url('/login') }}">Login</a>
 				</li>
 			</ul>
 		</nav>
