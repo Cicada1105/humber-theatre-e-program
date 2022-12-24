@@ -19,7 +19,7 @@
 	</script>
 	<h1>Edit Contributor</h1>
 	<img id="contributor-photo-preview" src="{{$contributor->photo ? asset('storage/'.$contributor->photo) : "/imgs/default_img.png"}}" width="200">
-	<form action="/pm/contributors/contributor/update/{{$contributor->id}}" method="post" enctype="multipart/form-data">
+	<form action="{{ url("/pm/contributors/contributor/update/{$contributor->id}") }}" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
 		<div class="flex-wrapper contributor-info">
 			<label for="contributor-first-name">First Name:</label>

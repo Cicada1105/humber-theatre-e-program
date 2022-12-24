@@ -6,7 +6,7 @@
 
 @section('main-content')
 	<h3>Humber Theatre</h3>
-	<form action="/pm/humber/update" method="post">
+	<form action="{{ url('/pm/humber/update') }}" method="post">
 		{{ csrf_field() }}
 		<div class='miscellandeous-section'>
 			<label for="land-acknowledgment">Land Acknowledgment</label>

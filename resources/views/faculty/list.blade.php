@@ -26,10 +26,10 @@
 	@if ($errors->any())
 		<p class="error">{{$errors->first()}}</p>
 	@endif
-	<form action='/pm/faculty/update' method="post" onsubmit="confirmation(event)">
+	<form action='{{ url('/pm/faculty/update') }}' method="post" onsubmit="confirmation(event)">
 		{{ csrf_field() }}
 		<div class="flex-wrapper add-btn-cont">
-			<button aria-label="Add New Faculty" class="add-btn" formaction="/pm/faculty/add" formmethod="get">
+			<button aria-label="Add New Faculty" class="add-btn" formaction="{{ url('/pm/faculty/add') }}" formmethod="get">
 				<fa class="fa-solid fa-plus">
 			</button>
 		</div>
@@ -57,10 +57,10 @@
 					@endif
 				</select>
 				<div class="member-row-controls">
-					<button aria-label="Edit {{ $member->first_name }} {{ $member->last_name }} faculty" class="edit-btn" formaction="/pm/faculty/update/{{$member->id}}" formmethod="get">
+					<button aria-label="Edit {{ $member->first_name }} {{ $member->last_name }} faculty" class="edit-btn" formaction="{{ url("/pm/faculty/update/{$member->id}") }}" formmethod="get">
 						<fa class="fa-solid fa-pen-to-square">
 					</button>
-					<button aria-label="Delete {{ $member->first_name }} {{ $member->last_name }} faculty" onclick="confirmation" type="submit" class="delete-btn" formmethod="post" formaction="/pm/faculty/delete/{{$member->id}}" data-name="{{ $member->first_name }} {{ $member->last_name }}">
+					<button aria-label="Delete {{ $member->first_name }} {{ $member->last_name }} faculty" onclick="confirmation" type="submit" class="delete-btn" formmethod="post" formaction="{{ url("/pm/faculty/delete/{$member->id}") }}" data-name="{{ $member->first_name }} {{ $member->last_name }}">
 						<fa class="fa-solid fa-trash-can">
 					</button>
 				</div>

@@ -6,7 +6,7 @@
 
 @section('main-content')
 	<h1>Add Faculty</h1>
-	<form action="/pm/faculty/add" method="post">
+	<form action="{{ url('/pm/faculty/add') }}" method="post">
 		{{ csrf_field() }}
 		<div class="flex-wrapper faculty-row">
 			<label for="faculty-first-name">First Name:</label>

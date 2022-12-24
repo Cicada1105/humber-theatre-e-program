@@ -19,7 +19,7 @@
 	</script>
 	<h1>Edit Production</h1>
 	<img id="production-photo-preview" src="{{asset('storage/'.$production->poster_img_src)}}" alt="" width="200">
-	<form action="/pm/production/update/{{$production->id}}" method="post" enctype="multipart/form-data">
+	<form action="{{ url("/pm/production/update/{$production->id}") }}" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
 		<div class="flex-wrapper production-info">
 			<label for="production-poster__photo">Production Poster:</label>

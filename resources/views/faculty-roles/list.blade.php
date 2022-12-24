@@ -29,7 +29,7 @@
 	<form onsubmit="confirmation(event)">
 		{{ csrf_field() }}
 		<div class="flex-wrapper add-btn-cont">
-			<button aria-label="Add New Faculty" class="add-btn" formaction="/pm/faculty-roles/add" formmethod="get">
+			<button aria-label="Add New Faculty" class="add-btn" formaction="{{ url('/pm/faculty-roles/add') }}" formmethod="get">
 				<fa class="fa-solid fa-plus">
 			</button>
 		</div>
@@ -37,10 +37,10 @@
 			<div class="flex-wrapper role-row">
 				<h3 class="role-row__title">{{ $role->role }}</h3>
 				<div class="role-row-controls">
-					<button aria-label="Edit {{ $role->role }} faculty role" class="edit-btn" formaction="/pm/faculty-roles/update/{{$role->id}}" formmethod="get">
+					<button aria-label="Edit {{ $role->role }} faculty role" class="edit-btn" formaction="{{ url("/pm/faculty-roles/update/{$role->id}") }}" formmethod="get">
 						<fa class="fa-solid fa-pen-to-square">
 					</button>
-					<button aria-label="Delete {{ $role->role }} faculty role" onclick="confirmation" type="submit" class="delete-btn" formmethod="post" formaction="/pm/faculty-roles/delete/{{$role->id}}" data-name="{{ $role->role }}">
+					<button aria-label="Delete {{ $role->role }} faculty role" onclick="confirmation" type="submit" class="delete-btn" formmethod="post" formaction="{{ url("/pm/faculty-roles/delete/{$role->id}") }}" data-name="{{ $role->role }}">
 						<fa class="fa-solid fa-trash-can">
 					</button>
 				</div>

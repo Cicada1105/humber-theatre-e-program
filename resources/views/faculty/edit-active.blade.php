@@ -6,7 +6,7 @@
 
 @section('main-content')
 	<h1>Faculty Details</h1>
-	<form action="/pm/faculty/update" method="post">
+	<form action="{{ url('/pm/faculty/update') }}" method="post">
 		{{ csrf_field() }}
 		<div class="flex-wrapper involved-faculty">
 			<select id="senior-dean" name="seniorDean" required>

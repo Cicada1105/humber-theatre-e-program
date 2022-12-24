@@ -18,7 +18,7 @@
 		}
 	</script>
 	<h1>Add Contributor</h1>
-	<img id="contributor-photo-preview" src="/imgs/default_img.png" alt="" width="200">
+	<img id="contributor-photo-preview" src="{{ url('/imgs/default_img.png') }}" alt="" width="200">
 	<form action="/pm/contributors/contributor/add" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
 		<div class="flex-wrapper contributor-info">

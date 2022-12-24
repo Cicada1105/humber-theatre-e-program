@@ -23,20 +23,13 @@
 		}
 	</script>
 	<h1>Contributors of {{ $active_program->title }}</h1>
-	@if (isset($photo))
-		@if($photo)
-			Exists
-		@else
-			Doesn't exists
-		@endif
-	@endif
 	@if ($errors->any())
 		<p class="error">{{$errors->first()}}</p>
 	@endif
 	<form action='/pm/contributors/update' method="post" onsubmit="confirmation(event)">
 		{{ csrf_field() }}
 		<div class="flex-wrapper add-btn-cont">
-			<button aria-label="Add Contributor" class="add-btn" formaction="/pm/contributors/contributor/add" formmethod="get">
+			<button aria-label="Add Contributor" class="add-btn" formaction="{{ url('/pm/contributors/contributor/add') }}" formmethod="get">
 				<fa class="fa-solid fa-plus">
 			</button>
 		</div>
@@ -61,10 +54,10 @@
 					<option value="production" {{$isContributor && $categoryName=="production" ? "selected" : ""}}>Production</option>
 				</select>
 				<div class="contributor-row-controls">
-					<button aria-label="Edit {{ $contributor->first_name }} {{ $contributor->last_name }} contributor" class="edit-btn" formaction="/pm/contributors/contributor/update/{{$contributor->id}}" formmethod="get">
+					<button aria-label="Edit {{ $contributor->first_name }} {{ $contributor->last_name }} contributor" class="edit-btn" formaction="{{ url("/pm/contributors/contributor/update/{$contributor->id}") }}" formmethod="get">
 						<fa class="fa-solid fa-pen-to-square">
 					</button>
-					<button aria-label="Delete {{ $contributor->first_name }} {{ $contributor->last_name }} contributor" type="submit" class="delete-btn" formmethod="post" formaction="/pm/contributors/contributor/delete/{{$contributor->id}}" data-name="{{ $contributor->first_name }} {{ $contributor->last_name }}">
+					<button aria-label="Delete {{ $contributor->first_name }} {{ $contributor->last_name }} contributor" type="submit" class="delete-btn" formmethod="post" formaction="{{ url("/pm/contributors/contributor/delete/{$contributor->id}") }}" data-name="{{ $contributor->first_name }} {{ $contributor->last_name }}">
 						<fa class="fa-solid fa-trash-can">
 					</button>
 				</div>

@@ -6,7 +6,7 @@
 
 @section('main-content')
 	<h1>Edit User</h1>
-	<form action="/pm/users/update/{{$user->id}}" method="post">
+	<form action="{{ url("/pm/users/update/{$user->id}") }}" method="post">
 		{{ csrf_field() }}
 		<div class="flex-wrapper user-info">
 			<label for="userName">User Name:</label>

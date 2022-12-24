@@ -6,7 +6,7 @@
 
 @section('main-content')
 	<h1>Edit Faculty Role</h1>
-	<form action="/pm/faculty-roles/update/{{$faculty_role->id}}" method="post">
+	<form action="{{ url("/pm/faculty-roles/update/{$faculty_role->id}") }}" method="post">
 		{{ csrf_field() }}
 		<div class="flex-wrapper role-row">
 			<label for="role-name">Role Name:</label>

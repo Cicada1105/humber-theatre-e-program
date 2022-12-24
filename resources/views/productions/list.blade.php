@@ -9,7 +9,7 @@
 	<form action='/pm/update' method="post">
 		{{ csrf_field() }}
 		<div class="flex-wrapper add-btn-cont">
-			<button aria-label="Add New Production" class="add-btn" formaction="/pm/production/add" formmethod="get">
+			<button aria-label="Add New Production" class="add-btn" formaction="{{ url('/pm/production/add') }}" formmethod="get">
 				<fa class="fa-solid fa-plus">
 			</button>
 		</div>
@@ -20,10 +20,10 @@
 				<h3 class="production-row__title">{{ $production->title }}</h3>
 				<span class="published">{{ $production->is_published ? "(Published)" : ""}}</span>
 				<div class="production-row-controls">
-					<button aria-label="Edit {{ $production->title }} production" class="edit-btn" formaction="/pm/production/update/{{$production->id}}" formmethod="get">
+					<button aria-label="Edit {{ $production->title }} production" class="edit-btn" formaction="{{ url("/pm/production/update/{$production->id}") }}" formmethod="get">
 						<fa class="fa-solid fa-pen-to-square">
 					</button>
-					<button aria-label="Delete {{ $production->title }} production" type="submit" class="delete-btn" formmethod="post" formaction="/pm/production/delete/{{$production->id}}">
+					<button aria-label="Delete {{ $production->title }} production" type="submit" class="delete-btn" formmethod="post" formaction="{{ url("/pm/production/delete/{$production->id}") }}">
 						<fa class="fa-solid fa-trash-can">
 					</button>
 				</div>

@@ -26,7 +26,7 @@
 	<form onsubmit="confirmation(event)">
 		{{ csrf_field() }}
 		<div class="flex-wrapper add-btn-cont">
-			<button aria-label="Add New User" class="add-btn" formaction="/pm/users/add" formmethod="get">
+			<button aria-label="Add New User" class="add-btn" formaction="{{ url('/pm/users/add') }}" formmethod="get">
 				<fa class="fa-solid fa-plus">
 			</button>
 		</div>
@@ -35,10 +35,10 @@
 				<h3>{{$user->name}}</h3>
 				<p>{{$user->email}}</p>
 				<div class="user-controls">
-					<button aria-label="Edit {{ $user->name }} user" class="edit-btn" formaction="/pm/users/update/{{$user->id}}" formmethod="get">
+					<button aria-label="Edit {{ $user->name }} user" class="edit-btn" formaction="{{ url("/pm/users/update/{$user->id}") }}" formmethod="get">
 						<fa class="fa-solid fa-pen-to-square">
 					</button>
-					<button aria-label="Delete {{ $user->name }} user" type="submit" class="delete-btn" formmethod="post" formaction="/pm/users/delete/{{$user->id}}" data-name="{{ $user->name }}">
+					<button aria-label="Delete {{ $user->name }} user" type="submit" class="delete-btn" formmethod="post" formaction="{{ url("/pm/users/delete/{$user->id}") }}" data-name="{{ $user->name }}">
 						<fa class="fa-solid fa-trash-can">
 					</button>
 				</div>

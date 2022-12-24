@@ -6,7 +6,7 @@
 
 @section('main-content')
 	<h1>{{$active_program->title}} Preview</h1>
-	<form action="/pm/preview" method="post">
+	<form action="{{ url('/pm/preview') }}" method="post">
 		{{ csrf_field() }}
 		<input id="publish-btn" class="btn" type="submit" value="Publish">
 	</form>
