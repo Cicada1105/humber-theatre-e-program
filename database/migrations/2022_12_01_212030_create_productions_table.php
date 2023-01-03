@@ -34,7 +34,7 @@ return new class extends Migration
             $table->mediumText('about_humber')->nullable();
             $table->mediumText('special_thanks')->nullable();
             // The following are the foreign keys of the faculty that contribute to a given production
-            $table->timestamps();
+            $table->timestamps()->useCurrent();
         });
     }
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('production_id');
             $table->enum('category',['performance','guest_artist', 'production']);
             $table->tinyText('role');
-            $table->timestamps();
+            $table->timestamps()->useCurrent();
         });
     }
 

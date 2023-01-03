@@ -19,7 +19,7 @@ return new class extends Migration
             $table->tinyText('last_name');
             $table->text('bio');
             $table->string('photo');
-            $table->timestamps();
+            $table->timestamps()->useCurrent();
         });
     }
 

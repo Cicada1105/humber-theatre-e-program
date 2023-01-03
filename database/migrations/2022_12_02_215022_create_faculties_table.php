@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->tinyText('first_name');
             $table->tinyText('last_name');
-            $table->timestamps();
+            $table->timestamps()->useCurrent();
         });
     }
 
