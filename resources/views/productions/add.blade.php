@@ -21,43 +21,43 @@
 	<img id="production-photo-preview" src="/imgs/default_img.png" alt="" width="200">
 	<form action="{{ url('/pm/production/add') }}" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
-		<div class="flex-wrapper production-info">
+		<div class="flex-wrapper production-input-row">
 			<label for="production-poster__photo">Production Poster:</label>
 			<input id="production-poster__photo" type="file" accept="image/*" name="posterPhoto" onchange="handleFileChange(event)" required>
 		</div>
-		<div class="flex-wrapper production-info">
+		<div class="flex-wrapper production-input-row">
 			<label for="production-poster__caption">Production Poster Caption:</label>
 			<input id="production-poster__caption" type="text" name="posterCaption" required>
 		</div>
-		<div class="flex-wrapper production-info">
+		<div class="flex-wrapper production-input-row">
 			<label for="production-title">Title:</label>
 			<input id="production-title" type="text" name="title" required>
 		</div>
-		<div class="flex-wrapper production-info">
+		<div class="flex-wrapper production-input-row">
 			<label for="production-authors">Authors:</label>
 			<input id="production-authors" type="text" name="authors" required>
 		</div>
-		<div class="flex-wrapper production-info">
+		<div class="flex-wrapper production-input-row">
 			<label for="production-blurb">Blurb:</label>
 			<textarea id="production-blurb" name="blurb" required></textarea>
 		</div>
-		<div class="flex-wrapper production-info">
+		<div class="flex-wrapper production-input-row">
 			<label for="production-directors">Directors:</label>
 			<input id="production-directors" type="text" name="directors" required>
 		</div>
-		<div class="flex-wrapper production-info">
+		<div class="flex-wrapper production-input-row">
 			<label for="production-choreographers">Choreographers:</label>
 			<input id="production-choreographers" type="text" name="choreographers" required>
 		</div>
-		<div class="flex-wrapper production-info">
+		<div class="flex-wrapper production-input-row">
 			<label for="production-dates">Dates:</label>
 			<input id="production-dates" type="text" name="dates" required>
 		</div>
-		<div class="flex-wrapper production-info">
+		<div class="flex-wrapper production-input-row">
 			<label for="production-location">Location:</label>
 			<input id="production-location" type="text" name="location" required>
 		</div>
-		<div class="flex-wrapper production-info">
+		<div class="flex-wrapper production-input-row">
 			<label for="production-content-warning">Content Warning:</label>
 			<textarea id="production-content-warning" name="contentWarning" required></textarea>
 		</div>

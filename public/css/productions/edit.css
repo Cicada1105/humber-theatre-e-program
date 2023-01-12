@@ -2,16 +2,16 @@
 	display: block;
 	margin: auto;
 }
-.production-info {
+.production-input-row {
 	justify-content: space-between;
 	position: relative;
 	margin:2.5rem auto;
 	width:60%;
 }
-.production-info > label {
+.production-input-row > label {
 	font-size:1.5rem;
 }
-.production-info > input, .production-info > textarea {
+.production-input-row > input, .production-input-row > textarea {
 	font-size:1.15rem;
 	padding: 0.25rem 0.5rem;
 }

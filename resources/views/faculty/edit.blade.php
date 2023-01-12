@@ -8,11 +8,11 @@
 	<h1>Edit Faculty</h1>
 	<form action="{{ url("/pm/faculty/update/{$faculty->id}") }}" method="post">
 		{{ csrf_field() }}
-		<div class="flex-wrapper faculty-row">
+		<div class="flex-wrapper faculty-input-row">
 			<label for="faculty-first-name">First Name:</label>
 			<input id="faculty-first-name" type="text" name="firstName" value="{{$faculty->first_name}}" required>
 		</div>
-		<div class="flex-wrapper faculty-row">
+		<div class="flex-wrapper faculty-input-row">
 			<label for="faculty-last-name">Last Name:</label>
 			<input id="faculty-last-name" type="text" name="lastName" value="{{$faculty->last_name}}" required>
 		</div>

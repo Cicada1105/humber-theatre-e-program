@@ -8,7 +8,7 @@
 	<h1>Add Faculty Role</h1>
 	<form action="{{ url('/pm/faculty-roles/add') }}" method="post">
 		{{ csrf_field() }}
-		<div class="flex-wrapper role-row">
+		<div class="flex-wrapper role-input-row">
 			<label for="role-name">Role Name:</label>
 			<input id="role-name" type="text" name="roleName" required>
 		</div>

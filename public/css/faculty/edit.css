@@ -1,11 +1,11 @@
-.faculty-row {
+.faculty-input-row {
 	justify-content: space-around;
 	margin:2.5rem auto;
 }
-.faculty-row > label {
+.faculty-input-row > label {
 	font-size:1.5rem;
 }
-.faculty-row > input {
+.faculty-input-row > input {
 	font-size:1.15rem;
 	padding: 0.25rem 0.5rem;
 }

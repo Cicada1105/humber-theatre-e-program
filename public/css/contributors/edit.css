@@ -2,15 +2,14 @@
 	display: block;
 	margin: auto;
 }
-.contributor-info {
+.contributor-input-row {
 	justify-content: space-between;
-	width:60%;
 	margin:2.5rem auto;
 }
-.contributor-info > label {
+.contributor-input-row > label {
 	font-size:1.5rem;
 }
-.contributor-info > input, .contributor-info > textarea {
+.contributor-input-row > input, .contributor-input-row > textarea {
 	font-size:1.15rem;
 	padding: 0.25rem 0.5rem;
 }

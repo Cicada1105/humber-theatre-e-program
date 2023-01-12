@@ -8,7 +8,7 @@
 	<h1>Edit Faculty Role</h1>
 	<form action="{{ url("/pm/faculty-roles/update/{$faculty_role->id}") }}" method="post">
 		{{ csrf_field() }}
-		<div class="flex-wrapper role-row">
+		<div class="flex-wrapper role-input-row">
 			<label for="role-name">Role Name:</label>
 			<input id="role-name" type="text" name="roleName" value="{{ $faculty_role->role }}" required>
 		</div>

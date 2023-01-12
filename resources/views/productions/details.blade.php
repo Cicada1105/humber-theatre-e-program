@@ -90,12 +90,12 @@
         <dl>
             @foreach($faculty_involvement as $involvement)
                 @if(!is_null($involvement->faculty_role_id))
-                    @php($faculty = $involvement->faculty)
+                    @php($facultyMember = $involvement->faculty)
                     @php($facultyRole = $involvement->facultyRole->role)
                     @php($roleId = str_replace(" ", "-", strtolower($facultyRole)))
                     <div class="faculty-involved-member flex-container">
                         <dt aria-describedBy="{{$roleId}}">
-                            {{ $faculty->first_name }} {{ $faculty->last_name }}
+                            {{ $facultyMember->first_name }} {{ $facultyMember->last_name }}
                         </dt>
                         <dd id="{{$roleId}}">{{ $facultyRole }}</dd>
                     </div>
