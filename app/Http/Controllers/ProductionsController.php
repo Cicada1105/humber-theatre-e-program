@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Production;
 use App\Models\Contribution;
 use App\Models\Faculty;
+use App\Models\FacultyInvolvement;
 
 define('PG_TITLE', [ 'title' => 'Productions' ]);
 
@@ -37,11 +38,14 @@ class ProductionsController extends Controller
         $contributions = Contribution::where('production_id', $activeProgram->id)->get();
         // Retrieve all faculty members
         $faculty = Faculty::all();
+        // Retrieve all of the faculty involved in the current program
+        $facultyInvolvement = FacultyInvolvement::where('production_id', $activeProgram->id)->get();
 
         $previewData = [
             'title' => 'Productions',
             'active_program' => $activeProgram,
             'contributions' => $contributions,
+            'faculty_involvement' => $facultyInvolvement,
             'faculty' => $faculty
         ];
 

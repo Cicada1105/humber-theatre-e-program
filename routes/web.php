@@ -43,43 +43,44 @@ enum DepartmentTypes:string {
 /*********************/
 /*   Public Routes   */
 /*********************/
-Route::get('/', function() {
-    // Obtain the program labeled as published
-    $publishedProgram = Production::where('is_published',1)->first();
+Route::middleware(['guest'])->group(function() {
+    Route::get('/', function() {
+        // Obtain the program labeled as published
+        $publishedProgram = Production::where('is_published',1)->first();
 
-    return view('home', $publishedProgram );
-})->middleware('guest');
-Route::get('/contributors', function () {
-    // Obtain the current published program
-    $activeProgram = Production::where('is_published', 1)->first();
-    // Retrieve all Contributions to the current published program
-    $contributions = Contribution::where('production_id', $activeProgram->id)->get()->sortBy(function($contribution) {
-        return $contribution->contributor->last_name;
+        return view('home', $publishedProgram );
     });
+    Route::get('/contributors', function () {
+        // Obtain the current published program
+        $activeProgram = Production::where('is_published', 1)->first();
+        // Retrieve all Contributions to the current published program
+        $contributions = Contribution::where('production_id', $activeProgram->id)->get()->sortBy(function($contribution) {
+            return $contribution->contributor->last_name;
+        });
 
-    $contributorsData = [
-        'title' => $activeProgram->title,
-        'program' => $activeProgram->title,
-        'departments' => DepartmentTypes::cases(),
-        'contributions' => $contributions
-    ];
+        $contributorsData = [
+            'title' => $activeProgram->title,
+            'program' => $activeProgram->title,
+            'contributions' => $contributions
+        ];
 
-    return view('contributors', $contributorsData);
-})->middleware('guest');
-Route::get('/humber-theatre', function() {
-    // Retrieve the current published program
-    $activeProgram = Production::where('is_published', 1)->first();
-    // Retrieve faculty who was involved in the production or department
-    $facultyInvolvement = FacultyInvolvement::where('production_id', $activeProgram->id)->get();
+        return view('contributors', $contributorsData);
+    });
+    Route::get('/humber-theatre', function() {
+        // Retrieve the current published program
+        $activeProgram = Production::where('is_published', 1)->first();
+        // Retrieve faculty who was involved in the production or department
+        $facultyInvolvement = FacultyInvolvement::where('production_id', $activeProgram->id)->get();
 
-    $testData = [
-        'title' => $activeProgram->title,
-        'current_program' => $activeProgram,
-        'faculty_involvement' => $facultyInvolvement
-    ];
+        $testData = [
+            'title' => $activeProgram->title,
+            'current_program' => $activeProgram,
+            'faculty_involvement' => $facultyInvolvement
+        ];
 
-    return view('acknowledgment', $testData);
-})->middleware('guest');
+        return view('acknowledgment', $testData);
+    });
+});
 
 /********************/
 /*   Login Routes   */

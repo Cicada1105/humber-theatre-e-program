@@ -26,7 +26,7 @@
 	@if ($errors->any())
 		<p class="error">{{$errors->first()}}</p>
 	@endif
-	<form action='/pm/contributors/update' method="post" onsubmit="confirmation(event)">
+	<form action="{{ url('/pm/contributors/update') }}" method="post" onsubmit="confirmation(event)">
 		{{ csrf_field() }}
 		<div class="flex-wrapper add-btn-cont">
 			<button aria-label="Add Contributor" class="add-btn" formaction="{{ url('/pm/contributors/contributor/add') }}" formmethod="get">
