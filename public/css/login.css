@@ -1,7 +1,10 @@
+form {
+	margin-top:2rem;
+}
 .login-row {
-	justify-content: space-around;
+	flex-direction: column;
 	margin:2.5rem auto;
-	width:50%;
+	gap:1.5rem;
 }
 .login-row > label {
 	font-size:1.5rem;
@@ -12,4 +15,25 @@
 }
 input[type="submit"] {
 	margin-top:4rem;
+}
+
+/*****************/
+/* Media Queries */
+/*****************/
+@media only screen and (min-width: 850px) {
+	form {
+		margin-top:4rem;
+	}
+	.login-row {
+		justify-content: space-around;
+		flex-direction:row;
+		gap: unset;
+		width:75vw;
+	}
+}
+@media only screen and (min-width: 1540px) {
+	.login-row {
+		justify-content: space-around;
+		width: 50vw;
+	}
 }
