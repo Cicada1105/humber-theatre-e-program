@@ -1,15 +1,15 @@
-.user-info {
+.user-input-row {
 	justify-content: space-between;
 }
-.user-info {
+.user-input-row {
 	justify-content: space-between;
 	width:60%;
 	margin:2.5rem auto;
 }
-.user-info > label {
+.user-input-row > label {
 	font-size:1.5rem;
 }
-.user-info > input {
+.user-input-row > input {
 	font-size:1.15rem;
 	padding: 0.25rem 0.5rem;
 }

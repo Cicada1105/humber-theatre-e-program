@@ -8,15 +8,15 @@
 	<h1>Add User</h1>
 	<form action="{{ url('/pm/users/add') }}" method="post">
 		{{ csrf_field() }}
-		<div class="flex-wrapper user-info">
+		<div class="flex-wrapper user-input-row">
 			<label for="userName">User Name:</label>
 			<input id="userName" type="text" name="name" required>
 		</div>
-		<div class="flex-wrapper user-info">
+		<div class="flex-wrapper user-input-row">
 			<label for="userEmail">Email:</label>
 			<input id="userEmail" type="email" name="email" required>
 		</div>
-		<div class="flex-wrapper user-info">
+		<div class="flex-wrapper user-input-row">
 			<label for="userPass">Password</label>
 			<input id="userPass" type="password" name="password" required>
 		</div>
