@@ -18,7 +18,7 @@
 		}
 	</script>
 	<h1>Add Production</h1>
-	<img id="production-photo-preview" src="/imgs/default_img.png" alt="" width="200">
+	<img id="production-photo-preview" src="{{ url('imgs/default_img.png') }}" alt="" width="200">
 	<form action="{{ url('/pm/production/add') }}" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
 		<div class="flex-wrapper production-input-row">
@@ -47,7 +47,7 @@
 		</div>
 		<div class="flex-wrapper production-input-row">
 			<label for="production-choreographers">Choreographers:</label>
-			<input id="production-choreographers" type="text" name="choreographers" required>
+			<input id="production-choreographers" type="text" name="choreographers">
 		</div>
 		<div class="flex-wrapper production-input-row">
 			<label for="production-dates">Dates:</label>

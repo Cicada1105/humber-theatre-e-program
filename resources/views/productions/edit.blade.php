@@ -18,7 +18,7 @@
 		}
 	</script>
 	<h1>Edit Production</h1>
-	<img id="production-photo-preview" src="{{asset('storage/'.$production->poster_img_src)}}" alt="" width="200">
+	<img id="production-photo-preview" src="{{ asset('storage/'.$production->poster_img_src) }}" alt="" width="200">
 	<form action="{{ url("/pm/production/update/{$production->id}") }}" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
 		<div class="flex-wrapper production-input-row">
@@ -47,7 +47,7 @@
 		</div>
 		<div class="flex-wrapper production-input-row">
 			<label for="production-choreographers">Choreographers:</label>
-			<input id="production-choreographers" type="text" name="choreographers" value="{{$production->choreographers}}" required>
+			<input id="production-choreographers" type="text" name="choreographers" value="{{$production->choreographers}}">
 		</div>
 		<div class="flex-wrapper production-input-row">
 			<label for="production-dates">Dates:</label>
