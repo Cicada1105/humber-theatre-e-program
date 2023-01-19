@@ -1,17 +1,28 @@
 .role-row {
 	position: relative;
+	justify-content: space-between;
 	text-align: center;
-	margin: 2.5rem 5rem;
-}
-.role-row__toggle {
-	position: absolute;
-	left:0rem;
+	margin: 2.5rem 0.25rem;
+	flex-direction: column;
 }
 .role-row__title {
 	display: inline;
 }
 .role-row-controls {
-	position: absolute;
+	/*position: absolute;
 	display: inline;
-	right:0rem;
+	right:0rem;*/
+}
+/*****************/
+/* Media Queries */
+/*****************/
+@media only screen and (min-width: 700px) {
+	.role-row {
+		margin: 2.5rem 5rem;
+	}
+}
+@media only screen and (min-width: 850px) {
+	.role-row {
+		flex-direction: row;
+	}
 }
