@@ -1,5 +1,27 @@
 .user-row {
 	justify-content: space-between;
-	width:60vw;
+	flex-direction: column;
+	flex-wrap: wrap;
 	margin:auto;
+}
+.user-controls {
+	flex-basis: 100%;
+}
+/*****************/
+/* Media Queries */
+/*****************/
+@media only screen and (min-width: 540px) {
+	.user-row {
+		flex-direction: row;
+	}
+}
+@media only screen and (min-width: 850px) {
+	.user-controls {
+		flex-basis: auto;
+	}
+}
+@media only screen and (min-width: 1025px) {
+	.user-row {
+		justify-content: space-around;
+	}
 }
