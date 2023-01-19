@@ -42,17 +42,19 @@
 			<section class="flex-wrapper contributor-row">
 				<input aria-label="{{$contributor->first_name}} {{$contributor->last_name}} is active contributor toggle" class="contributor-row__toggle" type="checkbox" name="contributors[{{$contributor->id}}][is_active]" {{ $isContributor ? "checked" : "" }}>
 				<h3 class="contributor-row__title">{{ $contributor->first_name }} {{ $contributor->last_name }}</h3>
-				<div>
-					<label for="{{$contributor->first_name}}-{{$contributor->last_name}}-role">Role:</label>
-					<input id="{{$contributor->first_name}}-{{$contributor->last_name}}-role" type="text" name="contributors[{{$contributor->id}}][role]" value="{{ $isContributor ? $contribution->role : ""}}">
+				<div class="contributor-role">
+					<div class="contributor-role__name">
+						<label for="{{$contributor->first_name}}-{{$contributor->last_name}}-role">Role:</label>
+						<input id="{{$contributor->first_name}}-{{$contributor->last_name}}-role" type="text" name="contributors[{{$contributor->id}}][role]" value="{{ $isContributor ? $contribution->role : ""}}">
+					</div>
+					<select class="contributor-role__category" value="" name="contributors[{{$contributor->id}}][category]">
+						@php($categoryName = $isContributor ? $contribution->category : "");
+						<option aria-hidden="true" disabled selected>--Category--</option>
+						<option value="performance" {{$isContributor && $categoryName=="performance" ? "selected" : ""}}>Performance</option>
+						<option value="guest_artist" {{$isContributor && $categoryName=="guest_artist" ? "selected" : ""}}>Guest Artist</option>
+						<option value="production" {{$isContributor && $categoryName=="production" ? "selected" : ""}}>Production</option>
+					</select>
 				</div>
-				<select value="" name="contributors[{{$contributor->id}}][category]">
-					@php($categoryName = $isContributor ? $contribution->category : "");
-					<option aria-hidden="true" disabled selected>--Category--</option>
-					<option value="performance" {{$isContributor && $categoryName=="performance" ? "selected" : ""}}>Performance</option>
-					<option value="guest_artist" {{$isContributor && $categoryName=="guest_artist" ? "selected" : ""}}>Guest Artist</option>
-					<option value="production" {{$isContributor && $categoryName=="production" ? "selected" : ""}}>Production</option>
-				</select>
 				<div class="contributor-row-controls">
 					<button aria-label="Edit {{ $contributor->first_name }} {{ $contributor->last_name }} contributor" class="edit-btn" formaction="{{ url("/pm/contributors/contributor/update/{$contributor->id}") }}" formmethod="get">
 						<fa class="fa-solid fa-pen-to-square">
