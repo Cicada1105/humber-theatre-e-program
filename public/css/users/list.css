@@ -3,6 +3,7 @@
 	flex-direction: column;
 	flex-wrap: wrap;
 	margin:auto;
+	margin-bottom: 2rem;
 }
 .user-controls {
 	flex-basis: 100%;
@@ -16,6 +17,9 @@
 	}
 }
 @media only screen and (min-width: 850px) {
+	.user-row {
+		margin-bottom: unset;
+	}
 	.user-controls {
 		flex-basis: auto;
 	}
