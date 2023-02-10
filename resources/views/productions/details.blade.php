@@ -16,7 +16,7 @@
     </figure>
     <h3 class="program-title text-upper">{{ $active_program->title }}</h3>
     <h4 class="program-writer">By: {{ $active_program->authors }}</h4>
-    <section class="text-center synopsis-section">
+    <section class="text-justify synopsis-section">
         <p>{{ $active_program->blurb }}</p>
     </section>
     <section class="director-section">
@@ -70,7 +70,10 @@
                     <h5 style="color: {{ $categoryColor[$contribution['category']] }}">{{ ucwords(str_replace('_',' ',$contribution['category']))  }}</h5>
                     <h5>{{ $contribution['role'] }}</h5>
                 </hgroup>
-                <p class="contributor__bio text-justify">{{ $contributor['bio'] }}</p>
+                <section class="flex-wrapper contributor-bio">
+                    <img class="bio__img" src="{{asset('storage/' . $contributor->photo)}}" alt="{{$contributor->first_name}} {{$contributor->last_name}} headshot">
+                    <p class="bio__text text-justify">{{ $contributor['bio'] }}</p>
+                </section>
             </article>
         @endforeach
 

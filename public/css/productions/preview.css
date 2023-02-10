@@ -30,13 +30,21 @@ hgroup.departments {
 hgroup.role {
 	justify-content: space-between;
 	padding: 0rem 4rem;
+	margin-top: 1rem;
 }
-hgroup.role > h5 {
+hgroup.role > h4 {
 	margin:0rem;
 }
-.contributor__bio {
-	margin: 2rem 4rem;\
+.contributor-bio {
+	flex-flow: column;
+}
+.bio__text {
+	margin: 2rem 4rem;
 	line-height: 1.875;
+}
+.bio__img {
+	margin: 1rem auto;;
+	width:300px;
 }
 .acknowledgment-section > p, .about-humber-section > p, .special-thanks-section > p {
 	line-height: 1.875;
@@ -58,4 +66,13 @@ dl {
 }
 section.special-thanks-section {
 	width: 70%;
+}
+@media only screen and (min-width: 790px) {
+	.contributor-bio {
+		flex-flow: row;
+	}
+	.bio__img {
+		margin-right:1.5rem;
+		width:200px;
+	}	
 }
