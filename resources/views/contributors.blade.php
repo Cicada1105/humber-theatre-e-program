@@ -6,11 +6,12 @@
 
 @section('main-content')
 	<h1>{{ $program }}: Contributors</h1>
-	<hgroup class="departments flex-container m-auto">
-		@foreach($departments as $department)
-			<h3 style="color: {{ $department->color() }}">{{ ucwords($department->value) }}</h3>
-		@endforeach
-	</hgroup>
+    @php($categoryColor = [ 'performance' => '#0C87CE', 'guest_artist' => '#EA7994', 'production' => '#3FA276' ])
+    <hgroup class="departments flex-container m-auto">
+        @foreach($categoryColor as $category=>$color)
+            <h4 style="color: {{$color}}">{{ ucwords(str_replace('_', ' ', $category)) }}</h4>
+        @endforeach
+    </hgroup>
 	<section class="contributors-section">
 		@php($categoryColor = [ 'performance' => '#0C87CE', 'guest_artist' => '#EA7994', 'production' => '#3FA276' ])
 		@foreach($contributions as $contribution)
@@ -23,7 +24,7 @@
 				</hgroup>
 				<section class="flex-wrapper contributor-bio">
 					<img class="bio__img" src="{{asset('storage/' . $contributor->photo)}}" alt="{{$contributor->first_name}} {{$contributor->last_name}} headshot">
-					<p class="bio__text">{{ $contributor['bio'] }}</p>
+					<p class="bio__text text-justify">{{ $contributor['bio'] }}</p>
 				</section>
 			</article>
 		@endforeach

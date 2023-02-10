@@ -70,7 +70,7 @@
                     <h5 style="color: {{ $categoryColor[$contribution['category']] }}">{{ ucwords(str_replace('_',' ',$contribution['category']))  }}</h5>
                     <h5>{{ $contribution['role'] }}</h5>
                 </hgroup>
-                <p class="contributor__bio">{{ $contributor['bio'] }}</p>
+                <p class="contributor__bio text-justify">{{ $contributor['bio'] }}</p>
             </article>
         @endforeach
 
@@ -78,11 +78,11 @@
     <h3>Humber Theatre Acknowledgement</h3>
     <section class="acknowledgment-section">
         <h4>Acknowledging The Land</h4>
-        <p style="text-align:center">{{$active_program->land_acknowledgment}}</p>
+        <p class="text-justify">{{$active_program->land_acknowledgment}}</p>
     </section>
     <section class="about-humber-section">
         <h4>About Humber Theatre</h4>
-        <p style="text-align:center">{{$active_program->about_humber}}</p>
+        <p class="text-justify">{{$active_program->about_humber}}</p>
     </section>
     <section class="faculty-involved-section">
         <h4>Faculty {{ date('Y') }}</h4>
@@ -115,5 +115,8 @@
         <h3>Special Thanks</h3>
         <p class="text-center">{{$active_program->special_thanks}}</p>
     </section>
+    <section class="text-center digital-accredidation-section">
+        <h2 class="text-upper">Digital Program Creation by:</h2>
+        <p>Josh Colvin - joshicolvin@gmail.com</p>
     </section>
 @endsection

@@ -6,11 +6,11 @@
 @section('main-content')
 	<section class="acknowledgment-section">
 		<h2>Acknowledging The Land</h2>
-		<p style="text-align:center">{{$current_program->land_acknowledgment}}</p>
+		<p class="text-justify">{{$current_program->land_acknowledgment}}</p>
 	</section>
 	<section class="about-humber-section">
 		<h2>About Humber Theatre</h2>
-		<p style="text-align:center">{{$current_program->about_humber}}</p>
+		<p class="text-justify">{{$current_program->about_humber}}</p>
 	</section>
 	<section class="faculty-involved-section">
 		<h2>Faculty {{ date('Y') }}</h2>
@@ -43,5 +43,9 @@
 			<h3>Special Thanks</h3>
 			<p>{{$current_program->special_thanks}}</p>
 		</section>
-	@endif	
+	@endif
+    <section class="digital-accredidation-section">
+        <h2 class="text-upper">Digital Program Creation by:</h2>
+        <p class="text-center">Josh Colvin - joshicolvin@gmail.com</p>
+    </section>
 @endsection

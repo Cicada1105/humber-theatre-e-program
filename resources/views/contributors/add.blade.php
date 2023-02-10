@@ -19,7 +19,7 @@
 	</script>
 	<h1>Add Contributor</h1>
 	<img id="contributor-photo-preview" src="{{ url('/imgs/default_img.png') }}" alt="" width="200">
-	<form action="/pm/contributors/contributor/add" method="post" enctype="multipart/form-data">
+	<form action="{{ url('/pm/contributors/contributor/add') }}" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
 		<div class="flex-wrapper contributor-input-row">
 			<label for="contributor-first-name">First Name:</label>

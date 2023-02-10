@@ -35,8 +35,7 @@ hgroup.role > h5 {
 	margin:0rem;
 }
 .contributor__bio {
-	margin: 2rem 4rem;
-	text-align: justify;
+	margin: 2rem 4rem;\
 	line-height: 1.875;
 }
 .acknowledgment-section > p, .about-humber-section > p, .special-thanks-section > p {

@@ -141,15 +141,18 @@ form > div[class $= "-input-row"] {
 .text-center {
 	text-align: center;
 }
+.text-justify {
+	text-align: justify;
+}
 .text-underline {
 	text-decoration: underline;
+}
+.text-upper {
+	text-transform: uppercase;
 }
 .hidden {
     position: absolute;
     left: -10000px;
-}
-.text-upper {
-	text-transform: uppercase;
 }
 section[class $= "-section"] {
 	width: 80%;

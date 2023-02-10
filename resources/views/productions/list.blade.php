@@ -6,7 +6,7 @@
 
 @section('main-content')
 	<h1>Humber Productions</h1>
-	<form action='/pm/update' method="post">
+	<form action="{{ url('/pm/update') }}" method="post">
 		{{ csrf_field() }}
 		<div class="flex-wrapper add-btn-cont">
 			<button aria-label="Add New Production" class="add-btn" formaction="{{ url('/pm/production/add') }}" formmethod="get">
