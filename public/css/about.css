@@ -22,6 +22,6 @@ figure.program-poster > img {
 		margin: auto;
 	}
 	figure.program-poster > img {
-		width: min-content;
+		width: 20rem;
 	}
 }
