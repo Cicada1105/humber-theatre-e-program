@@ -47,6 +47,7 @@ Route::middleware(['guest'])->group(function() {
     Route::get('/', function() {
         // Obtain the program labeled as published
         $publishedProgram = Production::where('is_published',1)->first();
+        $publishedProgram = $publishedProgram ? $publishedProgram : [];
 
         return view('home', $publishedProgram );
     });

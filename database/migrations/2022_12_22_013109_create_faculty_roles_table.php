@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('faculty_roles', function (Blueprint $table) {
             $table->id();
             $table->tinyText('role');
-            $table->timestamps()->useCurrent();
+            $table->timestamps();
         });
     }
 

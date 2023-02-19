@@ -34,12 +34,19 @@ class ProductionsController extends Controller
     {
         // Retrieve the active program
         $activeProgram = Production::where('is_active', 1)->first();
-        // Retrieve all Contributions to the current active program
-        $contributions = Contribution::where('production_id', $activeProgram->id)->get();
-        // Retrieve all faculty members
-        $faculty = Faculty::all();
-        // Retrieve all of the faculty involved in the current program
-        $facultyInvolvement = FacultyInvolvement::where('production_id', $activeProgram->id)->get();
+        $contributions = null;
+        $faculty = null;
+        $facultyInvolvement = null;
+
+        // Check if there is a current active program
+        if ($activeProgram) {
+            // Retrieve all Contributions to the current active program
+            $contributions = Contribution::where('production_id', $activeProgram->id)->get();
+            // Retrieve all faculty members
+            $faculty = Faculty::all();
+            // Retrieve all of the faculty involved in the current program
+            $facultyInvolvement = FacultyInvolvement::where('production_id', $activeProgram->id)->get();   
+        }
 
         $previewData = [
             'title' => 'Productions',
@@ -98,30 +105,32 @@ class ProductionsController extends Controller
         $newProduction->is_active = false;
         $newProduction->is_published = false;
 
-        // Store the image file in the contributors_images directory under the public folder
-        $path = $request->file('posterPhoto')->store('production_images','public');
-        // Store path in the database
-        $newProduction->poster_img_src = $path;
-        $newProduction->poster_img_caption = $submission['posterCaption'];
+        // Check if an image was submitted for the program poster
+        if ($request->file('posterPhoto')) {
+            // Store the image file in the contributors_images directory under the public folder
+            $path = $request->file('posterPhoto')->store('production_images','public');
+            // Store path in the database
+            $newProduction->poster_img_src = $path;
+            $newProduction->poster_img_caption = $submission['posterCaption'];
+        }
+        else {
+            $newProduction->poster_img_src = null;
+            $newProduction->poster_img_caption = null;
+        }
 
         $newProduction->title = $submission['title'];
         $newProduction->authors = $submission['authors'];
         $newProduction->blurb = $submission['blurb'];
         $newProduction->directors = $submission['directors'];
-        if (!$submission["choreographers"]) {
-            $newProduction->choreographers = "";
-        }
-        else {
-            $newProduction->choreographers = $submission['choreographers'];   
-        }
+        $newProduction->choreographers = $submission['choreographers'];
         $newProduction->dates = $submission['dates'];
         $newProduction->location = $submission['location'];
         $newProduction->content_warning = $submission['contentWarning'];
 
         // Set additional fields to empty (added on other pages)
-        $newProduction->land_acknowledgment = "";
-        $newProduction->about_humber = "";
-        $newProduction->special_thanks = "";
+        //$newProduction->land_acknowledgment = "";
+        //$newProduction->about_humber = "";
+        //$newProduction->special_thanks = "";
 
         // Save instance of production to database
         $newProduction->save();

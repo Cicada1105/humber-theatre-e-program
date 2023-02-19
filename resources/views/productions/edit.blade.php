@@ -18,16 +18,16 @@
 		}
 	</script>
 	<h1>Edit Production</h1>
-	<img id="production-photo-preview" src="{{ asset('storage/'.$production->poster_img_src) }}" alt="" width="200">
+	<img id="production-photo-preview" src="{{ $production->poster_img_src ? asset('storage/'.$production->poster_img_src) : url("/imgs/default_img.png") }}" alt="" width="200">
 	<form action="{{ url("/pm/production/update/{$production->id}") }}" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
 		<div class="flex-wrapper production-input-row">
 			<label for="production-poster__photo">Production Poster:</label>
-			<input id="production-poster__photo" type="file" accept="image/*" value="{{$production->poster_img_src}}" name="posterPhoto" onchange="handleFileChange(event)" required>
+			<input id="production-poster__photo" type="file" accept="image/*" value="{{$production->poster_img_src}}" name="posterPhoto" onchange="handleFileChange(event)">
 		</div>
 		<div class="flex-wrapper production-input-row">
 			<label for="production-poster__caption">Production Poster Caption:</label>
-			<input id="production-poster__caption" type="text" name="posterCaption" value="{{$production->poster_img_caption}}" required>
+			<input id="production-poster__caption" type="text" name="posterCaption" value="{{$production->poster_img_caption}}">
 		</div>
 		<div class="flex-wrapper production-input-row">
 			<label for="production-title">Title:</label>
@@ -35,15 +35,15 @@
 		</div>
 		<div class="flex-wrapper production-input-row">
 			<label for="production-authors">Authors:</label>
-			<input id="production-authors" type="text" name="authors" value="{{$production->authors}}" required>
+			<input id="production-authors" type="text" name="authors" value="{{$production->authors}}">
 		</div>
 		<div class="flex-wrapper production-input-row">
 			<label for="production-blurb">Blurb:</label>
-			<textarea id="production-blurb" name="blurb" required>{{$production->blurb}}</textarea>
+			<textarea id="production-blurb" name="blurb">{{$production->blurb}}</textarea>
 		</div>
 		<div class="flex-wrapper production-input-row">
 			<label for="production-directors">Directors:</label>
-			<input id="production-directors" type="text" name="directors" value="{{$production->directors}}" required>
+			<input id="production-directors" type="text" name="directors" value="{{$production->directors}}">
 		</div>
 		<div class="flex-wrapper production-input-row">
 			<label for="production-choreographers">Choreographers:</label>
@@ -51,15 +51,15 @@
 		</div>
 		<div class="flex-wrapper production-input-row">
 			<label for="production-dates">Dates:</label>
-			<input id="production-dates" type="text" name="dates" value="{{$production->dates}}" required>
+			<input id="production-dates" type="text" name="dates" value="{{$production->dates}}">
 		</div>
 		<div class="flex-wrapper production-input-row">
 			<label for="production-location">Location:</label>
-			<input id="production-location" type="text" name="location" value="{{$production->location}}" required>
+			<input id="production-location" type="text" name="location" value="{{$production->location}}">
 		</div>
 		<div class="flex-wrapper production-input-row">
 			<label for="production-content-warning">Content Warning:</label>
-			<textarea id="production-content-warning" name="contentWarning" required>{{$production->content_warning}}</textarea>
+			<textarea id="production-content-warning" name="contentWarning">{{$production->content_warning}}</textarea>
 		</div>
 		<input class="btn" type="submit" value="Update">
 	</form>

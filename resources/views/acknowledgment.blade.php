@@ -6,11 +6,19 @@
 @section('main-content')
 	<section class="acknowledgment-section">
 		<h2>Acknowledging The Land</h2>
-		<p class="text-justify">{{$current_program->land_acknowledgment}}</p>
+		@if(isset($current_program->land_acknowledgement))
+			<p class="text-justify">{{ $current_program->land_acknowledgment }}</p>
+		@else
+			<p class="text-center">Unavailable</p>
+		@endif
 	</section>
 	<section class="about-humber-section">
 		<h2>About Humber Theatre</h2>
-		<p class="text-justify">{{$current_program->about_humber}}</p>
+		@if(isset($current_program->about_humber))
+			<p class="text-justify">{{ $current_program->about_humber }}</p>
+		@else
+			<p class="text-center">Unavailable</p>
+		@endif
 	</section>
 	<section class="faculty-involved-section">
 		<h2>Faculty {{ date('Y') }}</h2>
@@ -31,12 +39,16 @@
 		</dl>
 	</section>
 	<section class="faculty-section">
-		<ul class='faculty-list'>
-		@foreach ($faculty_involvement as $involvement)
-			@php($member = $involvement->faculty)
-			<li class="text-center">{{ $member->first_name ?? ""}} {{ $member->last_name ?? "" }}</li>
-		@endforeach
-		</ul>
+		@if(count($faculty_involvement))
+			<ul class='faculty-list'>
+			@foreach ($faculty_involvement as $involvement)
+				@php($member = $involvement->faculty)
+				<li class="text-center">{{ $member->first_name ?? ""}} {{ $member->last_name ?? "" }}</li>
+			@endforeach
+			</ul>
+		@else
+			<p class="text-center">No Current Faculty</p>
+		@endif
 	</section>
 	@if ($current_program->special_thanks)
 		<section class="special-thanks-section">

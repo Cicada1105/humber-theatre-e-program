@@ -15,26 +15,26 @@ return new class extends Migration
     {
         Schema::create('productions', function (Blueprint $table) {
             $table->id();
-            $table->boolean('is_active');
-            $table->boolean('is_published');
+            $table->boolean('is_active')->default(false);
+            $table->boolean('is_published')->default(false);
             // Tiny text can hold up to 255 bytes/characters
             $table->tinyText('title');
-            $table->tinyText('authors');
-            $table->text('directors');
-            $table->text('choreographers');
-            $table->mediumText('dates');
-            $table->tinyText('location');
+            $table->tinyText('authors')->nullable();
+            $table->text('directors')->nullable();
+            $table->text('choreographers')->nullable();
+            $table->mediumText('dates')->nullable();
+            $table->tinyText('location')->nullable();
             // Binary is equivalent to Blob
-            $table->binary('poster_img_src');
-            $table->tinyText('poster_img_caption');
-            $table->text('blurb');
+            $table->binary('poster_img_src')->nullable();
+            $table->tinyText('poster_img_caption')->nullable();
+            $table->text('blurb')->nullable();
             $table->text('content_warning')->nullable();
             // Medium text can hold up to 16,777,215 bytes/characters
             $table->mediumText('land_acknowledgment')->nullable();
             $table->mediumText('about_humber')->nullable();
             $table->mediumText('special_thanks')->nullable();
             // The following are the foreign keys of the faculty that contribute to a given production
-            $table->timestamps()->useCurrent();
+            $table->timestamps();
         });
     }
 
