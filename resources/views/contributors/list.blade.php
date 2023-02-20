@@ -22,53 +22,57 @@
 			}
 		}
 	</script>
-	<h1>Contributors of {{ $active_program->title }}</h1>
-	@if ($errors->any())
-		<p class="error">{{$errors->first()}}</p>
-	@endif
-	<form action="{{ url('/pm/contributors/update') }}" method="post" onsubmit="confirmation(event)">
-		{{ csrf_field() }}
-		<div class="flex-wrapper add-btn-cont">
-			<button aria-label="Add Contributor" class="add-btn" formaction="{{ url('/pm/contributors/contributor/add') }}" formmethod="get">
-				<fa class="fa-solid fa-plus">
-			</button>
-		</div>
-		@if(count($contributors))
-			<p id="active-contributors__text">Active Contributors</p>
-			@foreach ($contributors as $contributor)
-				@php
-					$contribution = $contributor->contributions->firstWhere("production_id", $active_program->id);
-					$isContributor = $contribution !== null;
-				@endphp
-				<section class="flex-wrapper contributor-row">
-					<input aria-label="{{$contributor->first_name}} {{$contributor->last_name}} is active contributor toggle" class="contributor-row__toggle" type="checkbox" name="contributors[{{$contributor->id}}][is_active]" {{ $isContributor ? "checked" : "" }}>
-					<h3 class="contributor-row__title">{{ $contributor->first_name }} {{ $contributor->last_name }}</h3>
-					<div class="contributor-role">
-						<div class="contributor-role__name">
-							<label for="{{$contributor->first_name}}-{{$contributor->last_name}}-role">Role:</label>
-							<input id="{{$contributor->first_name}}-{{$contributor->last_name}}-role" type="text" name="contributors[{{$contributor->id}}][role]" value="{{ $isContributor ? $contribution->role : ""}}">
-						</div>
-						<select class="contributor-role__category" value="" name="contributors[{{$contributor->id}}][category]">
-							@php($categoryName = $isContributor ? $contribution->category : "");
-							<option aria-hidden="true" disabled selected>--Category--</option>
-							<option value="performance" {{$isContributor && $categoryName=="performance" ? "selected" : ""}}>Performance</option>
-							<option value="guest_artist" {{$isContributor && $categoryName=="guest_artist" ? "selected" : ""}}>Guest Artist</option>
-							<option value="production" {{$isContributor && $categoryName=="production" ? "selected" : ""}}>Production</option>
-						</select>
-					</div>
-					<div class="contributor-row-controls">
-						<button aria-label="Edit {{ $contributor->first_name }} {{ $contributor->last_name }} contributor" class="edit-btn" formaction="{{ url("/pm/contributors/contributor/update/{$contributor->id}") }}" formmethod="get">
-							<fa class="fa-solid fa-pen-to-square">
-						</button>
-						<button aria-label="Delete {{ $contributor->first_name }} {{ $contributor->last_name }} contributor" type="submit" class="delete-btn" formmethod="post" formaction="{{ url("/pm/contributors/contributor/delete/{$contributor->id}") }}" data-name="{{ $contributor->first_name }} {{ $contributor->last_name }}">
-							<fa class="fa-solid fa-trash-can">
-						</button>
-					</div>
-				</section>
-			@endforeach
-			<input class="btn" type="submit" value="Submit">
-		@else
-			<h2>No Available Contributors</h2>
+	@if(isset($active_program->title))
+		<h1>Contributors of {{ $active_program->title }}</h1>
+		@if ($errors->any())
+			<p class="error">{{$errors->first()}}</p>
 		@endif
-	</form>
+		<form action="{{ url('/pm/contributors/update') }}" method="post" onsubmit="confirmation(event)">
+			{{ csrf_field() }}
+			<div class="flex-wrapper add-btn-cont">
+				<button aria-label="Add Contributor" class="add-btn" formaction="{{ url('/pm/contributors/contributor/add') }}" formmethod="get">
+					<fa class="fa-solid fa-plus">
+				</button>
+			</div>
+			@if(count($contributors))
+				<p id="active-contributors__text">Active Contributors</p>
+				@foreach ($contributors as $contributor)
+					@php
+						$contribution = $contributor->contributions->firstWhere("production_id", $active_program->id);
+						$isContributor = $contribution !== null;
+					@endphp
+					<section class="flex-wrapper contributor-row">
+						<input aria-label="{{$contributor->first_name}} {{$contributor->last_name}} is active contributor toggle" class="contributor-row__toggle" type="checkbox" name="contributors[{{$contributor->id}}][is_active]" {{ $isContributor ? "checked" : "" }}>
+						<h3 class="contributor-row__title">{{ $contributor->first_name }} {{ $contributor->last_name }}</h3>
+						<div class="contributor-role">
+							<div class="contributor-role__name">
+								<label for="{{$contributor->first_name}}-{{$contributor->last_name}}-role">Role:</label>
+								<input id="{{$contributor->first_name}}-{{$contributor->last_name}}-role" type="text" name="contributors[{{$contributor->id}}][role]" value="{{ $isContributor ? $contribution->role : ""}}">
+							</div>
+							<select class="contributor-role__category" value="" name="contributors[{{$contributor->id}}][category]">
+								@php($categoryName = $isContributor ? $contribution->category : "");
+								<option aria-hidden="true" disabled selected>--Category--</option>
+								<option value="performance" {{$isContributor && $categoryName=="performance" ? "selected" : ""}}>Performance</option>
+								<option value="guest_artist" {{$isContributor && $categoryName=="guest_artist" ? "selected" : ""}}>Guest Artist</option>
+								<option value="production" {{$isContributor && $categoryName=="production" ? "selected" : ""}}>Production</option>
+							</select>
+						</div>
+						<div class="contributor-row-controls">
+							<button aria-label="Edit {{ $contributor->first_name }} {{ $contributor->last_name }} contributor" class="edit-btn" formaction="{{ url("/pm/contributors/contributor/update/{$contributor->id}") }}" formmethod="get">
+								<fa class="fa-solid fa-pen-to-square">
+							</button>
+							<button aria-label="Delete {{ $contributor->first_name }} {{ $contributor->last_name }} contributor" type="submit" class="delete-btn" formmethod="post" formaction="{{ url("/pm/contributors/contributor/delete/{$contributor->id}") }}" data-name="{{ $contributor->first_name }} {{ $contributor->last_name }}">
+								<fa class="fa-solid fa-trash-can">
+							</button>
+						</div>
+					</section>
+				@endforeach
+				<input class="btn" type="submit" value="Submit">
+			@else
+				<h2>No Available Contributors</h2>
+			@endif
+		</form>
+	@else
+		<h1>No Current Active Program</h1>
+	@endif
 @endsection

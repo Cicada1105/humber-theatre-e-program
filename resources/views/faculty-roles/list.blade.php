@@ -33,18 +33,22 @@
 				<fa class="fa-solid fa-plus">
 			</button>
 		</div>
-		@foreach ($faculty_roles as $role)
-			<div class="flex-wrapper role-row">
-				<h3 class="role-row__title">{{ $role->role }}</h3>
-				<div class="role-row-controls">
-					<button aria-label="Edit {{ $role->role }} faculty role" class="edit-btn" formaction="{{ url("/pm/faculty-roles/update/{$role->id}") }}" formmethod="get">
-						<fa class="fa-solid fa-pen-to-square">
-					</button>
-					<button aria-label="Delete {{ $role->role }} faculty role" onclick="confirmation" type="submit" class="delete-btn" formmethod="post" formaction="{{ url("/pm/faculty-roles/delete/{$role->id}") }}" data-name="{{ $role->role }}">
-						<fa class="fa-solid fa-trash-can">
-					</button>
+		@if(count($faculty_roles))
+			@foreach ($faculty_roles as $role)
+				<div class="flex-wrapper role-row">
+					<h3 class="role-row__title">{{ $role->role }}</h3>
+					<div class="role-row-controls">
+						<button aria-label="Edit {{ $role->role }} faculty role" class="edit-btn" formaction="{{ url("/pm/faculty-roles/update/{$role->id}") }}" formmethod="get">
+							<fa class="fa-solid fa-pen-to-square">
+						</button>
+						<button aria-label="Delete {{ $role->role }} faculty role" onclick="confirmation" type="submit" class="delete-btn" formmethod="post" formaction="{{ url("/pm/faculty-roles/delete/{$role->id}") }}" data-name="{{ $role->role }}">
+							<fa class="fa-solid fa-trash-can">
+						</button>
+					</div>
 				</div>
-			</div>
-		@endforeach
+			@endforeach
+		@else
+			<h2>No Current Faculty Roles</h2>
+		@endif
 	</form>
 @endsection

@@ -9,38 +9,40 @@
         function confirmation(e) {
             // Check if there is missing data
             /* Program info */
-            const hasPoster = "{{$active_program->poster_img_src}}" && "{{$active_program->poster_img_caption}}";
-            const hasAuthor = "{{$active_program->authors}}";
-            const hasBlurb = "{{$active_program->blurb}}";
-            const hasDirectors = "{{$active_program->directors}}";
-            const hasChoreographers = "{{$active_program->choreographers}}";
-            const hasDates = "{{$active_program->dates}}";
-            const hasLocation = "{{$active_program->location}}";
-            /* Contributions */
-            const hasContributions = {{count($contributions)}};
-            /* Acknowledgment */
-            const hasAcknowledgment = "{{$active_program->land_acknowledgement}}";
-            const hasAboutHumber = "{{$active_program->about_humber}}";
-            const hasFacultyInvolvement = "{{$faculty_involvement}}";
-            const hasFaculty = "{{count($faculty)}}";
-            const hasSpecialThanks = "{{$active_program->special_thanks}}";
+            @isset($active_program->title)
+                const hasPoster = "{{$active_program->poster_img_src}}" && "{{$active_program->poster_img_caption}}";
+                const hasAuthor = "{{$active_program->authors}}";
+                const hasBlurb = "{{$active_program->blurb}}";
+                const hasDirectors = "{{$active_program->directors}}";
+                const hasChoreographers = "{{$active_program->choreographers}}";
+                const hasDates = "{{$active_program->dates}}";
+                const hasLocation = "{{$active_program->location}}";
+                /* Contributions */
+                const hasContributions = {{count($contributions)}};
+                /* Acknowledgment */
+                const hasAcknowledgment = "{{$active_program->land_acknowledgement}}";
+                const hasAboutHumber = "{{$active_program->about_humber}}";
+                const hasFacultyInvolvement = "{{$faculty_involvement}}";
+                const hasFaculty = "{{count($faculty)}}";
+                const hasSpecialThanks = "{{$active_program->special_thanks}}";
 
-            const isMissingProgramInfo = !hasPoster || !hasAuthor || !hasBlurb || !hasDirectors || !hasChoreographers || !hasDates || !hasLocation;
-            const isMissingContributions = !hasContributions;
-            const isMissingAcknowledgmentInfo = !hasAcknowledgment || !hasAboutHumber || !hasFacultyInvolvement || !hasFaculty || !hasSpecialThanks;
+                const isMissingProgramInfo = !hasPoster || !hasAuthor || !hasBlurb || !hasDirectors || !hasChoreographers || !hasDates || !hasLocation;
+                const isMissingContributions = !hasContributions;
+                const isMissingAcknowledgmentInfo = !hasAcknowledgment || !hasAboutHumber || !hasFacultyInvolvement || !hasFaculty || !hasSpecialThanks;
 
-            // If there is any information missing, alert the user before publishing it to the public facing pages
-            if (isMissingProgramInfo || isMissingContributions || isMissingAcknowledgmentInfo) {
-                let confirmPublish = confirm('There is some missing info for the {{$active_program->title}} program. Are you sure you want to publish with missing info?');
+                // If there is any information missing, alert the user before publishing it to the public facing pages
+                if (isMissingProgramInfo || isMissingContributions || isMissingAcknowledgmentInfo) {
+                    let confirmPublish = confirm('There is some missing info for the {{$active_program->title}} program. Are you sure you want to publish with missing info?');
 
-                // If the user cancels, prevent form from being submitted
-                if (!confirmPublish) {
-                    e.preventDefault();
+                    // If the user cancels, prevent form from being submitted
+                    if (!confirmPublish) {
+                        e.preventDefault();
+                    }
                 }
-            }
+            @endisset
         }
     </script>
-    @if ($active_program)
+    @if (isset($active_program))
     	<h1>{{$active_program->title}} Preview</h1>
     	<form action="{{ url('/pm/preview') }}" method="post" onsubmit="confirmation(event)">
     		{{ csrf_field() }}

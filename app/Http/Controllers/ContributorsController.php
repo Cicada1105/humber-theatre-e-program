@@ -188,7 +188,7 @@ class ContributorsController extends Controller
             // Return back to the faculty list page with an error message
             $errMsg = "{$contributor->first_name} {$contributor->last_name} cannot be deleted. {$contributor->first_name} {$contributor->last_name} has currently contributed to one or more programs";
 
-            return back()->withErrors([ 'err' => $errmsg ]);
+            return back()->withErrors([ 'err' => $errMsg ]);
         }
         // Safe to remove the contributor
 
