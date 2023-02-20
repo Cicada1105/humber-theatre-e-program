@@ -60,9 +60,6 @@ class ContributorsController extends Controller
             $path = $request->file('photo')->store('contributors_images','public');
             $newContributor->photo = $path;
         }
-        else {
-            $newContributor->photo = "";
-        }
 
         $newContributor->save();
 
@@ -130,17 +127,11 @@ class ContributorsController extends Controller
             // Update the database stored path of the image
             $contributor->photo = $path;
         }
-        else { // User has not submitted a photo
-            // Check if photo ex
-        }
 
         // Save all changes applied to the contributor
         $contributor->save();
 
         return redirect($request->root() . '/pm/contributors');
-        // $activeProgram = Production::where('is_active', 1)->first();
-
-        // return view('contributors.list', [ 'title' => 'Contributors', 'active_program' => $activeProgram, 'contributors' => Contributor::all()->sortBy('last_name') ]);
     }
    
     /**

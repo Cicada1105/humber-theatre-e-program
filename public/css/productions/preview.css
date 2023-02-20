@@ -47,6 +47,7 @@ hgroup.role > h4 {
 .bio__text {
 	margin: 2rem 4rem;
 	line-height: 1.875;
+	flex-grow: 1;
 }
 .bio__img {
 	margin: 1rem auto;;

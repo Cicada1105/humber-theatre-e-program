@@ -23,7 +23,7 @@
 		{{ csrf_field() }}
 		<div class="flex-wrapper contributor-input-row">
 			<label for="contributor-first-name">First Name:</label>
-			<input id="contributor-first-name" type="text" name="firstName" value="{{$contributor->first_name}}" placeholder="Enter..." require>
+			<input id="contributor-first-name" type="text" name="firstName" value="{{$contributor->first_name}}" placeholder="Enter..." required>
 		</div>
 		<div class="flex-wrapper contributor-input-row">
 			<label for="contributor-last-name">Last Name:</label>
@@ -31,7 +31,7 @@
 		</div>
 		<div class="flex-wrapper contributor-input-row">
 			<label for="contributor-bio">Bio:</label>
-			<textarea id="contributor-bio" name="bio" cols="" rows="bio" required>{{$contributor->bio}}</textarea>
+			<textarea id="contributor-bio" name="bio" cols="" rows="bio">{{$contributor->bio}}</textarea>
 		</div>
 		<div class="flex-wrapper contributor-input-row">
 			<label for="contributor-photo">Profile Image:</label>

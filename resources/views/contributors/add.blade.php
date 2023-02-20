@@ -31,7 +31,7 @@
 		</div>
 		<div class="flex-wrapper contributor-input-row">
 			<label for="contributor-bio">Bio:</label>
-			<textarea id="contributor-bio" name="bio" cols="" rows="bio" required></textarea>
+			<textarea id="contributor-bio" name="bio" cols="" rows="bio"></textarea>
 		</div>
 		<div class="flex-wrapper contributor-input-row">
 			<label for="contributor-photo">Profile Image:</label>

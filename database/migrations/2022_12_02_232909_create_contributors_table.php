@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->tinyText('first_name');
             $table->tinyText('last_name');
-            $table->text('bio');
-            $table->string('photo');
+            $table->text('bio')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

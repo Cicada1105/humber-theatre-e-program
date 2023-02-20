@@ -24,8 +24,8 @@
 						<h4>{{ $contribution['role'] }}</h4>
 					</hgroup>
 					<section class="flex-wrapper contributor-bio">
-						<img class="bio__img" src="{{asset('storage/' . $contributor->photo)}}" alt="{{$contributor->first_name}} {{$contributor->last_name}} headshot">
-						<p class="bio__text text-justify">{{ $contributor['bio'] }}</p>
+						<img class="bio__img" src="{{ $contributor->photo ? asset('storage/' . $contributor->photo) : url('imgs/default_img.png') }}" alt="{{$contributor->first_name}} {{$contributor->last_name}} headshot">
+						<p class="bio__text text-justify">{{ $contributor['bio'] ? $contributor['bio'] : '[Bio not available]' }}</p>
 					</section>
 				</article>
 			@endforeach
