@@ -120,9 +120,22 @@ form > div[class $= "-input-row"] {
 .add-btn:hover > fa {
 	color: var(--background-color);
 }
+.add-btn:hover > fa::after {
+	color: var(--text-color);
+}
 .add-btn > fa {
+	position:relative;
 	font-size:1.5rem;
 	color: var(--text-color);
+}
+.add-btn > fa::after {
+	content: "Add";
+	font-size: 1rem;
+	font-family: initial;
+	position:absolute;
+	top: calc(100% + 1.25rem);
+	transform: translate(-50%);
+	left: 50%;
 }
 .edit-btn, .delete-btn {
 	background-color: transparent;
@@ -137,6 +150,16 @@ form > div[class $= "-input-row"] {
 	font-size:1.75rem;
 	color: var(--text-color);
 	font-weight:unset;
+}
+.edit-btn > fa::after {
+	content: "Edit";
+	font-size:1rem;
+	font-family: initial;
+}
+.delete-btn > fa::after {
+	content: "Delete";
+	font-size:1rem;
+	font-family: initial;
 }
 .text-center {
 	text-align: center;

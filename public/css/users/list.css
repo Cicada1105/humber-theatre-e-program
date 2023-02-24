@@ -3,7 +3,7 @@
 	flex-direction: column;
 	flex-wrap: wrap;
 	margin:auto;
-	margin-bottom: 2rem;
+	margin: 2.5rem auto;
 }
 .user-controls {
 	flex-basis: 100%;
