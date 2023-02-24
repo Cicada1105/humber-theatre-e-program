@@ -22,7 +22,7 @@ class ProductionsController extends Controller
     public function list()
     {
         //
-        return view('productions.list', [ 'title' => 'Production', 'productions' => Production::all() ]);
+        return view('productions.list', [ 'title' => 'Production', 'productions' => Production::orderBy('is_published', 'desc')->orderBy('is_active', 'desc')->get() ]);
     }
 
     /**
