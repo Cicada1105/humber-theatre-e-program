@@ -59,9 +59,6 @@
 				<li class="nav-list__item">
 					<a class="nav-list__link" href="{{ url('/humber-theatre') }}">Humber Theatre</a>
 				</li>
-				<li class="nav-list__item">
-					<a class="nav-list__link" href="{{ url('/login') }}">Login</a>
-				</li>
 			</ul>
 		</nav>
 	@endif
