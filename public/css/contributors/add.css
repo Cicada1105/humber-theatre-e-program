@@ -9,7 +9,15 @@
 .contributor-input-row > label {
 	font-size:1.5rem;
 }
-.contributor-input-row > input, .contributor-input-row > textarea {
+.contributor-input-row > textarea {
+	font-size:1.15rem;
+	padding: 0.25rem 0.5rem;	
+	min-width: 12rem;
+	min-height: 3.25rem;
+	max-width: 20rem;
+	max-height: 10rem;
+}
+.contributor-input-row > input {
 	font-size:1.15rem;
 	padding: 0.25rem 0.5rem;
 }

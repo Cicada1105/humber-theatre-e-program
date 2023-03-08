@@ -10,7 +10,15 @@
 .production-input-row > label {
 	font-size:1.5rem;
 }
-.production-input-row > input, .production-input-row > textarea {
+.production-input-row > textarea {
+	min-width: 12rem;
+	min-height: 3.25rem;
+	max-width: 20rem;
+	max-height: 10rem;
+	font-size:1.15rem;
+	padding: 0.25rem 0.5rem;
+}
+.production-input-row > input {
 	font-size:1.15rem;
 	padding: 0.25rem 0.5rem;
 }

@@ -61,7 +61,7 @@ a:visited {  }
 form {
 	text-align: center;
 	width: 90vw;
-	margin:1rem auto 4rem auto;
+	margin: 0rem auto 4rem auto;
 }
 form > div[class $= "-input-row"] {
 	flex-direction:column;
@@ -101,7 +101,6 @@ form > div[class $= "-input-row"] {
 }
 .add-btn-cont {
 	justify-content: center;
-	margin-bottom: 1rem;
 }
 .add-btn {
 	background-color: transparent;
@@ -140,7 +139,7 @@ form > div[class $= "-input-row"] {
 .edit-btn, .delete-btn {
 	background-color: transparent;
 	border: none;
-	width: 2rem;
+	width: min-content;
 	margin: 0rem 0.5rem;
 }
 .edit-btn:hover, .delete-btn:hover {
@@ -187,9 +186,6 @@ section[class $= "-section"] > h3 {
 }
 section[class $= "-section"] > p {
 	font-size: 1.15rem;
-}
-#active-program__text {
-	display: none;
 }
 
 /*****************/
@@ -307,14 +303,6 @@ li.nav-sub-list__item {
 	.add-btn {
 		margin: unset;
 		margin-right: 5rem;
-	}
-	#active-program__text {
-		padding-left:2.5rem;
-		text-align: left;
-		display: block;
-	}
-	form {
-		margin: 4rem auto;
 	}
 	form > div[class $= "-input-row"] {
 		flex-direction:row;

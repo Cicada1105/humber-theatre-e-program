@@ -16,7 +16,7 @@
 		@if(count($productions))
 			<p id="active-program__text">Active Program</p>
 			@foreach ($productions as $production)
-				<div class="production-row">
+				<div class="flex-wrapper production-row">
 					<input aria-label="{{ $production->title }} active program toggle" class="production-row__toggle" type="radio" name="activeProgram" value={{$production->id}} {{ $production->is_active ? "checked" : "" }}>
 					<h3 class="production-row__title">{{ $production->title }}</h3>
 					<span class="published">{{ $production->is_published ? "(Published)" : ""}}</span>

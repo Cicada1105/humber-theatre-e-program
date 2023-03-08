@@ -1,35 +1,49 @@
 #active-contributors__text {
 	display: none;
-	text-align: left;
 }
 .contributor-row {
-	justify-content: space-between;
 	flex-direction: column;
-	position: relative;
-	margin: 2.5rem;
-	margin-bottom: 4rem;
-}
-.contributor-row__toggle {
-	margin-bottom: 1rem;
+	row-gap: 1rem;
+	margin: 2.5rem auto;
 }
 .contributor-row__title {
-	margin-bottom: 1rem;
+	margin-bottom: 0rem;
 	order: -1;
 }
 .contributor-role__name {
-	display: inline;
-	margin-right:1rem;
+	display: block;
+	margin-bottom: 1rem;
+}
+.contributor-role__name > label {
+	display: block;
+	margin-bottom: 0.25rem;
+}
+.contributor-role__name > input {
+	display: block;
 }
 .contributor-row-controls {
-	transform: translateX(-50%);
-	position: absolute;
-	left: 50%;
-	top: calc(100% + 1rem);
+	width: max-content;
 }
 /*****************/
 /* Media Queries */
 /*****************/
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 500px) {
+	.contributor-role__name {
+		display: inline;
+		margin-right: 1rem;
+	}
+	.contributor-role__name > label {
+		display: inline;
+	}
+	.contributor-role__name > input {
+		display: inline;
+	}
+}
+@media only screen and (min-width: 700px) {
+	.contributor-row {
+		position: relative;
+		margin: 2.5rem;
+	}
 	.contributor-row__toggle {
 		transform: translateY(-50%);
 		margin-bottom: 0rem;
@@ -37,12 +51,6 @@
 		left: 0%;
 		top: 50%;
 	}
-	.contributor-row__title {
-		margin-bottom: revert;
-		order: unset;
-	}
-}
-@media only screen and (min-width: 700px) {
 	#active-contributors__text {
 		display: block;
 		text-align: left;
@@ -50,20 +58,18 @@
 }
 @media only screen and (min-width: 950px) {
 	.contributor-row {
+		justify-content: space-around;
+		flex-wrap: wrap;
+		gap:0rem 11rem;
 		flex-direction: row;
-		gap:2rem;
-		margin-bottom: 2.5rem;
+		margin-bottom: 3.5rem;
 	}
 	.contributor-row__toggle {
-		transform: unset;
-		left: unset;
-		top: unset;
+		top: 28%;
 	}
 	.contributor-row__title {
+		margin: revert;
 		padding-left: 2.5rem;
-	}
-	.contributor-row-controls {
-		top: 100%;
 	}
 }
 @media only screen and (min-width: 1220px) {
@@ -71,14 +77,17 @@
 		padding-left:2.5rem;
 	}
 	.contributor-row {
-		justify-content: space-between;
 		margin: 2.5rem 5rem;
+		gap: 2rem;
 	}
 	.contributor-row__toggle {
 		position: relative;
+		transform: unset;
 	}
 	.contributor-row__title {
 		flex-grow:1;
+		order: unset;
+		padding-left: unset;
 	}
 	.contributor-row-controls {
 		position: relative;
