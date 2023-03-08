@@ -5,7 +5,7 @@
 @endsection
 
 @section('main-content')
-    @if(isset($title))
+    @isset($title)
         <figure class="program-poster text-center">
             <img aria-labeledBy="poster__caption" src="{{ $poster_img_src ? asset('storage/'.$poster_img_src) : url("/imgs/default_img.png") }}" alt="{{ $title }} poster">
             <figcaption>{{ $poster_img_caption }}</figcaption>
@@ -58,5 +58,5 @@
     @else
         <h1 class="program-title text-upper">No Active Program</h1>
         <p class="text-center">There is no active program at this time. Please check back later</p>
-    @endif
+    @endisset
 @endsection

@@ -54,30 +54,33 @@ Route::middleware(['guest'])->group(function() {
     Route::get('/contributors', function () {
         // Obtain the current published program
         $activeProgram = Production::where('is_published', 1)->first();
-        // Retrieve all Contributions to the current published program
-        $contributions = Contribution::where('production_id', $activeProgram->id)->get()->sortBy(function($contribution) {
-            return $contribution->contributor->last_name;
-        });
+        $contributorsData = [];
+        if ($activeProgram) {
+            // Retrieve all Contributions to the current published program
+            $contributions = Contribution::where('production_id', $activeProgram->id)->get()->sortBy(function($contribution) {
+                return $contribution->contributor->last_name;
+            });
 
-        $contributorsData = [
-            'title' => $activeProgram->title,
-            'program' => $activeProgram->title,
-            'contributions' => $contributions
-        ];
+            $contributorsData['title'] = $activeProgram->title;
+            $contributorsData['program'] = $activeProgram->title;
+            $contributorsData['contributions'] = $contributions;
+        }
+
 
         return view('contributors', $contributorsData);
     });
     Route::get('/humber-theatre', function() {
         // Retrieve the current published program
         $activeProgram = Production::where('is_published', 1)->first();
-        // Retrieve faculty who was involved in the production or department
-        $facultyInvolvement = FacultyInvolvement::where('production_id', $activeProgram->id)->get();
+        $testData = [];
+        if ($activeProgram) {
+            // Retrieve faculty who was involved in the production or department
+            $facultyInvolvement = FacultyInvolvement::where('production_id', $activeProgram->id)->get();
 
-        $testData = [
-            'title' => $activeProgram->title,
-            'current_program' => $activeProgram,
-            'faculty_involvement' => $facultyInvolvement
-        ];
+            $testData['title'] = $activeProgram->title;
+            $testData['current_program'] = $activeProgram;
+            $testData['faculty_involvement'] = $facultyInvolvement;
+        }
 
         return view('acknowledgment', $testData);
     });
