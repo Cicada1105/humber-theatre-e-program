@@ -8,7 +8,7 @@
 	margin: 0rem auto 4rem auto;
 	padding:0rem 2rem;
 }
-.member-row__toggle {
+input.member-row__toggle {
 	position: absolute;
 	left:15%;
 	top:33%;
@@ -28,7 +28,7 @@
 		flex-direction: row;
 		gap:2rem;
 	}
-	.member-row__toggle {
+	input.member-row__toggle {
 		left:0rem;
 		top:unset;
 	}
@@ -51,7 +51,7 @@
 		margin: 2.5rem 5rem;
 		padding:0rem;
 	}
-	.member-row__toggle {
+	input.member-row__toggle {
 		position: relative;
 	}
 	.member-row__title {

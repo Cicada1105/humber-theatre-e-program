@@ -10,7 +10,7 @@
 	margin: 2.5rem auto;
 	row-gap: 1rem;
 }
-.production-row__toggle {
+input.production-row__toggle {
 	order:1;
 }
 .production-row__title {
@@ -32,7 +32,7 @@
 		display: block;
 		margin: 2.5rem 5rem 4rem 5rem;
 	}
-	.production-row__toggle {
+	input.production-row__toggle {
 		position: absolute;
 		transform: translateY(-50%);
 		margin:auto;
@@ -59,7 +59,7 @@
 	}
 }
 @media only screen and (min-width: 986px) {
-	.production-row__toggle {
+	input.production-row__toggle {
 		top:50%;
 	}
 	.production-row-controls {
