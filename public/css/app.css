@@ -277,7 +277,7 @@ a#skip-content__link:focus {
 	top: 100%;
 }
 #page-header__logo {
-	width:300px;
+	width:100vw;
 }
 ul.nav-list {
 	justify-content: space-around;
@@ -311,6 +311,11 @@ li.nav-sub-list__item {
 /*********************/
 /*   Media Queries   */
 /*********************/
+@media only screen and (min-width: 300px) {
+	#page-header__logo {
+		width:300px;
+	}
+}
 @media only screen and (min-width: 850px) {
 	header.page-header {
 		gap: 1rem;
