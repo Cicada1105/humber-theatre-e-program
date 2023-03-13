@@ -71,11 +71,13 @@ form > div[class $= "-input-row"] {
 input[type="radio"], input[type="checkbox"] {
 	position: relative;
 	appearance: none;
+	width:24px;
+	height:24px;
 	font-size: 24px;
 	overflow: hidden;
 }
 /* Custom Radio Button */
-input[type="radio"]:after {
+input[type="radio"]::after {
 	content: "";
 	position: relative;
 	width: 1em;
