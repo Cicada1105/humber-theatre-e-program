@@ -63,7 +63,7 @@
 		flex-direction: row;
 	}
 	input.contributor-row__toggle {
-		top: 28%;
+		top: 25%;
 	}
 	.contributor-row__title {
 		margin: revert;
