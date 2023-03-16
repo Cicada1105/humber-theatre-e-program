@@ -21,13 +21,15 @@ dl {
 }
 .faculty-involved-member > dd {
 	font-weight: lighter;
+	margin-left: 0rem;
 	order: -1;
 }
 .faculty-list {
 	line-height: 1.875;
+	padding-left: 0rem;
 	font-size: 1.25rem;
 	list-style: none;
-	column-count: 3;
+	column-count: 1;
 }
 .special-thanks-section {
 	width: 70%;
@@ -35,7 +37,12 @@ dl {
 .special-thanks-section > p {
 	text-align: center;
 }
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 500px) {
+	.faculty-list {
+		column-count: 2;
+	}
+}
+@media only screen and (min-width: 790px) {
 	.faculty-involved-member {
 		flex-flow: row;
 		gap: revert;
@@ -44,6 +51,9 @@ dl {
 	.faculty-involved-member > dd {
 		font-weight: revert;
 		order: 1;
+	}
+	.faculty-list {
+		column-count: 3;
 	}
 }
 @media only screen and (min-width: 1420px) {
