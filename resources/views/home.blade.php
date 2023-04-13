@@ -15,7 +15,7 @@
             <h2 class="program-writer">By: {{ $authors }}</h2>
         @endif
         @if(isset($blurb))
-            <section class="text-justify synopsis-section">
+            <section class="text-center synopsis-section">
                 <p>{{ $blurb }}</p>
             </section>
         @endif
@@ -32,7 +32,7 @@
             @if(isset($dates))
                 @php($dateAndTimes = explode(';', $dates))
                 @foreach($dateAndTimes as $dateAndTimeStr)
-                    @php($dateAndTime = explode(':',$dateAndTimeStr))
+                    @php($dateAndTime = explode(',',$dateAndTimeStr))
                     @php($trimmedDateAndTime = trim($dateAndTime[0]))
                     @php($date = date_create_from_format("F jS - ga", $trimmedDateAndTime))
                     <section class='date text-center'>

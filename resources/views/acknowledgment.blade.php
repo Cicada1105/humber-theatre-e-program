@@ -7,10 +7,10 @@
 	@isset($title)
 		<section class="acknowledgment-section">
 			<h2>Acknowledging The Land</h2>
-			@if(isset($current_program->land_acknowledgement))
+			@if(isset($current_program->land_acknowledgment))
 				<p class="text-justify">{{ $current_program->land_acknowledgment }}</p>
 			@else
-				<p class="text-center">Unavailable</p>
+				<p class="text-center">Humber College is located within the traditional and treaty lands of the Mississaugas of the Credit. Known as Adoobiigok, the “Place of the Black Alders” in Michi Saagiig language, the region is uniquely situated along Humber River watershed, which historically provided an integral connection for Anishinaabe, Haudenosaunee, and Wendat peoples between the Ontario Lakeshore and the Lake Simcoe/Georgian Bay regions. Now home to people of numerous nations, Adoobiigok continues to provide a vital source of interconnection for all.</p>
 			@endif
 		</section>
 		<section class="about-humber-section">
@@ -18,7 +18,7 @@
 			@if(isset($current_program->about_humber))
 				<p class="text-justify">{{ $current_program->about_humber }}</p>
 			@else
-				<p class="text-center">Unavailable</p>
+				<p class="text-center">Humber Theatre is the collaborative partnership between the Theatre Performance and Theatre Production programs. We are dedicated to training creative artists, from diverse backgrounds, with a strong foundation in essential discipline-specific skills. We believe in inter-cultural and multidisciplinary theatre that speaks in the present to a brave vision of the future. Each year, Humber Theatre presents a number of original productions which demand the full creative engagement of performance and production students under the guidance of internationally-recognized artists. By working together with artists who can guide and inspire, Humber Theatre’s graduates are prepared for multifaceted and successful careers in the arts community.</p>
 			@endif
 		</section>
 		<section class="faculty-involved-section">
@@ -61,8 +61,8 @@
 	        <h2 class="text-upper">Digital Program Creation by:</h2>
 	        <p class="text-center">Josh Colvin - joshicolvin@gmail.com</p>
 	    </section>
-	   @else
+	@else
         <h1 class="program-title text-upper">No Active Program</h1>
         <p class="text-center">There is no active program at this time. Please check back later</p>
-	   @endisset
+	@endisset
 @endsection

@@ -32,7 +32,7 @@ input[type="file"]::file-selector-button {
 	display:block;
 }
 label[ for = "production-dates"]::after {
-	content: "[Month Day - Hour am/pm : production details; Month...]";
+	content: "[Month Day - Hour am/pm, production details; Month...]";
 	position: absolute;
 	display: block;
 	right:0rem;
